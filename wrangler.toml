@@ -1,0 +1,10 @@
+name = "memory-orbs"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "."
+
+[vars]
+SITE_URL = "https://memory-orbs.pages.dev"
+
+[[kv_namespaces]]
+binding = "MEMORY_ORBS_USERS"
+id = "2a2e3a78665e455d80d740303a98045f"

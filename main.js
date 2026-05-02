@@ -2025,7 +2025,7 @@
     lastVerifiedAt: 0,
     verifyFailCount: 0
   };
-  var WORKER_BASE = "https://memory-orbs-activation.531442151.workers.dev";
+  var WORKER_BASE = "https://memory-orbs.pages.dev";
   var ACTIVATION_WORKER_URL = WORKER_BASE + "/activate";
   var VERIFY_WORKER_URL = WORKER_BASE + "/verify";
   var VERIFY_INTERVAL = 24 * 60 * 60 * 1e3;
