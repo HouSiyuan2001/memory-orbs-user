@@ -1,0 +1,3008 @@
+/* ═══════════════════════════════════════════════════
+   Memory Orbs —— 头脑特工队风格记忆球样式 v3
+   三种视觉主题: cosmos(星空) / classic(经典) / sketch(手绘)
+   ═══════════════════════════════════════════════════ */
+
+/* ── 主容器（cosmos 默认暗色） ── */
+.memory-orbs-container {
+    padding: 20px 24px;
+    overflow-y: auto;
+    height: 100%;
+    font-family: "SmileySans", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════════
+   🌌 COSMOS — 星空暗色主题（默认）
+   ═══════════════════════════════════════════════════ */
+
+/* 🌌 增强版星空背景 - 多层次深空效果 */
+.mo-theme-cosmos {
+    /* 基础深空渐变 */
+    background: 
+        linear-gradient(135deg, 
+            #050612 0%, 
+            #0a0c1a 25%, 
+            #11142d 50%, 
+            #0c0e22 75%, 
+            #050612 100%
+        ),
+        /* 星云光晕效果 */
+        radial-gradient(
+            300px at 20% 30%, 
+            rgba(80, 60, 180, 0.1) 0%, 
+            rgba(40, 30, 100, 0.05) 30%, 
+            transparent 70%
+        ),
+        radial-gradient(
+            250px at 80% 20%, 
+            rgba(60, 100, 200, 0.08) 0%, 
+            rgba(30, 60, 150, 0.04) 25%, 
+            transparent 65%
+        ),
+        radial-gradient(
+            350px at 40% 80%, 
+            rgba(120, 80, 200, 0.07) 0%, 
+            rgba(70, 40, 140, 0.03) 35%, 
+            transparent 80%
+        );
+    color: rgba(255, 255, 255, 0.88);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 密集的静态星星层（远距离） */
+.mo-theme-cosmos::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(0.4px 0.4px at 8% 12%, rgba(255, 255, 255, 0.25) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 15% 28%, rgba(255, 255, 255, 0.2) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 22% 45%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 30% 18%, rgba(255, 255, 255, 0.15) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 38% 55%, rgba(255, 255, 255, 0.2) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 48% 32%, rgba(255, 255, 255, 0.25) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 58% 68%, rgba(255, 255, 255, 0.15) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 68% 22%, rgba(255, 255, 255, 0.2) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 75% 48%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 85% 38%, rgba(255, 255, 255, 0.2) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 92% 65%, rgba(255, 255, 255, 0.25) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 12% 78%, rgba(255, 255, 255, 0.2) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 25% 82%, rgba(255, 255, 255, 0.3) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 42% 90%, rgba(255, 255, 255, 0.15) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 65% 75%, rgba(255, 255, 255, 0.25) 50%, transparent 100%),
+        radial-gradient(0.4px 0.4px at 88% 85%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 动态闪烁的亮星层（中距离） */
+.mo-theme-cosmos::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 12% 25%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 35% 15%, rgba(255, 255, 255, 0.45) 50%, transparent 100%),
+        radial-gradient(1px 1px at 55% 55%, rgba(255, 255, 255, 0.35) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 72% 28%, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+        radial-gradient(1px 1px at 88% 48%, rgba(255, 255, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(1px 1px at 20% 70%, rgba(220, 240, 255, 0.45) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 45% 35%, rgba(255, 240, 200, 0.5) 50%, transparent 100%),
+        radial-gradient(1px 1px at 65% 80%, rgba(200, 220, 255, 0.4) 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 82% 65%, rgba(255, 220, 220, 0.45) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+    animation: nebula-float 20s ease-in-out infinite;
+    filter: blur(0.3px);
+}
+
+/* 使用CSS伪元素创建一些动态星星 */
+.mo-theme-cosmos .memory-orbs-container::before,
+.mo-theme-cosmos .memory-orbs-container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    pointer-events: none;
+    z-index: 0;
+    animation: star-twinkle 3s ease-in-out infinite;
+    will-change: opacity, transform;
+}
+
+.mo-theme-cosmos .memory-orbs-container::before {
+    width: 1.5px;
+    height: 1.5px;
+    top: 30%;
+    left: 15%;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+    animation-delay: 0.5s;
+}
+
+.mo-theme-cosmos .memory-orbs-container::after {
+    width: 2px;
+    height: 2px;
+    top: 65%;
+    left: 80%;
+    box-shadow: 0 0 8px rgba(200, 220, 255, 0.7);
+    animation-delay: 1.8s;
+}
+
+/* 动态星星字段的样式 */
+.mo-theme-cosmos .mo-star-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.mo-theme-cosmos .mo-star {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: star-twinkle var(--star-duration) ease-in-out infinite;
+    will-change: opacity, transform;
+    filter: blur(0.2px);
+}
+
+/* 星星的动画延迟 */
+.mo-theme-cosmos .mo-star:nth-child(1) { animation-delay: 0.2s; }
+.mo-theme-cosmos .mo-star:nth-child(2) { animation-delay: 0.7s; }
+.mo-theme-cosmos .mo-star:nth-child(3) { animation-delay: 1.3s; }
+.mo-theme-cosmos .mo-star:nth-child(4) { animation-delay: 0.9s; }
+.mo-theme-cosmos .mo-star:nth-child(5) { animation-delay: 1.8s; }
+.mo-theme-cosmos .mo-star:nth-child(6) { animation-delay: 0.4s; }
+.mo-theme-cosmos .mo-star:nth-child(7) { animation-delay: 2.1s; }
+.mo-theme-cosmos .mo-star:nth-child(8) { animation-delay: 1.5s; }
+
+.mo-theme-cosmos .mo-toolbar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mo-theme-cosmos .mo-nav-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.mo-theme-cosmos .mo-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.mo-theme-cosmos .mo-nav-title {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 0 20px rgba(200, 200, 255, 0.15);
+}
+
+.mo-theme-cosmos .mo-mode-group {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.mo-theme-cosmos .mo-mode-btn {
+    color: #ffffff !important; /* 白色覆盖基础深灰色 */
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 0 2px rgba(0, 0, 0, 0.15);
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.mo-theme-cosmos .mo-mode-btn.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff !important; /* 激活状态使用纯白色 */
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 16px rgba(200, 200, 255, 0.12);
+}
+
+.mo-theme-cosmos .mo-mode-btn:not(.active) {
+    color: rgba(255, 255, 255, 0.9) !important; /* 非激活状态使用更亮的白色 */
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.mo-theme-cosmos .mo-mode-btn:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.95) !important; /* 悬停时更亮 */
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.mo-theme-cosmos .mo-legend-dot {
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.mo-theme-cosmos .mo-legend-dot:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.mo-theme-cosmos .mo-theme-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.mo-theme-cosmos .mo-theme-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.mo-theme-cosmos .mo-loading {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.mo-theme-cosmos .mo-empty {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.mo-theme-cosmos .mo-day-header {
+    color: rgba(255, 255, 255, 0.45);
+    text-shadow: 0 0 10px rgba(200, 200, 255, 0.08);
+}
+
+.mo-theme-cosmos .mo-week-section {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.mo-theme-cosmos .mo-week-header {
+    color: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.04);
+    border-left-color: rgba(200, 200, 255, 0.2);
+    text-shadow: 0 0 10px rgba(200, 200, 255, 0.08);
+}
+
+.mo-theme-cosmos .mo-orb-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── cosmos 统计面板 ── */
+.mo-theme-cosmos .mo-stats-panel {
+    background: rgba(20, 22, 40, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+}
+.mo-theme-cosmos .mo-stats-panel::-webkit-scrollbar-thumb {
+    background: rgba(180, 200, 255, 0.15);
+}
+.mo-theme-cosmos .mo-stats-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+}
+.mo-theme-cosmos .mo-stats-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+.mo-theme-cosmos .mo-stats-section-title {
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.mo-theme-cosmos .mo-stats-card {
+    background: rgba(255, 255, 255, 0.04);
+}
+.mo-theme-cosmos .mo-stats-card-value {
+    color: rgba(255, 255, 255, 0.95);
+}
+.mo-theme-cosmos .mo-stats-card-label {
+    color: rgba(255, 255, 255, 0.4);
+}
+.mo-theme-cosmos .mo-stats-bar-count {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mo-theme-cosmos .mo-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mo-theme-cosmos .mo-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* ── 星空球体：星芒高光 + 闪烁 + 玻璃质感 ── */
+
+/* 星球本体：加 outline 和 box-shadow 模拟玻璃通透感 */
+.mo-theme-cosmos .mo-orb {
+    animation: mo-star-float 4s ease-in-out infinite, mo-star-sparkle 3s ease-in-out infinite;
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 1px;
+    box-shadow:
+        0 0 4px rgba(255, 255, 255, 0.2),
+        inset 0 0 12px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: visible;
+}
+
+/* 星空球顶层高光：类似玻璃但保留星芒 */
+.mo-theme-cosmos .mo-orb::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    background: radial-gradient(
+        circle at 32% 22%,
+        rgba(255, 255, 255, 0.75) 0%,
+        rgba(255, 255, 255, 0.3) 18%,
+        rgba(255, 255, 255, 0.08) 35%,
+        transparent 55%
+    );
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* 星空球十字星芒（叠加在顶层高光上） */
+.mo-theme-cosmos .mo-orb::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    width: 1px;
+    height: 84%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.3) 45%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.3) 55%,
+        rgba(255, 255, 255, 0.05) 80%,
+        transparent 100%
+    );
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 7;
+    animation: mo-star-sparkle 3s ease-in-out infinite 1.5s;
+}
+
+/* 星空球水平星芒（用阴影层实现） */
+.mo-theme-cosmos .mo-orb .mo-orb-starburst {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    width: 84%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.35) 45%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.35) 55%,
+        rgba(255, 255, 255, 0.05) 80%,
+        transparent 100%
+    );
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 7;
+    animation: mo-star-sparkle 3s ease-in-out infinite;
+}
+}
+
+/* 星芒十字：垂直线 */
+.mo-theme-cosmos .mo-orb::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    width: 1px;
+    height: 84%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 20%,
+        rgba(255, 255, 255, 0.3) 45%,
+        rgba(255, 255, 255, 0.45) 50%,
+        rgba(255, 255, 255, 0.3) 55%,
+        rgba(255, 255, 255, 0.05) 80%,
+        transparent 100%
+    );
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1;
+    animation: mo-star-sparkle 3s ease-in-out infinite 1.5s;
+}
+
+/* 星空球高光点 */
+.mo-theme-cosmos .mo-orb-highlight {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    width: 14px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+    z-index: 8; /* 在星芒之上 */
+    box-shadow:
+        0 0 6px 1px rgba(255, 255, 255, 0.3),
+        8px 6px 0 0.5px rgba(255, 255, 255, 0.15),
+        -6px 4px 0 0.5px rgba(255, 255, 255, 0.1);
+}
+
+/* 核心记忆球的星芒更强烈 */
+.mo-theme-cosmos .mo-orb-core {
+    outline: 2.5px solid rgba(255, 255, 255, 0.45);
+    outline-offset: 1.5px;
+    box-shadow:
+        0 0 6px rgba(255, 255, 255, 0.25),
+        inset 0 0 16px rgba(255, 255, 255, 0.15);
+}
+
+.mo-theme-cosmos .mo-orb-core::before {
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.4) 16%,
+        rgba(255, 255, 255, 0.12) 30%,
+        transparent 48%
+    );
+}
+
+.mo-theme-cosmos .mo-orb-core .mo-orb-highlight {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow:
+        0 0 8px 2px rgba(255, 255, 255, 0.5),
+        10px 8px 0 0.5px rgba(255, 255, 255, 0.25),
+        -8px 5px 0 0.5px rgba(255, 255, 255, 0.2);
+}
+
+/* 星芒闪烁动画 */
+@keyframes mo-star-sparkle {
+    0%, 100% { opacity: 0.6; }
+    50%      { opacity: 1; }
+}
+
+@keyframes mo-star-sparkle-core {
+    0%, 100% { opacity: 0.7; }
+    50%      { opacity: 1; }
+}
+
+/* 星星闪烁动画（用于背景星星） */
+@keyframes star-twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    20%      { opacity: 0.8; transform: scale(1.1); }
+    50%      { opacity: 1; transform: scale(1.2); }
+    80%      { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* 慢速浮动动画（用于星云效果） */
+@keyframes nebula-float {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    33%      { transform: translate(2px, -1px) scale(1.02); opacity: 0.8; }
+    66%      { transform: translate(-1px, 1px) scale(0.98); opacity: 0.75; }
+}
+
+.mo-theme-cosmos .mo-orb-core {
+    animation: mo-star-float 4s ease-in-out infinite, mo-core-pulse 2.5s ease-in-out infinite, mo-star-sparkle-core 2.5s ease-in-out infinite;
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 1px;
+    box-shadow:
+        0 0 6px rgba(255, 255, 255, 0.2),
+        inset 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes mo-star-float {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-4px); }
+}
+
+/* 星空球体动画延迟 */
+.mo-theme-cosmos .mo-orb-wrapper:nth-child(2n)  .mo-orb { animation-delay: 0.5s, 0.4s; }
+.mo-theme-cosmos .mo-orb-wrapper:nth-child(3n)  .mo-orb { animation-delay: 1.0s, 0.8s; }
+.mo-theme-cosmos .mo-orb-wrapper:nth-child(5n)  .mo-orb { animation-delay: 1.5s, 1.2s; }
+.mo-theme-cosmos .mo-orb-wrapper:nth-child(7n)  .mo-orb { animation-delay: 2.0s, 1.6s; }
+.mo-theme-cosmos .mo-orb-wrapper:nth-child(11n) .mo-orb { animation-delay: 2.5s, 2.0s; }
+
+/* hover 时星芒更明亮 */
+.mo-theme-cosmos .mo-orb-wrapper:hover .mo-orb::before,
+.mo-theme-cosmos .mo-orb-wrapper:hover .mo-orb::after {
+    opacity: 1 !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   ☀️ CLASSIC — 经典亮色主题
+   ═══════════════════════════════════════════════════ */
+.mo-theme-classic {
+    background: linear-gradient(170deg, #f5f3ff 0%, #ede9fe 25%, #f0ecff 50%, #f8f7ff 100%);
+    color: rgba(30, 27, 55, 0.85);
+}
+
+.mo-theme-classic .mo-toolbar {
+    border-bottom-color: rgba(30, 27, 55, 0.08);
+}
+
+.mo-theme-classic .mo-nav-btn {
+    background: rgba(30, 27, 55, 0.04);
+    border-color: rgba(30, 27, 55, 0.08);
+    color: rgba(30, 27, 55, 0.55);
+}
+
+.mo-theme-classic .mo-nav-btn:hover {
+    background: rgba(30, 27, 55, 0.08);
+    color: rgba(30, 27, 55, 0.9);
+    border-color: rgba(30, 27, 55, 0.15);
+}
+
+.mo-theme-classic .mo-nav-title {
+    color: rgba(30, 27, 55, 0.92);
+}
+
+.mo-theme-classic .mo-mode-group {
+    background: rgba(30, 27, 55, 0.04);
+    border-color: rgba(30, 27, 55, 0.06);
+}
+
+.mo-theme-classic .mo-mode-btn {
+    color: #2a2255 !important; /* 经典深紫色覆盖基础深灰色 */
+    -webkit-text-fill-color: #2a2255 !important;
+}
+
+.mo-theme-classic .mo-mode-btn.active {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1a1433 !important; /* 激活状态使用更深紫色 */
+    -webkit-text-fill-color: #1a1433 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mo-theme-classic .mo-mode-btn:not(.active) {
+    color: #554488 !important; /* 非激活状态使用中等紫色 */
+    -webkit-text-fill-color: #554488 !important;
+}
+
+.mo-theme-classic .mo-mode-btn:hover:not(.active) {
+    color: #443366 !important; /* 悬停时使用深一点的中等紫色 */
+    -webkit-text-fill-color: #443366 !important;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.mo-theme-classic .mo-legend-dot {
+    border-color: rgba(30, 27, 55, 0.08);
+}
+
+.mo-theme-classic .mo-legend-dot:hover {
+    border-color: rgba(30, 27, 55, 0.2);
+}
+
+.mo-theme-classic .mo-theme-btn {
+    background: rgba(30, 27, 55, 0.04);
+    border-color: rgba(30, 27, 55, 0.08);
+    color: rgba(30, 27, 55, 0.6);
+}
+
+.mo-theme-classic .mo-theme-btn:hover {
+    background: rgba(30, 27, 55, 0.08);
+}
+
+.mo-theme-classic .mo-loading {
+    color: rgba(30, 27, 55, 0.35);
+}
+
+.mo-theme-classic .mo-empty {
+    color: rgba(30, 27, 55, 0.25);
+}
+
+.mo-theme-classic .mo-day-header {
+    color: rgba(30, 27, 55, 0.4);
+}
+
+.mo-theme-classic .mo-week-section {
+    border-bottom-color: rgba(30, 27, 55, 0.06);
+}
+
+.mo-theme-classic .mo-week-section:last-child {
+    border-bottom: none;
+}
+
+.mo-theme-classic .mo-week-header {
+    color: rgba(30, 27, 55, 0.65);
+    background: rgba(30, 27, 55, 0.03);
+    border-left-color: rgba(30, 27, 55, 0.12);
+}
+
+.mo-theme-classic .mo-orb-label {
+    color: rgba(30, 27, 55, 0.75);
+}
+
+/* ── classic 统计面板 ── */
+.mo-theme-classic .mo-stats-panel {
+    background: rgba(255, 252, 245, 0.96);
+    border: 1px solid rgba(30, 27, 55, 0.08);
+    box-shadow: 0 4px 20px rgba(30, 27, 55, 0.08);
+}
+.mo-theme-classic .mo-stats-panel::-webkit-scrollbar-thumb {
+    background: rgba(30, 27, 55, 0.1);
+}
+.mo-theme-classic .mo-stats-btn {
+    background: rgba(30, 27, 55, 0.04);
+    border: 1px solid rgba(30, 27, 55, 0.06);
+    color: rgba(30, 27, 55, 0.6);
+}
+.mo-theme-classic .mo-stats-btn:hover {
+    background: rgba(30, 27, 55, 0.08);
+    color: rgba(30, 27, 55, 0.85);
+}
+.mo-theme-classic .mo-stats-section-title {
+    color: rgba(30, 27, 55, 0.8);
+    border-bottom-color: rgba(30, 27, 55, 0.06);
+}
+.mo-theme-classic .mo-stats-card {
+    background: rgba(30, 27, 55, 0.03);
+}
+.mo-theme-classic .mo-stats-card-value {
+    color: rgba(30, 27, 55, 0.9);
+}
+.mo-theme-classic .mo-stats-card-label {
+    color: rgba(30, 27, 55, 0.35);
+}
+.mo-theme-classic .mo-stats-bar-count {
+    color: rgba(30, 27, 55, 0.35);
+}
+.mo-theme-classic .mo-stats-close:hover {
+    background: rgba(30, 27, 55, 0.05);
+}
+.mo-theme-classic .mo-stats-fun-item {
+    background: rgba(30, 27, 55, 0.02);
+    border-left-color: rgba(30, 27, 55, 0.12);
+}
+
+.mo-theme-classic .mo-scrollbar-thumb {
+    background: rgba(30, 27, 55, 0.08);
+}
+
+.mo-theme-classic .mo-scrollbar-thumb:hover {
+    background: rgba(30, 27, 55, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════
+   ✏️ SKETCH — 手绘纸面主题
+   ═══════════════════════════════════════════════════ */
+
+/* -- 纸张背景 -- */
+.mo-theme-sketch {
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            rgba(100, 140, 180, 0.08) 31px,
+            rgba(100, 140, 180, 0.08) 32px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 31px,
+            rgba(100, 140, 180, 0.05) 31px,
+            rgba(100, 140, 180, 0.05) 32px
+        ),
+        linear-gradient(180deg, #faf8f0 0%, #f5f0e3 40%, #f0ead8 100%);
+    color: rgba(60, 50, 40, 0.88);
+}
+
+/* -- 工具栏：手绘风格下划线 -- */
+.mo-theme-sketch .mo-toolbar {
+    border-bottom: 2px solid transparent;
+    border-image: repeating-linear-gradient(
+        90deg,
+        rgba(80, 60, 40, 0.25) 0px,
+        rgba(80, 60, 40, 0.25) 8px,
+        transparent 8px,
+        transparent 12px
+    ) 4;
+}
+
+.mo-theme-sketch .mo-nav-btn {
+    background: rgba(200, 180, 140, 0.15);
+    border: 2px solid rgba(80, 60, 40, 0.2);
+    border-radius: 4px 8px 6px 12px;
+    color: rgba(60, 50, 40, 0.7);
+    font-family: "SmileySans", inherit;
+}
+
+.mo-theme-sketch .mo-nav-btn:hover {
+    background: rgba(200, 180, 140, 0.3);
+    color: rgba(60, 50, 40, 0.95);
+    border-radius: 8px 4px 12px 6px;
+}
+
+.mo-theme-sketch .mo-nav-title {
+    color: rgba(60, 50, 40, 0.9);
+    border-bottom: 2px wavy rgba(80, 60, 40, 0.2);
+    padding-bottom: 2px;
+}
+
+/* -- 模式按钮：手绘方框 -- */
+.mo-theme-sketch .mo-mode-group {
+    background: transparent;
+    border: 2px solid rgba(80, 60, 40, 0.12);
+    border-radius: 2px 6px 4px 8px;
+    padding: 3px;
+}
+
+.mo-theme-sketch .mo-mode-btn {
+    color: #4a3a2a !important; /* 手绘棕色覆盖基础深灰色 */
+    -webkit-text-fill-color: #4a3a2a !important;
+    font-weight: 500; /* 手绘风格加粗 */
+}
+
+.mo-theme-sketch .mo-mode-btn.active {
+    background: rgba(200, 180, 140, 0.25);
+    color: #3a2a1a !important; /* 激活状态使用更深棕色 */
+    -webkit-text-fill-color: #3a2a1a !important;
+    box-shadow: 2px 2px 0px rgba(80, 60, 40, 0.15);
+    border-radius: 4px 8px 6px 4px;
+    font-weight: 600;
+}
+
+.mo-theme-sketch .mo-mode-btn:not(.active) {
+    color: #6a5a4a !important; /* 非激活状态使用较浅棕色 */
+    -webkit-text-fill-color: #6a5a4a !important;
+}
+
+.mo-theme-sketch .mo-mode-btn:hover:not(.active) {
+    color: #5a4a3a !important; /* 悬停时使用中等棕色 */
+    -webkit-text-fill-color: #5a4a3a !important;
+    background: rgba(200, 180, 140, 0.12);
+    font-weight: 550;
+}
+
+/* -- 图例小点：手绘圆 -- */
+.mo-theme-sketch .mo-legend-dot {
+    border: 2px solid rgba(80, 60, 40, 0.2);
+    box-shadow: none;
+}
+
+.mo-theme-sketch .mo-legend-dot:hover {
+    border-color: rgba(80, 60, 40, 0.4);
+}
+
+/* -- 主题按钮 -- */
+.mo-theme-sketch .mo-theme-btn {
+    background: rgba(200, 180, 140, 0.15);
+    border: 2px solid rgba(80, 60, 40, 0.2);
+    border-radius: 4px 8px 6px 12px;
+    color: rgba(60, 50, 40, 0.7);
+}
+
+.mo-theme-sketch .mo-theme-btn:hover {
+    background: rgba(200, 180, 140, 0.3);
+}
+
+/* -- 加载/空 -- */
+.mo-theme-sketch .mo-loading {
+    color: rgba(80, 60, 40, 0.35);
+}
+
+.mo-theme-sketch .mo-empty {
+    color: rgba(80, 60, 40, 0.3);
+}
+
+/* -- 日期分区：手写下划线 -- */
+.mo-theme-sketch .mo-day-header {
+    color: rgba(80, 60, 40, 0.5);
+    border-bottom: 1px dashed rgba(80, 60, 40, 0.2);
+    padding-bottom: 4px;
+    display: inline-block;
+}
+
+/* -- 周分组 -- */
+.mo-theme-sketch .mo-week-section {
+    border-bottom: 2px dashed rgba(80, 60, 40, 0.1);
+}
+
+.mo-theme-sketch .mo-week-section:last-child {
+    border-bottom: none;
+}
+
+.mo-theme-sketch .mo-week-header {
+    color: rgba(60, 50, 40, 0.7);
+    background: rgba(200, 180, 140, 0.12);
+    border-left: 3px solid rgba(80, 60, 40, 0.2);
+    border-radius: 0 4px 4px 0;
+    box-shadow: 2px 2px 0px rgba(80, 60, 40, 0.05);
+}
+
+/* -- 记忆球：手绘不规则形状 -- */
+.mo-theme-sketch .mo-orb {
+    border: 2.5px solid rgba(80, 60, 40, 0.25);
+    box-shadow: 2px 3px 0px rgba(80, 60, 40, 0.08) !important;
+    animation: mo-sketch-wobble 4s ease-in-out infinite !important;
+    filter: saturate(0.85) contrast(1.05);
+}
+
+/* 手绘不规则边框 */
+.mo-theme-sketch .mo-orb,
+.mo-theme-sketch .mo-orb-core {
+    border-radius: 48% 52% 46% 54% / 50% 46% 54% 50%;
+}
+
+.mo-theme-sketch .mo-orb-wrapper:nth-child(3n+1) .mo-orb {
+    border-radius: 52% 48% 50% 50% / 46% 52% 48% 54%;
+}
+
+.mo-theme-sketch .mo-orb-wrapper:nth-child(3n+2) .mo-orb {
+    border-radius: 46% 54% 48% 52% / 52% 48% 52% 48%;
+}
+
+/* 球高光改为蜡笔涂抹感 */
+.mo-theme-sketch .mo-orb-highlight {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 50% 40% 60% 50%;
+    filter: blur(4px);
+}
+
+.mo-theme-sketch .mo-orb-inner-glow {
+    background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.25), transparent 55%) !important;
+}
+
+/* 核心记忆球手绘效果 */
+.mo-theme-sketch .mo-orb-core {
+    border: 3px solid rgba(80, 60, 40, 0.3);
+    animation: mo-sketch-wobble 4s ease-in-out infinite, mo-core-pulse 2.5s ease-in-out infinite !important;
+}
+
+.mo-theme-sketch .mo-orb-core .mo-orb-highlight {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.mo-theme-sketch .mo-orb-core-pulse {
+    border: 2px dashed rgba(80, 60, 40, 0.15);
+    border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+}
+
+/* hover 效果 */
+.mo-theme-sketch .mo-orb-wrapper:hover .mo-orb {
+    box-shadow: 3px 4px 0px rgba(80, 60, 40, 0.12) !important;
+}
+
+/* 球标签：手写感 */
+.mo-theme-sketch .mo-orb-label {
+    color: rgba(60, 50, 40, 0.72);
+    font-size: 9.5px;
+}
+
+.mo-theme-sketch .mo-orb-char {
+    color: rgba(60, 50, 40, 0.6) !important;
+}
+
+/* -- 统计区：手绘风格 -- */
+/* ── sketch 统计面板 ── */
+.mo-theme-sketch .mo-stats-panel {
+    background: rgba(255, 250, 240, 0.96);
+    border: 2px solid rgba(80, 60, 40, 0.15);
+    border-radius: 14px 8px 12px 10px;
+    box-shadow: 3px 4px 0 rgba(80, 60, 40, 0.08);
+}
+.mo-theme-sketch .mo-stats-panel::-webkit-scrollbar-thumb {
+    background: rgba(180, 160, 120, 0.2);
+}
+.mo-theme-sketch .mo-stats-btn {
+    background: rgba(200, 180, 140, 0.15);
+    border: 1.5px solid rgba(80, 60, 40, 0.12);
+    border-radius: 8px 6px 10px 7px;
+    color: rgba(60, 50, 40, 0.65);
+}
+.mo-theme-sketch .mo-stats-btn:hover {
+    background: rgba(200, 180, 140, 0.25);
+    color: rgba(60, 50, 40, 0.85);
+}
+.mo-theme-sketch .mo-stats-section-title {
+    color: rgba(60, 50, 40, 0.8);
+    border-bottom-style: dashed;
+    border-bottom-color: rgba(80, 60, 40, 0.12);
+}
+.mo-theme-sketch .mo-stats-card {
+    background: rgba(80, 60, 40, 0.03);
+    border-radius: 8px 5px 9px 6px;
+}
+.mo-theme-sketch .mo-stats-card-value {
+    color: rgba(60, 50, 40, 0.9);
+}
+.mo-theme-sketch .mo-stats-card-label {
+    color: rgba(80, 60, 40, 0.4);
+}
+.mo-theme-sketch .mo-stats-bar-track {
+    background: rgba(80, 60, 40, 0.06);
+    border-radius: 4px 2px 4px 2px;
+    border: 1px solid rgba(80, 60, 40, 0.08);
+}
+.mo-theme-sketch .mo-stats-bar-fill {
+    border-radius: 3px 2px 3px 2px;
+    opacity: 0.85;
+}
+.mo-theme-sketch .mo-stats-bar-count {
+    color: rgba(80, 60, 40, 0.35);
+}
+.mo-theme-sketch .mo-stats-close:hover {
+    background: rgba(80, 60, 40, 0.05);
+}
+.mo-theme-sketch .mo-stats-fun-item {
+    background: rgba(80, 60, 40, 0.03);
+    border-left-color: rgba(80, 60, 40, 0.15);
+    border-radius: 4px 6px 5px 4px;
+}
+
+/* 滚动条：手绘木质感 */
+.mo-theme-sketch .mo-scrollbar-thumb {
+    background: rgba(180, 160, 120, 0.3);
+}
+
+.mo-theme-sketch .mo-scrollbar-thumb:hover {
+    background: rgba(180, 160, 120, 0.45);
+}
+
+/* 手绘球体微晃动画 */
+@keyframes mo-sketch-wobble {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25%      { transform: translateY(-3px) rotate(1deg); }
+    50%      { transform: translateY(-5px) rotate(0deg); }
+    75%      { transform: translateY(-2px) rotate(-1deg); }
+}
+
+/* 手绘主题下每行的球体晃动延迟 */
+.mo-theme-sketch .mo-orb-wrapper:nth-child(2n)  .mo-orb { animation-delay: 0.5s; }
+.mo-theme-sketch .mo-orb-wrapper:nth-child(3n)  .mo-orb { animation-delay: 1.0s; }
+.mo-theme-sketch .mo-orb-wrapper:nth-child(5n)  .mo-orb { animation-delay: 1.5s; }
+.mo-theme-sketch .mo-orb-wrapper:nth-child(7n)  .mo-orb { animation-delay: 2.0s; }
+.mo-theme-sketch .mo-orb-wrapper:nth-child(11n) .mo-orb { animation-delay: 2.5s; }
+
+/* ═══════════════════════════════════════════════════
+   🔮 GLASS — 玻璃通透主题
+   ═══════════════════════════════════════════════════ */
+
+/* 梦幻渐变背景：明亮的紫/蓝/粉色光晕 */
+.mo-theme-glass {
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(200, 170, 255, 0.35) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 15%, rgba(140, 200, 255, 0.3) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 85%, rgba(255, 160, 220, 0.28) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 60%, rgba(160, 230, 255, 0.22) 0%, transparent 40%),
+        radial-gradient(ellipse at 25% 70%, rgba(220, 180, 255, 0.22) 0%, transparent 45%),
+        linear-gradient(160deg, #e8e0f8 0%, #dce6f8 30%, #e8e0f8 60%, #f0e4f8 100%);
+    color: rgba(50, 30, 60, 0.88);
+}
+
+/* ── 磨砂玻璃 UI（亮色底） ── */
+
+.mo-theme-glass .mo-toolbar {
+    border-bottom: 1px solid rgba(120, 90, 160, 0.12);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 14px;
+    margin: -8px -14px 20px -14px;
+    border-radius: 12px;
+}
+
+.mo-theme-glass .mo-nav-btn {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(160, 140, 200, 0.2);
+    color: rgba(50, 30, 70, 0.75);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.mo-theme-glass .mo-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.65);
+    color: rgba(50, 30, 70, 0.95);
+    border-color: rgba(160, 140, 200, 0.35);
+    box-shadow: 0 0 16px rgba(168, 140, 255, 0.12);
+}
+
+.mo-theme-glass .mo-nav-title {
+    color: rgba(50, 30, 70, 0.95);
+    text-shadow: 0 0 20px rgba(168, 140, 255, 0.15);
+}
+
+.mo-theme-glass .mo-mode-group {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(160, 140, 200, 0.15);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.mo-theme-glass .mo-mode-btn {
+    color: #5533aa !important; /* 玻璃主题紫色覆盖基础深灰色 */
+    -webkit-text-fill-color: #5533aa !important;
+}
+
+.mo-theme-glass .mo-mode-btn.active {
+    background: rgba(255, 255, 255, 0.6);
+    color: #441188 !important; /* 激活状态使用更深紫色 */
+    -webkit-text-fill-color: #441188 !important;
+    box-shadow: 0 2px 12px rgba(168, 140, 255, 0.15), inset 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.mo-theme-glass .mo-mode-btn:not(.active) {
+    color: #7755cc !important; /* 非激活状态使用较浅紫色 */
+    -webkit-text-fill-color: #7755cc !important;
+}
+
+.mo-theme-glass .mo-mode-btn:hover:not(.active) {
+    color: #6644bb !important; /* 悬停时使用中等紫色 */
+    -webkit-text-fill-color: #6644bb !important;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.mo-theme-glass .mo-legend-dot {
+    border: 1.5px solid rgba(160, 140, 200, 0.25);
+    box-shadow: 0 0 8px rgba(168, 140, 255, 0.15);
+}
+
+.mo-theme-glass .mo-legend-dot:hover {
+    border-color: rgba(160, 140, 200, 0.45);
+    box-shadow: 0 0 16px rgba(168, 140, 255, 0.25);
+}
+
+.mo-theme-glass .mo-theme-btn {
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid rgba(160, 140, 200, 0.2);
+    color: rgba(50, 30, 70, 0.8);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.mo-theme-glass .mo-theme-btn:hover {
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 16px rgba(168, 140, 255, 0.1);
+}
+
+.mo-theme-glass .mo-loading {
+    color: rgba(50, 30, 70, 0.35);
+}
+
+.mo-theme-glass .mo-empty {
+    color: rgba(50, 30, 70, 0.3);
+}
+
+.mo-theme-glass .mo-day-header {
+    color: rgba(50, 30, 70, 0.5);
+    text-shadow: 0 0 12px rgba(168, 140, 255, 0.08);
+}
+
+.mo-theme-glass .mo-week-section {
+    border-bottom-color: rgba(160, 140, 200, 0.1);
+}
+
+.mo-theme-glass .mo-week-header {
+    color: rgba(50, 30, 70, 0.75);
+    background: rgba(255, 255, 255, 0.35);
+    border-left-color: rgba(168, 140, 255, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 0 6px 6px 0;
+}
+
+.mo-theme-glass .mo-orb-label {
+    color: rgba(50, 30, 70, 0.8);
+}
+
+/* ── glass 统计面板 ── */
+.mo-theme-glass .mo-stats-panel {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(160, 140, 200, 0.15);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(120, 100, 180, 0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+.mo-theme-glass .mo-stats-panel::-webkit-scrollbar-thumb {
+    background: rgba(160, 140, 200, 0.15);
+}
+.mo-theme-glass .mo-stats-btn {
+    background: rgba(168, 130, 255, 0.1);
+    border: 1px solid rgba(160, 140, 200, 0.15);
+    color: rgba(50, 30, 70, 0.65);
+}
+.mo-theme-glass .mo-stats-btn:hover {
+    background: rgba(168, 130, 255, 0.18);
+    color: rgba(50, 30, 70, 0.85);
+}
+.mo-theme-glass .mo-stats-section-title {
+    color: rgba(50, 30, 70, 0.8);
+    border-bottom-color: rgba(160, 140, 200, 0.12);
+}
+.mo-theme-glass .mo-stats-card {
+    background: rgba(168, 130, 255, 0.05);
+}
+.mo-theme-glass .mo-stats-card-value {
+    color: rgba(50, 30, 70, 0.9);
+}
+.mo-theme-glass .mo-stats-card-label {
+    color: rgba(50, 30, 70, 0.4);
+}
+.mo-theme-glass .mo-stats-bar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(160, 140, 200, 0.08);
+}
+.mo-theme-glass .mo-stats-bar-fill {
+    opacity: 0.85;
+}
+.mo-theme-glass .mo-stats-bar-count {
+    color: rgba(50, 30, 70, 0.4);
+}
+.mo-theme-glass .mo-stats-close:hover {
+    background: rgba(168, 130, 255, 0.08);
+}
+.mo-theme-glass .mo-stats-fun-item {
+    background: rgba(168, 130, 255, 0.04);
+    border-left-color: rgba(168, 130, 255, 0.2);
+}
+
+.mo-theme-glass .mo-scrollbar-thumb {
+    background: rgba(160, 140, 200, 0.15);
+    border-radius: 4px;
+}
+
+.mo-theme-glass .mo-scrollbar-thumb:hover {
+    background: rgba(160, 140, 200, 0.25);
+}
+
+/* ── 玻璃球体效果 ── */
+
+.mo-theme-glass .mo-orb {
+    animation: mo-glass-float 5s ease-in-out infinite;
+    position: relative;
+    overflow: visible;
+    /* 边缘加粗高光环 */
+    outline: 2px solid rgba(255, 255, 255, 0.45);
+    outline-offset: 1px;
+    box-shadow:
+        0 0 4px rgba(255, 255, 255, 0.3),
+        inset 0 0 12px rgba(255, 255, 255, 0.1);
+}
+
+/* 玻璃球顶层高光：更宽更亮 */
+.mo-theme-glass .mo-orb::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    background: radial-gradient(
+        circle at 32% 22%,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.4) 18%,
+        rgba(255, 255, 255, 0.12) 35%,
+        transparent 55%
+    );
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* 玻璃球边缘反光环（替代暗面，亮色底更适配） */
+.mo-theme-glass .mo-orb::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* 玻璃球镜面高光点 */
+.mo-theme-glass .mo-orb-highlight {
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 14px;
+    height: 9px;
+    background: white;
+    border-radius: 50%;
+    filter: blur(1px);
+    pointer-events: none;
+    z-index: 7;
+    box-shadow:
+        0 0 6px 2px rgba(255, 255, 255, 0.6),
+        8px 6px 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* 玻璃球底部反光弧 */
+.mo-theme-glass .mo-orb-inner-glow {
+    z-index: 2;
+}
+
+/* 核心记忆球：更粗边缘高光 */
+.mo-theme-glass .mo-orb-core {
+    animation: mo-glass-float 5s ease-in-out infinite, mo-core-pulse 2.5s ease-in-out infinite;
+    outline: 2.5px solid rgba(255, 255, 255, 0.55);
+    outline-offset: 1.5px;
+    box-shadow:
+        0 0 6px rgba(255, 255, 255, 0.4),
+        inset 0 0 16px rgba(255, 255, 255, 0.15);
+}
+
+.mo-theme-glass .mo-orb-core::before {
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.45) 16%,
+        rgba(255, 255, 255, 0.12) 30%,
+        transparent 48%
+    );
+}
+
+.mo-theme-glass .mo-orb-core::after {
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.mo-theme-glass .mo-orb-core .mo-orb-highlight {
+    width: 16px;
+    height: 11px;
+    background: white;
+    box-shadow:
+        0 0 8px 3px rgba(255, 255, 255, 0.7),
+        10px 8px 0 1.5px rgba(255, 255, 255, 0.25);
+}
+
+.mo-theme-glass .mo-orb-core .mo-orb-core-pulse {
+    opacity: 0.15 !important;
+    mix-blend-mode: screen;
+}
+
+/* 玻璃球 hover */
+.mo-theme-glass .mo-orb-wrapper:hover .mo-orb::before {
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.5) 15%,
+        rgba(255, 255, 255, 0.15) 32%,
+        transparent 50%
+    );
+}
+
+/* 玻璃球浮动动画 */
+@keyframes mo-glass-float {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-5px); }
+}
+
+/* 玻璃主题下球体浮动延迟 */
+.mo-theme-glass .mo-orb-wrapper:nth-child(2n)  .mo-orb { animation-delay: 0.6s; }
+.mo-theme-glass .mo-orb-wrapper:nth-child(3n)  .mo-orb { animation-delay: 1.2s; }
+.mo-theme-glass .mo-orb-wrapper:nth-child(5n)  .mo-orb { animation-delay: 1.8s; }
+.mo-theme-glass .mo-orb-wrapper:nth-child(7n)  .mo-orb { animation-delay: 2.4s; }
+.mo-theme-glass .mo-orb-wrapper:nth-child(11n) .mo-orb { animation-delay: 3.0s; }
+
+/* ═══════════════════════════════════════════════════
+   🔧 管道（Pipeline）基础样式 — 底部滚动+碰撞
+   ═══════════════════════════════════════════════════ */
+
+/* 管道容器：水平通道，有一定高度让球沉底 */
+.mo-pipeline {
+    position: relative;
+    border-radius: 30px;
+    padding: 0;
+    overflow: hidden;
+    margin: 8px 0 4px;
+    height: 80px;
+}
+
+/* 管道底部（球滚动的"地面"） */
+.mo-pipeline-floor {
+    position: absolute;
+    bottom: 8px;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    border-radius: 1px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 管道滚动轨道 */
+.mo-pipeline-track {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0 24px 0 24px;
+    scroll-behavior: smooth;
+    align-items: flex-end !important;
+    gap: 2px !important;
+    height: 68px;
+}
+
+/* 管道内球体容器：贴底，球体可做垂直偏移 */
+.mo-pipeline-track .mo-orb-wrapper {
+    flex-shrink: 0;
+    /* 球沉底后不需要标签空间 */
+    height: auto;
+    width: auto;
+    /* wrapper 只保留布局占位，不接收鼠标，避免球被 transform 挪走后留下“幽灵命中区” */
+    pointer-events: none;
+    cursor: default;
+}
+
+/* 管道内的球体：沉底，有微妙的呼吸感 */
+.mo-pipeline-track .mo-orb {
+    flex-shrink: 0;
+    animation: none !important;
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+    transition: width 0.15s ease, height 0.15s ease;
+    will-change: transform;
+    /* 只有真正可见的球体本身能接收鼠标事件 */
+    pointer-events: auto;
+}
+
+/* 管道交互区不应出现文字选区/幽灵选区 */
+.mo-pipeline-track,
+.mo-pipeline-track .mo-orb,
+.mo-pipeline-track .mo-orb-wrapper {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 管道内核心记忆球：恢复脉冲闪亮效果 */
+.mo-pipeline-track .mo-orb-core {
+    animation: mo-core-pulse 2.5s ease-in-out infinite !important;
+}
+
+/* 管道内核心记忆球脉冲光环 */
+.mo-pipeline-track .mo-orb-core-pulse {
+    opacity: 0.2;
+    animation: mo-core-glow-ring 2.5s ease-in-out infinite;
+}
+
+/* 管道内球体 hover：放大，不位移（物理引擎控制位置） */
+/* 注意：不加 transform 的 transition，避免与物理引擎的 --mx/--my CSS 变量更新冲突 */
+.mo-pipeline-track .mo-orb-wrapper.mo-pipeline-hover .mo-orb {
+    transform: translate(var(--mx, 0px), var(--my, 0px)) scale(1.18) !important;
+    transition: box-shadow 0.4s ease;
+}
+
+/* 管道内球体容器 */
+.mo-pipeline-track .mo-orb-wrapper {
+    flex-shrink: 0;
+    height: auto;
+    width: auto;
+    position: relative;
+}
+
+/* 管道内标签和角色名：默认隐藏 */
+.mo-pipeline-track .mo-orb-label,
+.mo-pipeline-track .mo-orb-char {
+    display: none !important;
+}
+
+/* 管道内 hover tooltip：fixed 定位，用心情颜色做背景，不会被 overflow 裁切 */
+.mo-pipeline-tooltip {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: min(480px, calc(100vw - 32px));
+    line-height: 1.4;
+    word-break: break-word;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mo-pipeline-tooltip.mo-tooltip-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 管道端盖装饰（已废弃，保留选择器仅作兼容，强制隐藏） */
+.mo-pipeline-cap,
+.mo-pipeline-cap-left,
+.mo-pipeline-cap-right {
+    display: none !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    pointer-events: none !important;
+}
+
+.mo-pipeline-cap-left {
+    left: 0;
+}
+
+.mo-pipeline-cap-right {
+    right: 0;
+}
+
+/* 管道滚动到边界时，端盖碰撞高亮 */
+.mo-pipeline-track-at-start .mo-pipeline-cap-left {
+    box-shadow: inset 4px 0 12px rgba(255, 255, 255, 0.15);
+    transform: scale(1.08);
+}
+
+.mo-pipeline-track-at-end .mo-pipeline-cap-right {
+    box-shadow: inset -4px 0 12px rgba(255, 255, 255, 0.15);
+    transform: scale(1.08);
+}
+
+/* 管道内滚动条（隐藏原生，保持可滚动） */
+.mo-pipeline-track::-webkit-scrollbar {
+    height: 3px;
+}
+
+.mo-pipeline-track::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mo-pipeline-track::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    opacity: 0.4;
+}
+
+/* ── cosmos 主题管道 ── */
+.mo-theme-cosmos .mo-pipeline {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+        inset 0 2px 12px rgba(100, 120, 255, 0.06),
+        0 0 20px rgba(100, 120, 255, 0.04);
+}
+
+/* 管道顶部发光线 */
+.mo-theme-cosmos .mo-pipeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(180, 200, 255, 0.2) 20%,
+        rgba(180, 200, 255, 0.35) 50%,
+        rgba(180, 200, 255, 0.2) 80%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+/* 管道底部微光（地线） */
+.mo-theme-cosmos .mo-pipeline::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(100, 120, 255, 0.2) 10%,
+        rgba(100, 120, 255, 0.35) 50%,
+        rgba(100, 120, 255, 0.2) 90%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+.mo-theme-cosmos .mo-pipeline-cap {
+    background: radial-gradient(ellipse at center, rgba(60, 70, 140, 0.4) 0%, transparent 70%);
+    border: 1px solid rgba(180, 200, 255, 0.08);
+}
+
+.mo-theme-cosmos .mo-pipeline-floor {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(100, 120, 255, 0.12) 10%,
+        rgba(100, 120, 255, 0.2) 50%,
+        rgba(100, 120, 255, 0.12) 90%,
+        transparent 100%
+    );
+}
+
+.mo-theme-cosmos .mo-pipeline-track::-webkit-scrollbar-thumb {
+    background: rgba(180, 200, 255, 0.15);
+}
+
+/* ── classic 主题管道 ── */
+.mo-theme-classic .mo-pipeline {
+    background: rgba(30, 27, 55, 0.03);
+    border: 1px solid rgba(30, 27, 55, 0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.mo-theme-classic .mo-pipeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(180, 160, 255, 0.15) 20%,
+        rgba(180, 160, 255, 0.25) 50%,
+        rgba(180, 160, 255, 0.15) 80%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+.mo-theme-classic .mo-pipeline-cap {
+    background: radial-gradient(ellipse at center, rgba(200, 190, 240, 0.25) 0%, transparent 70%);
+    border: 1px solid rgba(30, 27, 55, 0.06);
+}
+
+.mo-theme-classic .mo-pipeline-floor {
+    background: rgba(30, 27, 55, 0.08);
+}
+
+.mo-theme-classic .mo-pipeline-track::-webkit-scrollbar-thumb {
+    background: rgba(30, 27, 55, 0.1);
+}
+
+/* ── sketch 主题管道 ── */
+.mo-theme-sketch .mo-pipeline {
+    background: rgba(80, 60, 40, 0.02);
+    border: 1px solid rgba(80, 60, 40, 0.12);
+    border-radius: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* 手绘管道顶部手绘风格线条 */
+.mo-theme-sketch .mo-pipeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(80, 60, 40, 0.15) 20%,
+        rgba(80, 60, 40, 0.25) 50%,
+        rgba(80, 60, 40, 0.15) 80%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+.mo-theme-sketch .mo-pipeline-cap {
+    background: radial-gradient(ellipse at center, rgba(200, 180, 140, 0.25) 0%, transparent 70%);
+    border: 1px solid rgba(80, 60, 40, 0.06);
+    width: 20px;
+}
+
+.mo-theme-sketch .mo-pipeline-floor {
+    background: rgba(80, 60, 40, 0.08);
+}
+
+.mo-theme-sketch .mo-pipeline-track::-webkit-scrollbar-thumb {
+    background: rgba(180, 160, 120, 0.2);
+}
+
+/* ── glass 主题管道 ── */
+.mo-theme-glass .mo-pipeline {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(160, 140, 200, 0.15);
+    border-radius: 30px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow:
+        inset 0 1px 16px rgba(168, 130, 255, 0.06),
+        0 2px 12px rgba(168, 130, 255, 0.06);
+}
+
+/* 玻璃管道顶部高光线 */
+.mo-theme-glass .mo-pipeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 15%,
+        rgba(255, 255, 255, 0.7) 50%,
+        rgba(255, 255, 255, 0.4) 85%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+/* 玻璃管道底部发光（地线） */
+.mo-theme-glass .mo-pipeline::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(168, 130, 255, 0.15) 10%,
+        rgba(168, 130, 255, 0.3) 50%,
+        rgba(168, 130, 255, 0.15) 90%,
+        transparent 100%
+    );
+    z-index: 3;
+}
+
+.mo-theme-glass .mo-pipeline-cap {
+    background: radial-gradient(ellipse at center, rgba(168, 130, 255, 0.15) 0%, transparent 70%);
+    border: 1px solid rgba(160, 140, 200, 0.12);
+    box-shadow: 0 0 12px rgba(168, 130, 255, 0.08);
+}
+
+.mo-theme-glass .mo-pipeline-floor {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(168, 130, 255, 0.1) 10%,
+        rgba(168, 130, 255, 0.2) 50%,
+        rgba(168, 130, 255, 0.1) 90%,
+        transparent 100%
+    );
+}
+
+.mo-theme-glass .mo-pipeline-track::-webkit-scrollbar-thumb {
+    background: rgba(160, 140, 200, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════
+   通用组件样式（与主题无关）
+   ═══════════════════════════════════════════════════ */
+
+/* ── 顶部工具栏 ── */
+.mo-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+}
+
+.mo-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mo-nav-btn {
+    border-radius: 10px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+.mo-nav-btn:hover {
+    transform: translateY(-1px);
+}
+
+.mo-nav-title {
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 150px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* ── 模式切换 ── */
+.mo-mode-group {
+    display: flex;
+    gap: 3px;
+    border-radius: 12px;
+    padding: 3px;
+}
+
+/* 基础样式：强制设置颜色，不受Obsidian主题影响 */
+.mo-mode-btn {
+    background: transparent;
+    border: none;
+    padding: 5px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    /* 钉死的颜色：使用不透明颜色，确保不被主题覆盖 */
+    color: #333333 !important; /* 深灰色，确保在任何背景下都可见 */
+    -webkit-text-fill-color: #333333 !important; /* Safari支持 */
+}
+
+/* ── 情绪图例 ── */
+.mo-legend {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    padding: 4px 0;
+}
+
+.mo-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mo-legend-dot:hover {
+    transform: scale(1.5);
+}
+
+/* ── 加载/空 ── */
+.mo-loading {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.mo-empty {
+    text-align: center;
+    padding: 80px 20px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* ── 日期分区 ── */
+.mo-day-section {
+    margin-bottom: var(--mo-day-section-gap, 18px);
+    position: relative;
+}
+
+.mo-day-header {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    padding-left: 4px;
+}
+
+/* ── 周分组 ── */
+.mo-week-section {
+    margin-bottom: var(--mo-week-section-gap, 28px);
+    padding-bottom: 24px;
+    position: relative;
+}
+
+.mo-week-section:last-child {
+    border-bottom: none;
+}
+
+/* 重置按钮：小齿轮，全局一个，放在 orbsContainer 右上角 */
+.mo-pipeline-reset-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    color: rgba(128, 128, 128, 0.5);
+    transition: color 0.3s ease, transform 0.4s ease, background 0.2s ease;
+    z-index: 15;
+    user-select: none;
+}
+
+.mo-pipeline-reset-btn:hover {
+    color: rgba(128, 128, 128, 0.85);
+    background: rgba(128, 128, 128, 0.08);
+}
+
+.mo-pipeline-reset-btn:active {
+    transform: rotate(180deg) scale(0.9);
+}
+
+.mo-week-header {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border-left: 3px solid;
+    backdrop-filter: blur(4px);
+}
+
+/* ── 记忆球行 ── */
+.mo-orbs-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-start;
+    padding: 4px 0;
+}
+
+/* ── 单个记忆球容器 ── */
+.mo-orb-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 58px;
+    cursor: pointer;
+}
+
+/* ── 记忆球本体 ── */
+.mo-orb {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease;
+    animation: mo-float 3.5s ease-in-out infinite;
+}
+
+.mo-orb-wrapper:nth-child(2n)  .mo-orb { animation-delay: 0.4s; }
+.mo-orb-wrapper:nth-child(3n)  .mo-orb { animation-delay: 0.8s; }
+.mo-orb-wrapper:nth-child(5n)  .mo-orb { animation-delay: 1.2s; }
+.mo-orb-wrapper:nth-child(7n)  .mo-orb { animation-delay: 1.6s; }
+.mo-orb-wrapper:nth-child(11n) .mo-orb { animation-delay: 2.0s; }
+
+@keyframes mo-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-5px); }
+}
+
+/* 非管道内球体的 hover 放大效果（管道内的由 .mo-pipeline-hover 控制） */
+/* ⚠️ 管道内球体的 hover 在上方 .mo-pipeline-track 规则中单独定义，这里不能用通用规则覆盖管道球的 translate */
+.mo-pipeline-track .mo-orb.mo-orb-hover {
+    /* 管道内 hover 效果由 .mo-pipeline-track .mo-orb-wrapper.mo-pipeline-hover .mo-orb 控制 */
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+}
+.mo-orb.mo-orb-hover {
+    transform: scale(1.15);
+}
+
+.mo-pipeline-track .mo-orb-wrapper:hover .mo-orb {
+    /* wrapper 已禁用 pointer-events，这里仅保留兜底，不再依赖它做真实 hover 命中 */
+    transform: translate(var(--mx, 0px), var(--my, 0px));
+    animation-play-state: paused;
+}
+.mo-orb-wrapper:hover .mo-orb {
+    transform: scale(1.18) translateY(-3px);
+    animation-play-state: paused;
+}
+
+/* ── 玻璃球高光 ── */
+.mo-orb-highlight {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    width: 14px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    filter: blur(2.5px);
+    pointer-events: none;
+}
+
+/* ── 球内部漫射光 ── */
+.mo-orb-inner-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* ── 核心记忆球 ── */
+.mo-orb-core {
+    width: 52px;
+    height: 52px;
+    animation: mo-float 3.5s ease-in-out infinite, mo-core-pulse 2.5s ease-in-out infinite;
+}
+
+.mo-orb-core .mo-orb-highlight {
+    width: 15px;
+    height: 8px;
+    top: 8px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.78);
+}
+
+@keyframes mo-core-pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+.mo-orb-core-pulse {
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.2;
+    animation: mo-core-glow-ring 2.5s ease-in-out infinite;
+}
+
+@keyframes mo-core-glow-ring {
+    0%, 100% { transform: scale(1); opacity: 0.18; }
+    50% { transform: scale(1.35); opacity: 0.04; }
+}
+
+/* ── 记忆球文字标签（默认隐藏） ── */
+.mo-orb-label {
+    font-size: 10px;
+    text-align: center;
+    max-width: 72px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    transition: opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+.mo-orb-wrapper:hover .mo-orb-label {
+    opacity: 1;
+    height: auto;
+    margin-top: 6px;
+}
+
+/* ── 情绪角色名（默认隐藏） ── */
+.mo-orb-char {
+    font-size: 9px;
+    font-weight: 700;
+    opacity: 0;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s ease, height 0.3s ease, margin 0.3s ease;
+    height: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+.mo-orb-wrapper:hover .mo-orb-char {
+    opacity: 0.9;
+    height: auto;
+    margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════
+   统计按钮
+   ═══════════════════════════════════════════════════ */
+.mo-stats-btn {
+    border-radius: 10px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+/* ═══════════════════════════════════════════════════
+   浮动统计面板
+   ═══════════════════════════════════════════════════ */
+.mo-stats-panel {
+    position: absolute;
+    right: 16px;
+    top: 52px;
+    width: 340px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 16px;
+    padding: 16px;
+    z-index: 100;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.1);
+    animation: mo-stats-panel-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes mo-stats-panel-in {
+    from { opacity: 0; transform: translateY(-12px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mo-stats-panel::-webkit-scrollbar {
+    width: 4px;
+}
+.mo-stats-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+.mo-stats-panel::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    opacity: 0.3;
+}
+
+.mo-stats-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.5;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: opacity 0.2s, background 0.2s;
+}
+.mo-stats-close:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.1);
+}
+
+.mo-stats-section {
+    margin-bottom: 16px;
+}
+.mo-stats-section:last-child {
+    margin-bottom: 0;
+}
+
+.mo-stats-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    letter-spacing: 0.5px;
+}
+
+/* 概览网格 */
+.mo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.mo-stats-card {
+    text-align: center;
+    padding: 10px 4px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+}
+
+.mo-stats-card-value {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.mo-stats-card-label {
+    font-size: 10px;
+    opacity: 0.5;
+    margin-top: 2px;
+}
+
+/* 情绪排行条 */
+.mo-stats-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mo-stats-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mo-stats-bar-label {
+    width: 52px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.mo-stats-bar-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    background: rgba(255,255,255,0.04);
+}
+
+.mo-stats-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    min-width: 4px;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.mo-stats-bar-core {
+    box-shadow: 0 0 8px currentColor;
+}
+
+.mo-stats-bar-count {
+    font-size: 11px;
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.mo-core-num {
+    font-weight: 800;
+    text-shadow: 0 0 6px currentColor;
+}
+
+.mo-stats-bar-pct {
+    font-size: 10px;
+    width: 32px;
+    text-align: right;
+    flex-shrink: 0;
+    opacity: 0.4;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 核心记忆饼图 */
+.mo-stats-pie {
+    display: block;
+    margin: 8px auto;
+}
+
+.mo-stats-pie-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.mo-stats-pie-legend-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+}
+
+.mo-stats-pie-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.mo-stats-pie-label {
+    opacity: 0.7;
+}
+
+.mo-stats-pie-val {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 趣味统计 */
+.mo-stats-fun {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mo-stats-fun-item {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid rgba(255,255,255,0.15);
+}
+
+/* ── 滚动条 ── */
+.memory-orbs-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.memory-orbs-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.memory-orbs-container::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+}
+
+.memory-orbs-container::-webkit-scrollbar-thumb:hover {
+}
+
+/* ═══════════════════════════════════════════════════
+   主题切换按钮
+   ═══════════════════════════════════════════════════ */
+.mo-theme-btn {
+    border-radius: 10px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+.mo-theme-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════
+   情绪详情弹窗
+   ═══════════════════════════════════════════════════ */
+.mo-modal .modal-content {
+    padding: 24px;
+}
+
+.mo-modal-header {
+    font-family: "SmileySans", inherit;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    padding: 10px 0 18px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    letter-spacing: 1px;
+}
+
+.mo-modal-loading {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 24px;
+    font-size: 14px;
+    font-family: "SmileySans", inherit;
+}
+
+.mo-modal-list {
+    max-height: 420px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-right: 4px;
+}
+
+.mo-modal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--background-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mo-modal-item:hover {
+    background: var(--background-modifier-hover);
+    transform: translateX(2px);
+}
+
+.mo-modal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.mo-modal-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mo-modal-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.mo-modal-text {
+    font-size: 13px;
+    color: var(--text-normal);
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.mo-modal-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 36px;
+    font-size: 14px;
+    font-family: "SmileySans", inherit;
+}
+
+.mo-modal-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mo-modal-list::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════════════
+   设置界面 - 情绪列表
+   ═══════════════════════════════════════════════════ */
+.mo-emotion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: var(--background-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.mo-emotion-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.mo-emotion-row:hover {
+    border-color: var(--interactive-accent);
+}
+
+.mo-color-picker {
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--background-modifier-border);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.mo-color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.mo-color-picker::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+.mo-emotion-input {
+    background: var(--background-modifier-form-field);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 13px;
+    color: var(--text-normal);
+    font-family: inherit;
+}
+
+.mo-emotion-input:focus {
+    border-color: var(--interactive-accent);
+    outline: none;
+}
+
+.mo-emotion-del-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-left: auto;
+    transition: all 0.15s ease;
+}
+
+.mo-emotion-del-btn:hover {
+	color: var(--text-error);
+	background: rgba(255, 80, 80, 0.1);
+	border-color: var(--text-error);
+}
+
+/* ═══════════════════════════════════════════════════
+   📱 小窗口模式 (窗口宽度 < 800px)
+   ═══════════════════════════════════════════════════ */
+
+/* 小窗口模式：隐藏所有UI，只显示当日的球球 */
+.memory-orbs-container.mo-small-window {
+    padding: 8px 12px !important;
+}
+
+/* 小窗口模式下隐藏工具栏 */
+.memory-orbs-container.mo-small-window .mo-toolbar {
+    display: none !important;
+}
+
+/* 小窗口模式下调整管道布局 */
+.memory-orbs-container.mo-small-window .mo-pipeline {
+    height: 70px !important; /* 稍微降低高度 */
+    margin: 4px 0 !important;
+    border-radius: 20px !important;
+}
+
+/* 小窗口模式下调整管道轨道 */
+.memory-orbs-container.mo-small-window .mo-pipeline-track {
+    bottom: 8px !important;
+    height: 60px !important;
+    padding: 0 16px !important;
+}
+
+/* 小窗口模式下调整球体大小 */
+.memory-orbs-container.mo-small-window .mo-orb {
+    width: 46px !important;
+    height: 46px !important;
+}
+
+/* 小窗口模式下调整核心球体大小 */
+.memory-orbs-container.mo-small-window .mo-orb-core {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+/* 小窗口模式下调整管道端盖 */
+.memory-orbs-container.mo-small-window .mo-pipeline-cap {
+    display: none !important;
+}
+
+/* 小窗口模式下调整重置按钮位置 */
+.memory-orbs-container.mo-small-window .mo-pipeline-reset-btn {
+    top: 2px !important;
+    right: 2px !important;
+    width: 22px !important;
+    height: 22px !important;
+}
+
+/* 小窗口模式下调整统计面板 */
+.memory-orbs-container.mo-small-window .mo-stats-panel {
+    width: 280px !important;
+    right: 8px !important;
+    top: 45px !important;
+    max-height: 60vh !important;
+}
+
+/* 小窗口模式下调整管道底部微光 */
+.memory-orbs-container.mo-small-window .mo-pipeline::after {
+    left: 16px !important;
+    right: 16px !important;
+}
+
+/* 小窗口模式下调整管道顶部光线 */
+.memory-orbs-container.mo-small-window .mo-pipeline::before {
+    left: 10% !important;
+    right: 10% !important;
+}
+
+/* 小窗口模式下调整管道底部线条 */
+.memory-orbs-container.mo-small-window .mo-pipeline-floor {
+    left: 16px !important;
+    right: 16px !important;
+}
+
+/* 小窗口模式下调整星空主题的星星 */
+.memory-orbs-container.mo-small-window.mo-theme-cosmos .mo-star {
+    transform: scale(0.8);
+}
+
+/* 小窗口模式下调整玻璃主题的模糊效果 */
+.memory-orbs-container.mo-small-window.mo-theme-glass .mo-pipeline {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* 小窗口模式下调整手绘主题的网格线 */
+.memory-orbs-container.mo-small-window.mo-theme-sketch {
+    background-size: 20px 20px !important;
+}
+
+/* 小窗口模式下调整经典主题的渐变 */
+.memory-orbs-container.mo-small-window.mo-theme-classic {
+    background-size: 100% auto !important;
+}
+
+/* 小窗口模式下的滚动条调整 */
+.memory-orbs-container.mo-small-window .mo-pipeline-track::-webkit-scrollbar {
+    height: 2px !important;
+}
+
+/* 小窗口模式下的管道Hover提示调整 */
+.memory-orbs-container.mo-small-window .mo-pipeline-tooltip {
+    font-size: 10px !important;
+    padding: 3px 8px !important;
+    max-width: min(320px, calc(100vw - 24px)) !important;
+}
+
+/* 小窗口模式下隐藏日期标题 */
+.memory-orbs-container.mo-small-window .mo-day-header {
+    display: none !important;
+}
+
+/* 小窗口模式下隐藏周标题 */
+.memory-orbs-container.mo-small-window .mo-week-header {
+    display: none !important;
+}
+
+/* 小窗口模式下隐藏空状态消息 */
+.memory-orbs-container.mo-small-window .mo-empty {
+    display: none !important;
+}
+
+/* 小窗口模式下隐藏加载状态 */
+.memory-orbs-container.mo-small-window .mo-loading {
+    display: none !important;
+}
+
+/* 小窗口模式下隐藏重置按钮 */
+.memory-orbs-container.mo-small-window .mo-pipeline-reset-btn {
+    display: none !important;
+}
+
+/* 小窗口模式下调整管道布局 */
+.memory-orbs-container.mo-small-window .mo-day-section {
+    margin-bottom: 4px !important;
+}
+
+/* 小窗口模式下只显示当日（第一个）管道 */
+.memory-orbs-container.mo-small-window .mo-day-section:not(:first-child) {
+    display: none !important;
+}
+
+/* 小窗口模式下只显示当日（第一个）周分组 */
+.memory-orbs-container.mo-small-window .mo-week-section:not(:first-child) {
+    display: none !important;
+}
+
+/* 小窗口模式下强制显示当日的管道 */
+.memory-orbs-container.mo-small-window .mo-day-section:first-child {
+    display: block !important;
+}
+
+/* 小窗口模式下强制显示当日的周分组 */
+.memory-orbs-container.mo-small-window .mo-week-section:first-child {
+    display: block !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   手动收缩 UI：只保留模式按钮、恢复按钮和管道
+   ═══════════════════════════════════════════════════ */
+
+.memory-orbs-container.mo-ui-collapsed {
+    padding: 8px 12px !important;
+}
+
+.memory-orbs-container.mo-ui-collapsed .mo-toolbar {
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+}
+
+.memory-orbs-container.mo-ui-collapsed .mo-nav,
+.memory-orbs-container.mo-ui-collapsed .mo-legend,
+.memory-orbs-container.mo-ui-collapsed .mo-theme-btn,
+.memory-orbs-container.mo-ui-collapsed .mo-stats-btn,
+.memory-orbs-container.mo-ui-collapsed .mo-day-header,
+.memory-orbs-container.mo-ui-collapsed .mo-week-header,
+.memory-orbs-container.mo-ui-collapsed .mo-pipeline-reset-btn {
+    display: none !important;
+}
+
+.memory-orbs-container.mo-ui-collapsed .mo-mode-group {
+    display: inline-flex !important;
+}
+
+.mo-collapse-btn {
+    border: none;
+    border-radius: 999px;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--text-muted);
+    background: var(--background-modifier-hover);
+}
+
+.mo-collapse-btn:hover {
+    color: var(--text-normal);
+    background: var(--background-modifier-border);
+}
+
+.memory-orbs-container.mo-ui-collapsed .mo-day-section {
+    margin-bottom: var(--mo-day-section-gap, 18px) !important;
+}
+
+.memory-orbs-container.mo-ui-collapsed .mo-week-section {
+    margin-bottom: var(--mo-week-section-gap, 28px) !important;
+}
+
+/* =============================
+   多排管道样式
+   ============================= */
+
+/* 多排管道容器 */
+.mo-multi-pipeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mo-pipeline-row-gap, 20px);
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+/* 管道行 */
+.mo-pipeline-row {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    border-radius: 30px;
+    box-sizing: border-box;
+}
+
+/* 不同排的视觉区分 */
+.mo-pipeline-row-top {
+    border-top: none;
+}
+
+.mo-pipeline-row-middle {
+    border-left: none;
+    border-right: none;
+}
+
+.mo-pipeline-row-bottom {
+    border-bottom: none;
+}
+
+/* 各主题下的多排管道样式 */
+.mo-theme-cosmos .mo-pipeline-row {
+    background: transparent;
+    border-color: transparent;
+}
+
+.mo-theme-classic .mo-pipeline-row {
+    background: transparent;
+    border-color: transparent;
+}
+
+.mo-theme-sketch .mo-pipeline-row {
+    background: transparent;
+    border-color: transparent;
+}
+
+.mo-theme-glass .mo-pipeline-row {
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
+}
+
+/* 多排管道中的单个管道 */
+.mo-pipeline-row .mo-pipeline {
+    height: 80px;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* 移除多排管道中管道的额外边框 */
+.mo-pipeline-row .mo-pipeline-floor {
+    display: block;
+}
+
+/* 调整多排管道中端盖的位置 */
+.mo-pipeline-row .mo-pipeline-cap {
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+}
+
+/* 多排管道中的球体滚动区域 */
+.mo-pipeline-row .mo-pipeline-track {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    height: 68px;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+/* 小窗口模式下的多排管道调整 */
+.memory-orbs-container.mo-small-window .mo-multi-pipeline {
+    gap: 4px;
+}
+
+.memory-orbs-container.mo-small-window .mo-pipeline-row {
+    height: 80px;
+}
+
+.memory-orbs-container.mo-small-window .mo-pipeline-row .mo-pipeline-cap {
+    height: 30px;
+}
+
+/* ═══════════════════════════════════════════════════
+   Markdown Embed（第一版）
+   ═══════════════════════════════════════════════════ */
+.memory-orbs-embed {
+    position: relative;
+    padding: 8px 0;
+}
+
+.mo-embed-body {
+    position: relative;
+}
+
+.mo-embed-pipeline-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mo-embed-pipeline {
+    min-height: 80px;
+    padding-bottom: 10px;
+}
+
+.mo-embed-orbs-row {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 2px;
+    padding: 0 24px;
+    overflow: hidden;
+    min-height: 58px;
+}
+
+.mo-embed-orb-wrapper {
+    flex: 0 0 auto;
+    width: 58px;
+    align-items: center;
+    gap: 0;
+}
+
+.mo-embed-orb {
+    animation-play-state: paused;
+}
+
+.memory-orbs-embed .mo-orb-label,
+.memory-orbs-embed .mo-orb-char {
+    display: none !important;
+}
+
+.memory-orbs-embed,
+.mo-embed-builder-preview-body {
+    min-height: 96px;
+}
+
+.mo-embed-builder {
+    display: grid;
+    grid-template-columns: minmax(260px, 320px) 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 12px 0;
+}
+
+.mo-embed-builder-controls {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 12px;
+    padding: 12px;
+    background: var(--background-primary-alt);
+}
+
+.mo-embed-builder-code-wrap,
+.mo-embed-builder-preview {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 12px;
+    padding: 12px;
+    background: var(--background-primary);
+}
+
+.mo-embed-builder-code {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mo-embed-builder-preview-title {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 900px) {
+    .mo-embed-builder {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* builder 中按模式显示/隐藏的设置项 */
+.mo-builder-hidden {
+    display: none !important;
+}
+
+.mo-embed-builder-copy-btn {
+    margin-top: 8px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--interactive-normal);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.mo-embed-builder-copy-btn:hover {
+    background: var(--interactive-hover);
+}
+
+/* ═══════════════════════════════════════════════════
+   激活 UI 样式
+   ═══════════════════════════════════════════════════ */
+
+/* ── 激活状态文字 ── */
+.mo-activation-active {
+    color: var(--color-green, #4caf50);
+    font-weight: 600;
+    margin: 4px 0 12px;
+}
+
+.mo-activation-trial {
+    color: var(--color-orange, #ff9800);
+    font-weight: 500;
+    margin: 4px 0 12px;
+}
+
+.mo-activation-expired {
+    color: var(--text-error, #e53935);
+    font-weight: 500;
+    margin: 4px 0 12px;
+}
+
+/* ── 激活输入行 ── */
+.mo-activation-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.mo-activation-input {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-primary);
+    font-size: 13px;
+}
+
+.mo-activation-input:focus {
+    border-color: var(--interactive-accent);
+    outline: none;
+}
+
+.mo-activation-btn {
+    padding: 6px 18px;
+    white-space: nowrap;
+}
+
+.mo-deactivation-btn {
+    display: block;
+    background: transparent;
+    color: var(--text-muted, #999);
+    border: 1px solid var(--background-modifier-border, #ddd);
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mo-deactivation-btn:hover {
+    color: var(--text-error, #e53935);
+    border-color: var(--text-error, #e53935);
+}
+
+.mo-activation-msg {
+    font-size: 13px;
+    margin-top: 4px;
+    min-height: 20px;
+}
+
+.mo-activation-error {
+    color: var(--text-error, #e53935);
+}
+
+/* ── 激活弹窗 ── */
+.mo-activate-modal {
+    min-width: 380px;
+}
+
+.mo-activate-modal h2 {
+    margin-bottom: 12px;
+}
+
+.mo-activate-modal p {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.mo-activation-btn-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.mo-activation-where {
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--background-secondary);
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ── 激活提示横幅 ── */
+.mo-activation-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    margin: 12px 0;
+    border-radius: 8px;
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.mo-activation-banner-embed {
+    margin: 8px 0 0 0;
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+.mo-activation-banner-btn {
+    font-size: 12px;
+    padding: 4px 12px;
+    white-space: nowrap;
+}
