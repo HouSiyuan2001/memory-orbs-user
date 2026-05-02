@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Orbs · 记忆球 产品介绍</title>
+
+<!-- Reveal.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/dracula.css">
+
+<style>
+@font-face {
+    font-family: 'SmileySans';
+    src: url('./SmileySans-Oblique.ttf') format('truetype'),
+         url('https://cdn.jsdelivr.net/gh/atelier-anchor/smiley-sans@v2.0.1/SmileySans-Oblique.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --mo-bg: #1a1a2e;
+    --mo-accent1: #fbeb37;
+    --mo-accent2: #8abdf5;
+    --mo-accent3: #ff9185;
+    --mo-accent4: #75eaa6;
+    --mo-accent5: #df94ff;
+    --mo-accent6: #ffa947;
+    --mo-accent7: #1affd1;
+    --mo-accent8: #ffa8d4;
+    --mo-accent9: #6f94b8;
+    --mo-accent10: #cccccc;
+    --mo-card-bg: rgba(255,255,255,0.04);
+    --mo-card-border: rgba(255,255,255,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'SmileySans', 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+    background: var(--mo-bg);
+    color: #e0e0e0;
+}
+
+.reveal {
+    font-family: 'SmileySans', 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    font-family: 'SmileySans', 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+    text-shadow: 0 0 20px rgba(100,120,255,0.3);
+}
+
+.reveal h1 { font-size: 3em; color: #fff; }
+.reveal h2 { font-size: 1.8em; color: #c8d0ff; }
+.reveal h3 { font-size: 1.3em; color: #a8b8ff; }
+
+.mo-gradient-text {
+    background: linear-gradient(135deg, #fbeb37, #ff9185, #df94ff, #8abdf5, #1affd1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── 情绪芯片 ── */
+.mo-emotion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+.mo-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: var(--mo-card-bg);
+    border: 1px solid var(--mo-card-border);
+    font-size: 0.85em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+.mo-chip:hover {
+    transform: scale(1.08);
+}
+.mo-chip-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ── 特征卡片 ── */
+.mo-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px auto;
+    max-width: 700px;
+}
+.mo-feature-card {
+    padding: 20px;
+    border-radius: 18px;
+    background: var(--mo-card-bg);
+    border: 1px solid var(--mo-card-border);
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+.mo-feature-card:hover {
+    transform: translateY(-4px);
+}
+.mo-feature-icon { font-size: 2em; margin-bottom: 8px; }
+.mo-feature-label { font-size: 0.9em; opacity: 0.85; }
+
+/* ── 微管道（交互小样） ── */
+.mo-mini-pipeline-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+.mo-mini-pipeline {
+    background: rgba(30,27,55,0.12);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    height: 72px;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding: 0 20px 8px;
+    position: relative;
+    overflow: hidden;
+    min-width: 240px;
+    box-shadow: inset 0 2px 12px rgba(100,120,255,0.06);
+}
+.mo-mini-orb {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: inset 0 -3px 8px rgba(0,0,0,0.12), inset 0 3px 8px rgba(255,255,255,0.2);
+    animation: mo-float 2.8s ease-in-out infinite;
+}
+.mo-mini-orb:nth-child(2) { animation-delay: 0.5s; }
+.mo-mini-orb:nth-child(3) { animation-delay: 1s; }
+.mo-mini-orb:nth-child(4) { animation-delay: 1.5s; }
+.mo-mini-orb:nth-child(5) { animation-delay: 0.3s; }
+.mo-mini-orb-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    filter: blur(6px);
+    opacity: 0.3;
+    animation: mo-pulse 2.5s ease-in-out infinite;
+}
+.mo-mini-orb-highlight {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 12px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.55);
+    filter: blur(2px);
+}
+@keyframes mo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+@keyframes mo-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+}
+
+/* ── 主题预览 ── */
+.mo-theme-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 16px auto;
+    max-width: 620px;
+}
+.mo-theme-card {
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--mo-card-bg);
+    border: 1px solid var(--mo-card-border);
+    text-align: center;
+    transition: transform 0.25s;
+    cursor: pointer;
+}
+.mo-theme-card:hover { transform: scale(1.05); }
+.mo-theme-demo {
+    height: 40px;
+    border-radius: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    padding: 4px 12px;
+}
+.mo-theme-demo .mini-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.mo-theme-name { font-size: 0.8em; opacity: 0.8; }
+
+/* ── 行内嵌入模拟 ── */
+.mo-embed-demo {
+    background: rgba(30,27,55,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 14px 18px;
+    margin: 12px auto;
+    max-width: 600px;
+    text-align: left;
+    font-size: 0.75em;
+}
+.mo-embed-demo .mo-code-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    opacity: 0.85;
+}
+.mo-embed-demo .mo-code-line .mo-key { color: var(--mo-accent2); }
+.mo-embed-demo .mo-code-line .mo-val { color: var(--mo-accent4); }
+
+/* ── 交互演示区 ── */
+.mo-interactive-area {
+    background: rgba(30,27,55,0.08);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 24px;
+    margin: 16px auto;
+    max-width: 520px;
+}
+.mo-btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+.mo-theme-btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: #e0e0e0;
+    cursor: pointer;
+    font-family: 'SmileySans', sans-serif;
+    font-size: 0.75em;
+    transition: all 0.25s;
+}
+.mo-theme-btn.active {
+    border-color: var(--mo-accent2);
+    background: rgba(138,189,245,0.15);
+    box-shadow: 0 0 12px rgba(138,189,245,0.15);
+}
+.mo-theme-btn:hover { transform: scale(1.06); }
+.mo-interactive-pipeline {
+    height: 64px;
+    border-radius: 24px;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    padding: 0 20px 6px;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+.mo-interactive-orb {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+.mo-interactive-orb:hover {
+    transform: scale(1.15) translateY(-6px);
+}
+.mo-interactive-orb::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 11px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    filter: blur(2px);
+}
+
+/* ── 底部 ── */
+.mo-footer-links {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.mo-footer-links a {
+    color: var(--mo-accent2);
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+}
+.mo-footer-links a:hover {
+    color: #fff;
+    border-bottom-color: var(--mo-accent2);
+}
+
+.mo-back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 18px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.7em;
+    color: var(--mo-accent2);
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.mo-back-link:hover {
+    background: rgba(138,189,245,0.12);
+    border-color: var(--mo-accent2);
+    transform: translateX(-3px);
+}
+
+/* ── 成就条 ── */
+.mo-stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+.mo-stat {
+    text-align: center;
+}
+.mo-stat-num {
+    font-size: 2em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #fbeb37, #df94ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.mo-stat-label { font-size: 0.75em; opacity: 0.7; margin-top: 2px; }
+
+/* ── Code block ── */
+.mo-code-block {
+    display: inline-block;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 4px 12px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.65em;
+    color: var(--mo-accent4);
+}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ═══ Slide 1: Title ═══ -->
+<section data-background-gradient="linear-gradient(135deg, #0f0c29, #1a1a2e, #16213e)">
+    <div style="margin-bottom: 30px;">
+        <div style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;">
+            <div class="mo-mini-orb" style="width:60px;height:60px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.45) 0%,transparent 40%),conic-gradient(#fbeb37 0deg 72deg,#8abdf5 72deg 144deg,#ff9185 144deg 216deg,#75eaa6 216deg 288deg,#df94ff 288deg 360deg);animation-duration:3.5s;"></div>
+            <div class="mo-mini-orb" style="width:60px;height:60px;background:radial-gradient(circle at 30% 22%,rgba(255,255,255,0.88),rgba(255,255,255,0.2) 20%,transparent 40%),linear-gradient(145deg,#e8b4ff 0%,#b388ff 45%,#7c4dff 100%);border:2px solid rgba(200,150,255,0.45);animation-duration:4s;"></div>
+            <div class="mo-mini-orb" style="width:60px;height:60px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),conic-gradient(#1affd1 0deg 72deg,#ffa947 72deg 144deg,#ffa8d4 144deg 216deg,#6f94b8 216deg 288deg,#cccccc 288deg 360deg);animation-duration:3s;"></div>
+        </div>
+    </div>
+    <h1 class="mo-gradient-text" style="font-size:3.5em;">Memory Orbs</h1>
+    <h2 style="margin-top:12px;font-size:1.3em;opacity:0.8;">记忆球 · Obsidian 情绪可视化插件</h2>
+    <p style="margin-top:40px;font-size:0.75em;opacity:0.5;">← 方向键 / 空格 翻阅 · Esc 总览</p>
+</section>
+
+<!-- ═══ Slide 2: What is Memory Orbs ═══ -->
+<section data-background="#1a1a2e">
+    <h2>什么是记忆球？</h2>
+    <div style="margin:24px auto;max-width:620px;font-size:0.85em;line-height:1.7;">
+        <p style="opacity:0.9;">Memory Orbs 是一个 <strong style="color:var(--mo-accent2);">Obsidian 插件</strong>，将你日记中的</p>
+        <p style="margin:10px 0;font-size:1.1em;">
+            <span class="mo-code-block">#Note/life/mood/Joy</span>
+            <span style="opacity:0.5;margin:0 8px;">→</span>
+            <span class="mo-mini-orb" style="display:inline-block;width:28px;height:28px;vertical-align:middle;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#fce96b,#fbeb37);animation:none;"></span>
+        </p>
+        <p style="opacity:0.9;">这样的情绪标签，<strong style="color:var(--mo-accent4);">可视化</strong>为彩色的球体。</p>
+    </div>
+    <div style="display:flex;justify-content:center;gap:6px;margin:16px 0;">
+        <div class="mo-mini-orb" style="width:40px;height:40px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#fce96b,#fbeb37);"></div>
+        <div class="mo-mini-orb" style="width:40px;height:40px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#b4d6f7,#8abdf5);animation-delay:0.5s;"></div>
+        <div class="mo-mini-orb" style="width:40px;height:40px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#ffb5ad,#ff9185);animation-delay:1s;"></div>
+        <div class="mo-mini-orb" style="width:40px;height:40px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#9cf5be,#75eaa6);animation-delay:0.3s;"></div>
+        <div class="mo-mini-orb" style="width:40px;height:40px;background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#e8b9ff,#df94ff);animation-delay:1.2s;"></div>
+    </div>
+    <div style="margin-top:20px;font-size:0.7em;opacity:0.6;">
+        <p>球体在 <strong>管道</strong> 中排列、滚动、碰撞</p>
+        <p>用直观的方式呈现你的情绪状态</p>
+    </div>
+</section>
+
+<!-- ═══ Slide 3: Pipeline View (总览) ═══ -->
+<section data-background="#1a1a2e">
+    <h2>管道视图</h2>
+    <p style="font-size:0.7em;opacity:0.6;margin-bottom:24px;">球体在圆角管道中排列，可拖拽、碰撞、滚动</p>
+    <div class="mo-mini-pipeline-wrap">
+        <div class="mo-mini-pipeline" style="min-width:280px;">
+            <div class="mo-mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#fce96b,#fbeb37);">
+                <div class="mo-mini-orb-glow" style="background:#fbeb37;"></div>
+                <div class="mo-mini-orb-highlight"></div>
+            </div>
+            <div class="mo-mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#b4d6f7,#8abdf5);">
+                <div class="mo-mini-orb-glow" style="background:#8abdf5;"></div>
+                <div class="mo-mini-orb-highlight"></div>
+            </div>
+            <div class="mo-mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#ffb5ad,#ff9185);">
+                <div class="mo-mini-orb-glow" style="background:#ff9185;"></div>
+                <div class="mo-mini-orb-highlight"></div>
+            </div>
+            <div class="mo-mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.2) 20%,transparent 40%),linear-gradient(145deg,#e8b4ff 0%,#b388ff 45%,#7c4dff 100%);border:2px solid rgba(200,150,255,0.5);">
+                <div class="mo-mini-orb-glow" style="background:#b388ff;"></div>
+                <div class="mo-mini-orb-highlight"></div>
+            </div>
+            <div class="mo-mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#e8b9ff,#df94ff);">
+                <div class="mo-mini-orb-glow" style="background:#df94ff;"></div>
+                <div class="mo-mini-orb-highlight"></div>
+            </div>
+            <div class="mo-mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#ffca7f,#ffa947);">
+                <div class="mo-mini-orb-glow" style="background:#ffa947;"></div>
+                <div class="mo-mini-orb-highlight"></div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:20px;font-size:0.65em;opacity:0.6;">
+        <p>✦ 重力沉底、弹性反弹 ✦ 拖拽摆动能自动衰减 ✦ 超过一排自动换行到下一根</p>
+    </div>
+</section>
+
+<!-- ═══ Slide 4: Key Features ═══ -->
+<section data-background="#1a1a2e">
+    <h2>核心特色</h2>
+    <div class="mo-features" style="margin-top:24px;">
+        <div class="mo-feature-card" onclick="window.location.hash='#/5';event.stopPropagation();" style="cursor:pointer;">
+            <div class="mo-feature-icon">🎨</div>
+            <div class="mo-feature-label">4 种视觉主题 →</div>
+        </div>
+        <div class="mo-feature-card" onclick="window.location.hash='#/8';event.stopPropagation();" style="cursor:pointer;">
+            <div class="mo-feature-icon">🕹️</div>
+            <div class="mo-feature-label">拖拽互动演示 →</div>
+        </div>
+        <div class="mo-feature-card" onclick="window.location.hash='#/4';event.stopPropagation();" style="cursor:pointer;">
+            <div class="mo-feature-icon">🎯</div>
+            <div class="mo-feature-label">情绪系统（10种+混合球）→</div>
+        </div>
+        <div class="mo-feature-card" onclick="window.location.hash='#/7';event.stopPropagation();" style="cursor:pointer;">
+            <div class="mo-feature-icon">📝</div>
+            <div class="mo-feature-label">Markdown 嵌入 →</div>
+        </div>
+        <div class="mo-feature-card" onclick="window.location.hash='#/2';event.stopPropagation();" style="cursor:pointer;">
+            <div class="mo-feature-icon">🖱️</div>
+            <div class="mo-feature-label">管道视图 →</div>
+        </div>
+    </div>
+    <p style="font-size:0.65em;opacity:0.45;margin-top:16px;">👆 点击卡片跳转到对应介绍页</p>
+</section>
+
+
+
+<!-- ═══ Slide 5: Emotion System ═══ -->
+<section data-background="#1a1a2e">
+    <h2>情绪系统</h2>
+    <p style="font-size:0.7em;opacity:0.6;margin-bottom:20px;">10 种基础情绪 + 合成记忆（混合球）</p>
+    <div class="mo-emotion-chips">
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#fbeb37;"></div> 快乐</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#8abdf5;"></div> 伤心</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#ff9185;"></div> 生气</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#75eaa6;"></div> 讨厌</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#df94ff;"></div> 害怕</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#ffa947;"></div> 焦虑</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#1affd1;"></div> 慕慕</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#ffa8d4;"></div> 尴尬</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#6f94b8;"></div> 无聊</div>
+        <div class="mo-chip"><div class="mo-chip-dot" style="background:#cccccc;"></div> 怀旧</div>
+    </div>
+    <div style="display:flex;gap:20px;justify-content:center;margin-top:18px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+            <div style="display:flex;gap:2px;">
+                <div style="width:20px;height:20px;border-radius:50%;background:conic-gradient(#fbeb37 0deg 120deg,#8abdf5 120deg 240deg,#ff9185 240deg 360deg);"></div>
+            </div>
+            <span style="font-size:0.6em;opacity:0.6;margin-top:4px;">合成球（多情绪）</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+            <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#fce96b,#fbeb37);box-shadow:0 0 18px #fbeb37,inset 0 -3px 8px rgba(0,0,0,0.1);"></div>
+            <span style="font-size:0.6em;opacity:0.6;margin-top:4px;">核心记忆（光晕）</span>
+        </div>
+    </div>
+    <div class="mo-back-link" onclick="window.location.hash='#/3';event.stopPropagation();">← 回到特色总览</div>
+</section>
+
+<!-- ═══ Slide 6: Theme System ═══ -->
+<section data-background="#1a1a2e">
+    <h2>四种主题</h2>
+    <p style="font-size:0.7em;opacity:0.6;margin-bottom:20px;">一键切换，同一批数据不同的氛围</p>
+    <div class="mo-theme-cards">
+        <div class="mo-theme-card">
+            <div class="mo-theme-demo" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;box-shadow:inset 0 2px 12px rgba(100,120,255,0.06),0 0 20px rgba(100,120,255,0.04);position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(180,200,255,0.2) 20%,rgba(180,200,255,0.35) 50%,rgba(180,200,255,0.2) 80%,transparent 100%);z-index:3;"></div>
+                <div style="position:absolute;bottom:4px;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(100,120,255,0.12) 10%,rgba(100,120,255,0.2) 50%,rgba(100,120,255,0.12) 90%,transparent 100%);"></div>
+                <div class="mini-dot" style="background:#fbeb37;box-shadow:0 0 10px rgba(251,235,55,0.5);"></div>
+                <div class="mini-dot" style="background:#8abdf5;box-shadow:0 0 10px rgba(138,189,245,0.5);"></div>
+                <div class="mini-dot" style="background:#df94ff;box-shadow:0 0 10px rgba(223,148,255,0.5);"></div>
+            </div>
+            <div class="mo-theme-name">🌌 Cosmos · 星空</div>
+        </div>
+        <div class="mo-theme-card">
+            <div class="mo-theme-demo" style="background:rgba(30,27,55,0.03);border:1px solid rgba(30,27,55,0.06);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.03);position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(180,160,255,0.15) 20%,rgba(180,160,255,0.25) 50%,rgba(180,160,255,0.15) 80%,transparent 100%);z-index:3;"></div>
+                <div style="position:absolute;bottom:4px;left:24px;right:24px;height:2px;border-radius:1px;background:rgba(30,27,55,0.08);"></div>
+                <div class="mini-dot" style="background:#fbeb37;box-shadow:0 0 6px rgba(251,235,55,0.1);"></div>
+                <div class="mini-dot" style="background:#8abdf5;box-shadow:0 0 6px rgba(138,189,245,0.1);"></div>
+                <div class="mini-dot" style="background:#df94ff;box-shadow:0 0 6px rgba(223,148,255,0.1);"></div>
+                <div class="mini-dot" style="background:#ffa947;box-shadow:0 0 6px rgba(255,169,71,0.1);"></div>
+            </div>
+            <div class="mo-theme-name">☀️ Classic · 经典</div>
+        </div>
+        <div class="mo-theme-card">
+            <div class="mo-theme-demo" style="background:rgba(80,60,40,0.02);border:1px solid rgba(80,60,40,0.12);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.03);position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(80,60,40,0.15) 20%,rgba(80,60,40,0.25) 50%,rgba(80,60,40,0.15) 80%,transparent 100%);z-index:3;"></div>
+                <div style="position:absolute;bottom:4px;left:24px;right:24px;height:2px;border-radius:1px;background:rgba(80,60,40,0.08);"></div>
+                <div class="mini-dot" style="background:#fbeb37;box-shadow:1px 1px 0 rgba(80,60,40,0.06);border:1px solid rgba(80,60,40,0.03);"></div>
+                <div class="mini-dot" style="background:#8abdf5;box-shadow:1px 1px 0 rgba(80,60,40,0.06);border:1px solid rgba(80,60,40,0.03);"></div>
+                <div class="mini-dot" style="background:#df94ff;box-shadow:1px 1px 0 rgba(80,60,40,0.06);border:1px solid rgba(80,60,40,0.03);"></div>
+            </div>
+            <div class="mo-theme-name">✏️ Sketch · 手绘</div>
+        </div>
+        <div class="mo-theme-card">
+            <div class="mo-theme-demo" style="background:rgba(255,255,255,0.3);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(160,140,200,0.15);border-radius:10px;box-shadow:inset 0 1px 16px rgba(168,130,255,0.06),0 2px 12px rgba(168,130,255,0.06);position:relative;overflow:hidden;">
+                <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.4) 15%,rgba(255,255,255,0.7) 50%,rgba(255,255,255,0.4) 85%,transparent 100%);z-index:3;"></div>
+                <div style="position:absolute;bottom:4px;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(168,130,255,0.1) 10%,rgba(168,130,255,0.2) 50%,rgba(168,130,255,0.1) 90%,transparent 100%);"></div>
+                <div class="mini-dot" style="background:rgba(168,130,255,0.7);box-shadow:0 0 12px rgba(168,130,255,0.2);"></div>
+                <div class="mini-dot" style="background:rgba(200,170,255,0.7);box-shadow:0 0 12px rgba(200,170,255,0.2);"></div>
+                <div class="mini-dot" style="background:rgba(230,210,255,0.7);box-shadow:0 0 12px rgba(230,210,255,0.2);"></div>
+            </div>
+            <div class="mo-theme-name">🔮 Glass · 玻璃</div>
+        </div>
+    </div>
+    <div class="mo-back-link" onclick="window.location.hash='#/3';event.stopPropagation();">← 回到特色总览</div>
+</section>
+
+<!-- ═══ Slide 7: Multi-Row ═══ -->
+<section data-background="#1a1a2e">
+    <h2>多排管道</h2>
+    <p style="font-size:0.7em;opacity:0.6;margin-bottom:20px;">球数超过一排时自动换行，每根管道独立显示</p>
+    <div style="display:flex;flex-direction:column;gap:20px;align-items:center;width:100%;max-width:480px;margin:0 auto;">
+        <div style="position:relative;width:100%;height:70px;border-radius:30px;background:rgba(30,27,55,0.03);border:1px solid rgba(30,27,55,0.06);box-shadow:0 2px 8px rgba(0,0,0,0.03);overflow:hidden;">
+            <div style="position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(180,160,255,0.15) 20%,rgba(180,160,255,0.25) 50%,rgba(180,160,255,0.15) 80%,transparent 100%);z-index:3;"></div>
+            <div style="position:absolute;bottom:8px;left:24px;right:24px;height:2px;border-radius:1px;background:rgba(30,27,55,0.08);z-index:1;"></div>
+            <div style="position:absolute;bottom:10px;left:0;right:0;display:flex;align-items:flex-end;gap:2px;padding:0 24px;height:58px;">
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#fce96b 0%,#fbeb37 50%,#d4c420 100%);box-shadow:0 0 6px rgba(251,235,55,0.2);"></div>
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#b4d6f7 0%,#8abdf5 50%,#6499d4 100%);box-shadow:0 0 6px rgba(138,189,245,0.2);"></div>
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#e8b9ff 0%,#df94ff 50%,#b86ad4 100%);box-shadow:0 0 6px rgba(223,148,255,0.2);"></div>
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#9cf5be 0%,#75eaa6 50%,#4ec880 100%);box-shadow:0 0 6px rgba(117,234,166,0.2);"></div>
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#ffca7f 0%,#ffa947 50%,#d4872e 100%);box-shadow:0 0 6px rgba(255,169,71,0.2);"></div>
+            </div>
+        </div>
+        <div style="position:relative;width:80%;height:70px;border-radius:30px;background:rgba(30,27,55,0.03);border:1px solid rgba(30,27,55,0.06);box-shadow:0 2px 8px rgba(0,0,0,0.03);overflow:hidden;align-self:flex-start;">
+            <div style="position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(180,160,255,0.15) 20%,rgba(180,160,255,0.25) 50%,rgba(180,160,255,0.15) 80%,transparent 100%);z-index:3;"></div>
+            <div style="position:absolute;bottom:8px;left:24px;right:24px;height:2px;border-radius:1px;background:rgba(30,27,55,0.08);z-index:1;"></div>
+            <div style="position:absolute;bottom:10px;left:0;right:0;display:flex;align-items:flex-end;gap:2px;padding:0 24px;height:58px;">
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#ffb5ad 0%,#ff9185 50%,#d46a5e 100%);box-shadow:0 0 6px rgba(255,145,133,0.2);"></div>
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#e8b9ff 0%,#df94ff 50%,#b86ad4 100%);box-shadow:0 0 6px rgba(223,148,255,0.2);"></div>
+                <div style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#ffcf9e 0%,#ffa8d4 50%,#d484b0 100%);box-shadow:0 0 6px rgba(255,168,212,0.2);"></div>
+            </div>
+        </div>
+        <p style="font-size:0.65em;opacity:0.45;">超出单排容量 → 自动创建下一根管道</p>
+    </div>
+    <div class="mo-back-link" onclick="window.location.hash='#/3';event.stopPropagation();">← 回到特色总览</div>
+</section>
+
+<!-- ═══ Slide 8: Markdown Embed ═══ -->
+<section data-background="#1a1a2e">
+    <h2>Markdown 嵌入</h2>
+    <p style="font-size:0.7em;opacity:0.6;margin-bottom:16px;">在 Obsidian 笔记里直接嵌入记忆球，无需离开编辑页</p>
+    <div class="mo-embed-demo">
+        <div class="mo-code-line"><span class="mo-key">&#96;&#96;&#96;memory-orbs</span></div>
+        <div class="mo-code-line"><span class="mo-key">date:</span> <span class="mo-val">2026-04-29</span></div>
+        <div class="mo-code-line"><span class="mo-key">mode:</span> <span class="mo-val">day</span></div>
+        <div class="mo-code-line"><span class="mo-key">theme:</span> <span class="mo-val">glass</span></div>
+        <div class="mo-code-line"><span class="mo-val">minimal:</span> <span>true</span></div>
+        <div class="mo-code-line"><span class="mo-key">&#96;&#96;&#96;</span></div>
+    </div>
+    <div style="margin-top:14px;font-size:0.7em;opacity:0.6;">
+        <p>✦ 支持 <span class="mo-code-block">date</span> · <span class="mo-code-block">mode</span> · <span class="mo-code-block">theme</span> · <span class="mo-code-block">start/end</span></p>
+        <p>✦ 按住 <kbd style="background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:4px;font-size:0.9em;">Cmd</kbd> + 点击球体 → 打开对应日记</p>
+        <p>✦ 代码生成器：<kbd style="background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:4px;">Cmd+P</kbd> → "代码生成器"</p>
+    </div>
+    <div class="mo-back-link" onclick="window.location.hash='#/3';event.stopPropagation();">← 回到特色总览</div>
+</section>
+
+<!-- ═══ Slide 9: Interactive Demo ═══ -->
+<section data-background="#1a1a2e">
+    <h2>试试看 ✨</h2>
+    <p style="font-size:0.7em;opacity:0.6;margin-bottom:16px;">点击下方按钮切换主题，球体会响应变化</p>
+    <div class="mo-interactive-area" id="interactive-area">
+        <div class="mo-btn-group">
+            <button class="mo-theme-btn active" data-theme="classic">☀️ 经典</button>
+            <button class="mo-theme-btn" data-theme="cosmos">🌌 星空</button>
+            <button class="mo-theme-btn" data-theme="sketch">✏️ 手绘</button>
+            <button class="mo-theme-btn" data-theme="glass">🔮 玻璃</button>
+        </div>
+        <div class="mo-interactive-pipeline" id="demo-pipeline">
+            <div class="mo-interactive-orb" data-color="#fbeb37" data-text="☀️ 今天阳光真好，出去散步了" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#fce96b,#fbeb37);box-shadow:0 0 12px rgba(251,235,55,0.3),inset 0 -3px 8px rgba(0,0,0,0.08),inset 0 3px 8px rgba(255,255,255,0.25);"></div>
+            <div class="mo-interactive-orb" data-color="#8abdf5" data-text="😢 有点想家了，今天心情低落" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#b4d6f7,#8abdf5);box-shadow:0 0 12px rgba(138,189,245,0.3),inset 0 -3px 8px rgba(0,0,0,0.08),inset 0 3px 8px rgba(255,255,255,0.25);"></div>
+            <div class="mo-interactive-orb" data-color="#ff9185" data-text="😡 代码改了五遍还没过，好烦" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#ffb5ad,#ff9185);box-shadow:0 0 12px rgba(255,145,133,0.3),inset 0 -3px 8px rgba(0,0,0,0.08),inset 0 3px 8px rgba(255,255,255,0.25);"></div>
+            <div class="mo-interactive-orb" data-color="#b388ff" data-text="🌟 收到导师的肯定邮件，开心！" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.2) 20%,transparent 40%),linear-gradient(145deg,#e8b4ff 0%,#b388ff 45%,#7c4dff 100%);border:2px solid rgba(200,150,255,0.5);box-shadow:0 0 18px rgba(179,136,255,0.35),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.35);"></div>
+            <div class="mo-interactive-orb" data-color="#df94ff" data-text="😨 明天组会要汇报，有点紧张" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#e8b9ff,#df94ff);box-shadow:0 0 12px rgba(223,148,255,0.3),inset 0 -3px 8px rgba(0,0,0,0.08),inset 0 3px 8px rgba(255,255,255,0.25);"></div>
+            <div class="mo-interactive-orb" data-color="#75eaa6" data-text="💚 今天吃到了好吃的沙拉" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 40%),linear-gradient(135deg,#9cf5be,#75eaa6);box-shadow:0 0 12px rgba(117,234,166,0.3),inset 0 -3px 8px rgba(0,0,0,0.08),inset 0 3px 8px rgba(255,255,255,0.25);"></div>
+            <div class="mo-interactive-orb" data-color="blended" data-text="🎉 今天又开心又紧张，复杂的心情" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.45) 0%,transparent 40%),conic-gradient(#fbeb37 0deg 72deg,#8abdf5 72deg 144deg,#ff9185 144deg 216deg,#75eaa6 216deg 288deg,#df94ff 288deg 360deg);box-shadow:0 0 14px rgba(251,235,55,0.2),0 0 14px rgba(138,189,245,0.2),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3);"></div>
+        </div>
+        <p style="font-size:0.6em;opacity:0.5;margin-top:12px;">🖱️ 鼠标悬停在球体上，球会放大上浮</p>
+    </div>
+    <div style="margin-top:28px;border-top:1px solid rgba(255,255,255,0.06);padding-top:18px;">
+        <p style="font-size:0.65em;opacity:0.7;margin-bottom:8px;">👇 试试拖拽球体 — 真正的弹性碰撞物理 ✨</p>
+        <div style="position:relative;width:100%;max-width:520px;height:80px;margin:0 auto;border-radius:24px;background:rgba(30,27,55,0.06);border:1px solid rgba(255,255,255,0.08);overflow:hidden;box-shadow:inset 0 2px 12px rgba(100,120,255,0.06);" id="physics-pipeline">
+            <div class="physics-ball" data-color="#fbeb37" data-text="☀️ 今天阳光真好，出门散步了" style="position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#fce96b 0%,#fbeb37 50%,#d4c420 100%);box-shadow:0 0 12px rgba(251,235,55,0.4),inset 0 -3px 8px rgba(0,0,0,0.12),inset 0 3px 8px rgba(255,255,255,0.3);cursor:grab;z-index:2;"></div>
+            <div class="physics-ball" data-color="#8abdf5" data-text="😢 有点想家了……" style="position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#b4d6f7 0%,#8abdf5 50%,#6499d4 100%);box-shadow:0 0 12px rgba(138,189,245,0.4),inset 0 -3px 8px rgba(0,0,0,0.12),inset 0 3px 8px rgba(255,255,255,0.3);cursor:grab;z-index:2;"></div>
+            <div class="physics-ball" data-color="#ff9185" data-text="😡 代码又报错了……" style="position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#ffb5ad 0%,#ff9185 50%,#d46a5e 100%);box-shadow:0 0 12px rgba(255,145,133,0.4),inset 0 -3px 8px rgba(0,0,0,0.12),inset 0 3px 8px rgba(255,255,255,0.3);cursor:grab;z-index:2;"></div>
+            <div class="physics-ball" data-color="#df94ff" data-text="😨 明天要组会汇报……" style="position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7) 0%,transparent 50%),linear-gradient(135deg,#e8b9ff 0%,#df94ff 50%,#b86ad4 100%);box-shadow:0 0 12px rgba(223,148,255,0.4),inset 0 -3px 8px rgba(0,0,0,0.12),inset 0 3px 8px rgba(255,255,255,0.3);cursor:grab;z-index:2;"></div>
+            <div class="physics-ball" data-color="#b388ff" data-text="🌟 论文有了新进展！" style="position:absolute;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 22%,rgba(255,255,255,0.85) 0%,rgba(255,255,255,0.15) 20%,transparent 40%),linear-gradient(145deg,#e8b4ff 0%,#b388ff 45%,#7c4dff 100%);border:2px solid rgba(200,150,255,0.45);box-shadow:0 0 18px rgba(179,136,255,0.3),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.35);cursor:grab;z-index:2;"></div>
+        </div>
+        <p style="font-size:0.55em;opacity:0.4;margin-top:6px;">拖拽球体 → 松手 → 重力沉底 + 弹性碰撞 + 摩擦力减速</p>
+    </div>
+    <div class="mo-back-link" onclick="window.location.hash='#/3';event.stopPropagation();">← 回到特色总览</div>
+</section>
+
+<!-- ═══ Slide 10: Stats & Start ═══ -->
+<section data-background="linear-gradient(135deg, #0f0c29, #1a1a2e, #16213e)">
+    <h2 style="font-size:1.6em;">开始使用</h2>
+    <div class="mo-stats-bar">
+        <div class="mo-stat">
+            <div class="mo-stat-num">10</div>
+            <div class="mo-stat-label">情绪维度</div>
+        </div>
+        <div class="mo-stat">
+            <div class="mo-stat-num">4</div>
+            <div class="mo-stat-label">视觉主题</div>
+        </div>
+        <div class="mo-stat">
+            <div class="mo-stat-num">3</div>
+            <div class="mo-stat-label">视图模式</div>
+        </div>
+        <div class="mo-stat">
+            <div class="mo-stat-num">∞</div>
+            <div class="mo-stat-label">嵌入方式</div>
+        </div>
+    </div>
+    <div style="margin-top:24px;font-size:0.7em;opacity:0.8;line-height:2;">
+        <p>📦 通过 <strong>BRAT</strong> 或手动安装</p>
+        <p>📖 在日记中使用 <span class="mo-code-block">#Note/life/mood/情绪名</span> 标签</p>
+        <p>🔍 点击侧边栏 🌟 图标打开记忆球视图</p>
+        <p>📝 在笔记中用 <span class="mo-code-block">&#96;&#96;&#96;memory-orbs</span> 嵌入</p>
+    </div>
+    <div class="mo-back-link" onclick="window.location.hash='#/3';event.stopPropagation();">← 回到特色总览</div>
+    <div class="mo-footer-links" style="margin-top:28px;">
+        <a href="https://gitee.com/housiyuan123/memory-orbs-user" target="_blank">Gitee 示例库</a>
+        <a href="https://qm.qq.com/q/1090472824" target="_blank">QQ 群 1090472824</a>
+        <a href="#" onclick="window.location.hash='#/0';event.stopPropagation();return false;">回到首页</a>
+    </div>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+// ── Memory Orbs 颜色工具函数（与插件代码一致） ──
+function hexToRgb(hex) {
+    const h = hex.replace('#','');
+    return { r: parseInt(h.substring(0,2),16), g: parseInt(h.substring(2,4),16), b: parseInt(h.substring(4,6),16) };
+}
+function lighten(hex, amount) {
+    const { r, g, b } = hexToRgb(hex);
+    const lr = Math.min(255, Math.round(r + (255 - r) * amount));
+    const lg = Math.min(255, Math.round(g + (255 - g) * amount));
+    const lb = Math.min(255, Math.round(b + (255 - b) * amount));
+    return `#${lr.toString(16).padStart(2,'0')}${lg.toString(16).padStart(2,'0')}${lb.toString(16).padStart(2,'0')}`;
+}
+function darken(hex, amount) {
+    const { r, g, b } = hexToRgb(hex);
+    return `#${Math.round(r * (1 - amount)).toString(16).padStart(2,'0')}${Math.round(g * (1 - amount)).toString(16).padStart(2,'0')}${Math.round(b * (1 - amount)).toString(16).padStart(2,'0')}`;
+}
+function makeGlow(hex, alpha) {
+    if (alpha === undefined) alpha = 0.6;
+    const { r, g, b } = hexToRgb(hex);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+Reveal.initialize({
+    controls: true,
+    controlsLayout: 'bottom-right',
+    progress: true,
+    center: true,
+    hash: true,
+    transition: 'slide',
+    width: '100%',
+    height: '100%',
+});
+
+// 初始加载时以 classic 主题渲染交互演示
+Reveal.on('ready', () => {
+    const activeBtn = document.querySelector('.mo-theme-btn.active');
+    if (activeBtn) applyTheme(activeBtn.dataset.theme);
+});
+
+// ── 交互演示：主题切换 ──
+const themes = {
+    classic: {
+        pipeBg: '#f5f3ff',
+        pipeBorder: '1px solid #d8d0e8',
+        pipeShadow: '0 2px 8px rgba(0,0,0,0.06)',
+        areaBg: '#f5f3ff',
+        areaBorder: '1px solid #d8d0e8',
+        textColor: '#2d2a4e',
+        btnBg: '#e8e4f0',
+        btnColor: '#2d2a4e',
+        btnActiveBg: '#d0c8e8',
+        orbShadows: true,
+    },
+    cosmos: {
+        pipeBg: '#0d0d2b',
+        pipeBorder: '1px solid rgba(100,120,255,0.2)',
+        pipeShadow: 'inset 0 2px 20px rgba(100,120,255,0.15), 0 0 30px rgba(100,120,255,0.08)',
+        areaBg: '#0d0d2b',
+        areaBorder: '1px solid rgba(100,120,255,0.12)',
+        textColor: '#d0d8ff',
+        btnBg: 'rgba(100,120,255,0.1)',
+        btnColor: '#b0c0ff',
+        btnActiveBg: 'rgba(100,120,255,0.25)',
+        orbShadows: true,
+    },
+    sketch: {
+        pipeBg: '#faf6ee',
+        pipeBorder: '2px solid #c8b898',
+        pipeShadow: '3px 3px 0px rgba(80,60,40,0.08)',
+        areaBg: '#faf6ee',
+        areaBorder: '2px solid #d0c0a0',
+        textColor: '#504028',
+        btnBg: '#ede4d4',
+        btnColor: '#504028',
+        btnActiveBg: '#d8c8b0',
+        orbShadows: false,
+    },
+    glass: {
+        pipeBg: 'rgba(220,200,255,0.25)',
+        pipeBorder: '1px solid rgba(160,140,200,0.25)',
+        pipeShadow: 'inset 0 2px 20px rgba(168,130,255,0.1), 0 4px 20px rgba(168,130,255,0.08)',
+        areaBg: 'rgba(220,200,255,0.15)',
+        areaBorder: '1px solid rgba(160,140,200,0.2)',
+        textColor: '#e0d0f0',
+        btnBg: 'rgba(200,180,255,0.15)',
+        btnColor: '#d0c0f0',
+        btnActiveBg: 'rgba(200,180,255,0.35)',
+        orbShadows: true,
+    },
+};
+
+function applyTheme(theme) {
+    const s = themes[theme] || themes.classic;
+    const area = document.getElementById('interactive-area');
+    const pipe = document.getElementById('demo-pipeline');
+    const orbs = document.querySelectorAll('.mo-interactive-orb');
+    const btns = document.querySelectorAll('.mo-theme-btn');
+    const text = document.querySelector('.mo-interactive-area p');
+
+    // 交互区域背景
+    area.style.background = s.areaBg;
+    area.style.borderColor = s.areaBorder.replace(/^1px solid /, '');
+    area.style.color = s.textColor;
+    if (text) text.style.color = s.textColor;
+
+    // 管道样式
+    pipe.style.background = s.pipeBg;
+    pipe.style.border = s.pipeBorder;
+    pipe.style.boxShadow = s.pipeShadow;
+
+    // 按钮
+    btns.forEach(b => {
+        b.style.background = s.btnBg;
+        b.style.color = s.btnColor;
+        b.style.border = `1px solid ${s.btnActiveBg || s.btnBg}`;
+        if (b.dataset.theme === theme) {
+            b.style.background = s.btnActiveBg;
+            b.style.borderColor = 'transparent';
+        } else {
+            b.style.background = s.btnBg;
+        }
+    });
+
+    // ── 球体：使用 Memory Orbs 插件实际的球体样式公式 ──
+    const orbColors = ['#fbeb37','#8abdf5','#ff9185','#b388ff','#df94ff','#75eaa6','blended'];
+    orbs.forEach((orb, i) => {
+        const c = orb.dataset.color || orbColors[i] || '#888';
+        const isBlended = c === 'blended';
+        const { r, g, b } = isBlended ? { r:200, g:200, b:200 } : hexToRgb(c);
+        const glow = makeGlow(c, 0.6);
+        const glass = theme === 'glass';
+
+        // 非混合球的基础背景公式 = makeGradient(color)
+        const makeGrad = (hex, highlightAmt, darkenAmt) => {
+            const hl = lighten(hex, highlightAmt);
+            const dk = darken(hex, darkenAmt);
+            return `radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), transparent 50%), linear-gradient(135deg, ${hl} 0%, ${hex} 50%, ${dk} 100%)`;
+        };
+
+        // 玻璃主题的背景公式
+        const makeGlassGrad = (hex) => {
+            const hl = lighten(hex, 0.55);
+            const dk = darken(hex, 0.12);
+            return `radial-gradient(circle at 30% 22%, rgba(255,255,255,0.88), rgba(255,255,255,0.2) 20%, transparent 40%), linear-gradient(145deg, ${hl} 0%, ${hex} 45%, ${dk} 100%)`;
+        };
+
+        // 混合球：conic-gradient 切分
+        const makeConic = (colors) => {
+            const n = colors.length;
+            const seg = 360 / n;
+            const stops = colors.map((col, i) => `${col} ${i * seg}deg ${(i + 1) * seg}deg`).join(', ');
+            return `radial-gradient(circle at 35% 25%, rgba(255,255,255,0.45) 0%, transparent 40%), conic-gradient(${stops})`;
+        };
+
+        if (isBlended) {
+            const blendColors = ['#fbeb37','#8abdf5','#ff9185','#75eaa6','#df94ff'];
+            orb.style.background = makeConic(blendColors);
+            orb.style.boxShadow = `0 0 14px rgba(200,180,255,0.15), 0 0 28px rgba(200,180,255,0.08), inset 0 -3px 8px rgba(0,0,0,0.1), inset 0 3px 8px rgba(255,255,255,0.3)`;
+            orb.style.border = glass ? '2px solid rgba(200,180,255,0.4)' : 'none';
+        } else if (glass) {
+            orb.style.background = makeGlassGrad(c);
+            orb.style.boxShadow = `0 0 12px ${glow}, 0 0 24px ${glow}, inset 0 -3px 8px rgba(0,0,0,0.12), inset 0 3px 8px rgba(255,255,255,0.3)`;
+            orb.style.border = `2px solid rgba(${Math.min(r+70,255)},${Math.min(g+70,255)},${Math.min(b+70,255)},0.45)`;
+        } else {
+            orb.style.background = makeGrad(c, 0.85, 0.1);
+            orb.style.boxShadow = `0 0 12px ${glow}, 0 0 24px ${glow}, inset 0 -3px 8px rgba(0,0,0,0.12), inset 0 3px 8px rgba(255,255,255,0.3)`;
+            orb.style.border = 'none';
+        }
+        orb.style.opacity = '1';
+    });
+}
+
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.mo-theme-btn');
+    if (!btn) return;
+    e.stopPropagation();
+    document.querySelectorAll('.mo-theme-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyTheme(btn.dataset.theme);
+});
+
+// ── 迷你物理管道引擎（与插件代码一致） ──
+(function(){
+    const pipe = document.getElementById('physics-pipeline');
+    if (!pipe) return;
+    const ballEls = pipe.querySelectorAll('.physics-ball');
+    if (ballEls.length === 0) return;
+
+    const ORB_SIZE = 44;
+    const RADIUS = ORB_SIZE / 2;
+    const GAP = 6;
+    // 以下常量与插件 _initPipelinePhysicsInner 一致
+    const FRICTION = 0.94;
+    const BOUNCE = 0.65;
+    const MIN_VX = 0.03;
+    const MIN_VY = 0.03;
+    const GRAVITY = 0.18;
+    const WALL_FRICTION = 0.55;
+    const RESTITUTION = 0.75;
+
+    // 坐标系统：
+    // x = 左边缘距离（CSS left），增大 = 向右
+    // y = 上边缘距离（CSS top），增大 = 向下
+    // 底部目标：ball.y + ORB_SIZE = pipelineH（贴底）
+
+    const balls = [];
+    const pipeW = pipe.clientWidth || 360;
+    const pipeH = pipe.clientHeight || 80;
+    const startX = 16;
+
+    ballEls.forEach((el, i) => {
+        const x = startX + i * (ORB_SIZE + GAP);
+        const y = pipeH - ORB_SIZE; // 贴底
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        balls.push({ el, x, y, vx: 0, vy: 0, radius: RADIUS, mass: RADIUS * RADIUS * Math.PI });
+    });
+
+    let dragged = null;
+    let lastMX = 0, lastMY = 0;
+    let isDragging = false;
+    let animId = null;
+    let running = false;
+
+    function getPipeSize() {
+        return { w: pipe.clientWidth || pipeW, h: pipe.clientHeight || pipeH };
+    }
+
+    // 2D弹性碰撞（一维碰撞公式沿法线方向，保持切线速度）
+    function resolveBallCollisions() {
+        for (let i = 0; i < balls.length; i++) {
+            for (let j = i + 1; j < balls.length; j++) {
+                const a = balls[i], b = balls[j];
+                const dx = (b.x + RADIUS) - (a.x + RADIUS);
+                const dy = (b.y + RADIUS) - (a.y + RADIUS);
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const minDist = RADIUS * 2;
+                if (dist >= minDist || dist < 0.001) continue;
+
+                const nx = dx / dist, ny = dy / dist;
+                const overlap = minDist - dist;
+                const relVel = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny;
+
+                if (relVel <= 0.02) {
+                    // 只在分离或微小抖动，只做温和分离
+                    const correction = overlap * 0.5;
+                    a.x -= correction * nx; a.y -= correction * ny;
+                    b.x += correction * nx; b.y += correction * ny;
+                    if (Math.abs(relVel) < 0.08) {
+                        a.vx *= 0.4; a.vy *= 0.4;
+                        b.vx *= 0.4; b.vy *= 0.4;
+                    }
+                    continue;
+                }
+
+                // 一维碰撞公式（带恢复系数，与插件一致）
+                const e = RESTITUTION;
+                const mSum = a.mass + b.mass;
+                const impulse = (1 + e) * relVel / mSum;
+
+                a.vx -= impulse * b.mass * nx;
+                a.vy -= impulse * b.mass * ny;
+                b.vx += impulse * a.mass * nx;
+                b.vy += impulse * a.mass * ny;
+
+                // 按质量比分离重叠
+                a.x -= overlap * (b.mass / mSum) * nx;
+                a.y -= overlap * (b.mass / mSum) * ny;
+                b.x += overlap * (a.mass / mSum) * nx;
+                b.y += overlap * (a.mass / mSum) * ny;
+            }
+        }
+    }
+
+    function step() {
+        const { w, h } = getPipeSize();
+        let anyMoving = false;
+
+        for (const b of balls) {
+            // 水平摩擦力（与插件一致）
+            b.vx *= FRICTION;
+            if (Math.abs(b.vx) < MIN_VX) {
+                b.vx = 0;
+            }
+
+            // 垂直方向：重力 + 垂直摩擦（与插件一致）
+            // 注意：在我们的坐标中 y 增大 = 向下，重力指向下方即 vy 增大
+            const bottomPos = h - ORB_SIZE; // 贴底时 ball.y 的值
+            if (b.y < bottomPos) {
+                b.vy += GRAVITY;              // 重力向下（球未贴底时）
+                b.vy *= WALL_FRICTION;         // 垂直摩擦，让球快速落底
+            } else {
+                b.vy = 0;                      // 贴底后不再施加重力
+            }
+            if (Math.abs(b.vy) < MIN_VY && b.y >= bottomPos) {
+                b.vy = 0;
+            }
+
+            // 更新位置
+            b.x += b.vx;
+            b.y += b.vy;
+
+            // 管壁碰撞（与插件一致）
+            // 左墙
+            if (b.x < 0) {
+                b.x = 0;
+                b.vx = Math.abs(b.vx) * BOUNCE;
+            }
+            // 右墙
+            if (b.x + ORB_SIZE > w) {
+                b.x = w - ORB_SIZE;
+                b.vx = -Math.abs(b.vx) * BOUNCE;
+            }
+            // 天花板
+            if (b.y < 0) {
+                b.y = 0;
+                b.vy = Math.abs(b.vy) * BOUNCE;
+            }
+            // 底部
+            if (b.y > bottomPos) {
+                b.y = bottomPos;
+                b.vy = -Math.abs(b.vy) * BOUNCE;
+                if (Math.abs(b.vy) < 0.5) b.vy = 0;
+            }
+
+            // 更新 DOM
+            b.el.style.left = b.x + 'px';
+            b.el.style.top = b.y + 'px';
+
+            if (Math.abs(b.vx) > MIN_VX || Math.abs(b.vy) > MIN_VY) {
+                anyMoving = true;
+            }
+        }
+
+        resolveBallCollisions();
+
+        if (anyMoving) {
+            animId = requestAnimationFrame(step);
+        } else {
+            running = false;
+            animId = null;
+        }
+    }
+
+    function startPhysics() {
+        if (!running) {
+            running = true;
+            animId = requestAnimationFrame(step);
+        }
+    }
+
+    function getBallAt(e) {
+        const rect = pipe.getBoundingClientRect();
+        const cx = (e.clientX || e.touches?.[0]?.clientX || 0) - rect.left;
+        const cy = (e.clientY || e.touches?.[0]?.clientY || 0) - rect.top;
+        for (const b of balls) {
+            const bcx = b.x + RADIUS, bcy = b.y + RADIUS;
+            const dx = cx - bcx, dy = cy - bcy;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if (dist < RADIUS * 1.2 && dist < RADIUS * 2) return b;
+        }
+        return null;
+    }
+
+    function onDown(e) {
+        const ball = getBallAt(e);
+        if (!ball) return;
+        e.preventDefault();
+        dragged = ball;
+        isDragging = true;
+        const cx = e.clientX || e.touches?.[0]?.clientX || 0;
+        const cy = e.clientY || e.touches?.[0]?.clientY || 0;
+        lastMX = cx; lastMY = cy;
+        dragged.el.style.cursor = 'grabbing';
+        dragged.el.style.zIndex = '10';
+    }
+
+    function onMove(e) {
+        if (!isDragging || !dragged) return;
+        e.preventDefault();
+        const cx = e.clientX || e.touches?.[0]?.clientX || 0;
+        const cy = e.clientY || e.touches?.[0]?.clientY || 0;
+        const dx = (cx - lastMX) * 0.85; // DRAG_FORCE = 0.85
+        const dy = (cy - lastMY) * 0.85;
+        lastMX = cx; lastMY = cy;
+        dragged.x += dx;
+        dragged.y += dy;
+        dragged.vx = dx;
+        dragged.vy = dy;
+        startPhysics();
+    }
+
+    function onUp(e) {
+        if (!isDragging || !dragged) { isDragging = false; return; }
+        isDragging = false;
+        dragged.el.style.cursor = 'grab';
+        dragged.el.style.zIndex = '2';
+        dragged = null;
+        startPhysics();
+    }
+
+    pipe.addEventListener('mousedown', onDown);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    pipe.addEventListener('touchstart', onDown, { passive: false });
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onUp);
+})();
+
+// ── 球体 hover tooltip（与插件一致） ──
+(function(){
+    const tooltip = document.createElement('div');
+    tooltip.className = 'mo-pipeline-tooltip';
+    document.body.appendChild(tooltip);
+
+    function showTooltip(el, text, color) {
+        if (!text) return;
+        tooltip.textContent = text;
+        const c = color || '#888888';
+        tooltip.style.background = `linear-gradient(135deg, ${c}22, ${c}44)`;
+        tooltip.style.border = `1px solid ${c}44`;
+        const rect = el.getBoundingClientRect();
+        tooltip.style.left = (rect.left + rect.width / 2) + 'px';
+        tooltip.style.top = (rect.top - 8) + 'px';
+        tooltip.style.transform = 'translate(-50%, -100%)';
+        requestAnimationFrame(() => tooltip.classList.add('mo-tooltip-visible'));
+    }
+
+    function hideTooltip() {
+        tooltip.classList.remove('mo-tooltip-visible');
+    }
+
+    // 主题切换管道的球
+    document.querySelectorAll('.mo-interactive-orb').forEach(orb => {
+        orb.addEventListener('mouseenter', () => showTooltip(orb, orb.dataset.text, orb.dataset.color));
+        orb.addEventListener('mouseleave', hideTooltip);
+    });
+
+    // 物理管道的球
+    document.querySelectorAll('.physics-ball').forEach(ball => {
+        ball.addEventListener('mouseenter', () => showTooltip(ball, ball.dataset.text, ball.dataset.color));
+        ball.addEventListener('mouseleave', hideTooltip);
+    });
+})();
+</script>
+</body>
+</html>
