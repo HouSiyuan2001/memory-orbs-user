@@ -40,3 +40,11 @@
 ## 👤 作者
 
 **骰子** — [B站: 骰子xCosmology](https://b23.tv/a89jLec)
+
+---
+
+## 🙏 致谢
+
+- **SmileySans-Oblique**（得意黑斜体） — 由 [atelier-anchor](https://github.com/atelier-anchor/smiley-sans) 开源，使用 [SIL Open Font License 1.1](https://github.com/atelier-anchor/smiley-sans/blob/main/LICENSE)
+- Pixar《头脑特工队》 — 灵感来源
+- Obsidian 插件社区
