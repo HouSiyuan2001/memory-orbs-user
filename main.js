@@ -312,31 +312,27 @@ var MemoryOrbsEmbedRenderer = class {
       const dayMemories = await this.parser.getMemories(range.start, range.end);
       if (renderVersion !== this.renderVersion) return;
       loading.remove();
-      const isLimited = !this.plugin.settings.activated;
-      let displayDays = dayMemories;
-      if (isLimited) {
-        const today = this.getTodayString();
-        displayDays = dayMemories.filter((d) => d.date === today);
+      if (!this.plugin.settings.activated) {
+        const banner = body.createDiv({
+          cls: "mo-activation-banner mo-activation-banner-embed"
+        });
+        banner.createSpan({ text: "\u{1F512} \u8BF7\u5148\u6FC0\u6D3B Memory Orbs \u4EE5\u67E5\u770B\u8BB0\u5FC6\u7403" });
+        const btn = banner.createEl("button", {
+          text: "\u{1F511} \u6FC0\u6D3B",
+          cls: "mod-cta"
+        });
+        btn.addEventListener("click", () => {
+          new ActivateModal(this.plugin.app, this.plugin).open();
+        });
+        return;
       }
-      const allEntries = displayDays.flatMap((day) => day.entries);
+      const allEntries = dayMemories.flatMap((day) => day.entries);
       if (allEntries.length === 0) {
         const empty = body.createDiv({ cls: "mo-empty" });
         empty.createSpan({ text: "\u8FD9\u4E2A\u65F6\u95F4\u6BB5\u8FD8\u6CA1\u6709\u8BB0\u5FC6\u7403 \u2728" });
-        if (isLimited) {
-          empty.createDiv({
-            cls: "mo-activation-banner",
-            text: "\u{1F511} \u672A\u6FC0\u6D3B\uFF0C\u4EC5\u5C55\u793A\u4ECA\u5929\u3002\u8BF7\u6FC0\u6D3B\u4EE5\u89E3\u9501\u5168\u90E8\u529F\u80FD\u3002"
-          });
-        }
         return;
       }
       this.createEmbedPipelines(body, allEntries, tooltipEl);
-      if (isLimited) {
-        body.createDiv({
-          cls: "mo-activation-banner mo-activation-banner-embed",
-          text: "\u{1F511} \u672A\u6FC0\u6D3B\uFF0C\u4EC5\u5C55\u793A\u4ECA\u5929\u3002\u8BF7\u5728\u63D2\u4EF6\u8BBE\u7F6E\u4E2D\u6FC0\u6D3B\u3002"
-        });
-      }
     } catch (e) {
       loading.remove();
       body.createDiv({ cls: "mo-empty", text: "\u5D4C\u5165\u8BB0\u5FC6\u7403\u52A0\u8F7D\u5931\u8D25\u4E86 \u{1F622}" });
@@ -554,17 +550,22 @@ var MemoryOrbsView = class extends import_obsidian.ItemView {
     let statsBtn = null;
     if (isLimited) {
       toolbar = container.createDiv({ cls: "mo-toolbar" });
-      const limitedNav = toolbar.createDiv({ cls: "mo-nav" });
-      limitedNav.createDiv({ cls: "mo-nav-title", text: "\u4ECA\u65E5\u8BB0\u5FC6\u7403" });
+      const lock = toolbar.createDiv({ cls: "mo-nav" });
+      lock.createDiv({ cls: "mo-nav-title", text: "\u{1F512} Memory Orbs \u5DF2\u9501\u5B9A" });
       const activateBtn = toolbar.createEl("button", {
         cls: "mo-theme-btn mod-cta",
-        text: "\u{1F511} \u6FC0\u6D3B\u4EE5\u89E3\u9501\u5168\u90E8\u529F\u80FD"
+        text: "\u{1F511} \u6FC0\u6D3B\u4EE5\u89E3\u9501"
       });
       activateBtn.title = "\u6FC0\u6D3B Memory Orbs";
       activateBtn.addEventListener("click", () => {
         new ActivateModal(this.plugin.app, this.plugin).open();
       });
-    } else {
+      const emptyDiv = container.createDiv({ cls: "mo-empty" });
+      emptyDiv.createSpan({ text: "\u8BF7\u70B9\u51FB\u4E0A\u65B9\u300C\u6FC0\u6D3B\u300D\u6309\u94AE\u89E3\u9501\u5168\u90E8\u529F\u80FD \u2728" });
+      this._cleanupFns.push(() => {
+      });
+      if (scroll) scroll.remove();
+      return;
       toolbar = container.createDiv({ cls: "mo-toolbar" });
       const nav = toolbar.createDiv({ cls: "mo-nav" });
       prevBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25C0" });
