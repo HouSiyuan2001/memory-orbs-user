@@ -234,8 +234,16 @@ body{
 .t-glass .mini-orb{outline:2px solid rgba(255,255,255,0.4);outline-offset:1px;animation:gl-fl 4.5s ease-in-out infinite}
 .t-glass .mini-orb:nth-child(2n){animation-delay:.6s}.t-glass .mini-orb:nth-child(3n){animation-delay:1.2s}
 @keyframes gl-fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.multi-row-demo{display:flex;flex-direction:column;gap:10px;margin:18px 0}
-.mr-pipeline{height:68px;border-radius:26px;position:relative;background:var(--bg-c);border:1px solid var(--bd);display:flex;align-items:flex-end;justify-content:center;gap:6px;padding:0 24px}
+.demo-pipeline-wrap.interactive{padding:16px;min-height:144px}
+.demo-pipeline-wrap.multi{padding:16px;min-height:250px}
+.demo-pipeline-row{position:relative}
+.demo-multi-pipeline{display:flex;flex-direction:column;gap:12px}
+.demo-orbs-row{touch-action:none}
+.demo-orb-wrapper{will-change:transform}
+.demo-pipeline-row .demo-pipeline{height:66px}
+.demo-pipeline-row-top .demo-pipeline{border-bottom-left-radius:18px;border-bottom-right-radius:18px}
+.demo-pipeline-row-middle .demo-pipeline{border-radius:18px}
+.demo-pipeline-row-bottom .demo-pipeline{border-top-left-radius:18px;border-top-right-radius:18px}
 .code-blk{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:16px 20px;font-family:'SF Mono','Fira Code',monospace;font-size:.85em;color:var(--ac);overflow-x:auto;margin:14px 0}
 .f-item{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:18px 22px;margin-bottom:10px}
 .f-item h3{color:var(--tx-b)}
@@ -449,22 +457,9 @@ body{
 <!-- ═══════ 多排管道 ═══════ -->
 <section class="sec" id="pipeline">
     <h2>多排管道</h2>
-    <p class="sec-sub">球数超过一排时自动换行，每根管道独立运作</p>
-    <div class="multi-row-demo">
-        <div class="mr-pipeline">
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 12px rgba(251,235,55,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 12px rgba(138,189,245,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--ang) 40%,#c05040 80%,#5a1810);box-shadow:0 0 12px rgba(255,145,133,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--dis) 40%,#4a9070 80%,#1a4028);box-shadow:0 0 12px rgba(117,234,166,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 12px rgba(223,148,255,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-        </div>
-        <div class="mr-pipeline">
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--anx) 40%,#c07020 80%,#5a3008);box-shadow:0 0 12px rgba(255,169,71,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--adm) 40%,#00c090 80%,#005030);box-shadow:0 0 12px rgba(26,255,209,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--emb) 40%,#c06080 80%,#502028);box-shadow:0 0 12px rgba(255,168,212,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--bor) 40%,#4a6080 80%,#1a2830);box-shadow:0 0 12px rgba(111,148,184,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--nos) 40%,#888 80%,#333);box-shadow:0 0 12px rgba(204,204,204,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-        </div>
+    <p class="sec-sub">球数超过单排容量时按插件逻辑自动分行，每根管道独立响应拖拽与碰撞</p>
+    <div class="demo-pipeline-wrap multi" id="multi-pipeline-demo">
+        <div class="demo-multi-pipeline" id="multi-pipeline-group"></div>
     </div>
     <div class="f-item"><h3>🔄 自动换行</h3><p>超出单排容量后，自动创建下一根管道，每根独立运作，物理引擎确保排列整齐。</p></div>
 </section>
@@ -472,8 +467,8 @@ body{
 <section class="sec" id="markdown">
     <h2>Markdown 嵌入</h2>
     <p class="sec-sub">在任何笔记中用代码块插入记忆球管道</p>
-    <div class="code-blk">```memory-orbs<br>type: pipeline<br>emotions: 快乐, 伤心, 焦虑<br>theme: cosmos<br>```</div>
-    <p style="color:var(--tx-dim);font-size:.85em;text-align:center;margin-top:12px">复制到 Obsidian 中即可看到可视化管道 ✨</p>
+    <div class="code-blk">```memory-orbs<br>date: 2026-05-02<br>mode: week<br>theme: cosmos<br>minimal: true<br>```</div>
+    <p style="color:var(--tx-dim);font-size:.85em;text-align:center;margin-top:12px">插件实际支持 <code>date</code> / <code>mode</code> / <code>theme</code> / <code>minimal</code>，也可用 <code>start</code> + <code>end</code> 指定自定义范围。</p>
 </section>
 
 <!-- ═══════ 互动演示（匹配插件逻辑） ═══════ -->
@@ -481,7 +476,7 @@ body{
     <h2>互动演示</h2>
     <p class="sec-sub">拖拽记忆球体验插件物理引擎效果</p>
 
-    <div class="demo-pipeline-wrap" id="demo-pipeline-wrap">
+    <div class="demo-pipeline-wrap interactive" id="demo-pipeline-wrap">
         <div class="demo-pipeline-group" id="demo-pipeline-group"></div>
     </div>
 
@@ -618,7 +613,7 @@ const demoEntries = [
     // Blended (mixed emotions)
     { emotion:emoMap.get('joy'),      emotions:[emoMap.get('joy'),emoMap.get('envy'),emoMap.get('nostalgia')], text:'看到大佬的paper慕了，但学到了好多！', isCore:false },
     // Core memory
-    { emotion:emoMap.get('joy'),      emotions:[emoMap.get('joy'),emoMap.get('adm')], text:'和朋友们一起完成了实验，超有成就感！', isCore:true },
+    { emotion:emoMap.get('joy'),      emotions:[emoMap.get('joy'),emoMap.get('envy')], text:'和朋友们一起完成了实验，超有成就感！', isCore:true },
 ];
 
 /* ═══════ TOC scroll tracking ═══════ */
@@ -637,122 +632,246 @@ const demoEntries = [
     sections.forEach(s=>observer.observe(s));
 })();
 
-/* ═══════ Interactive Demo Pipeline (rewritten - matching plugin logic) ═══════ */
+/* ═══════ Interactive Demo (Canvas, plugin-matching appearance) ═══════ */
 (function(){
-    const group=document.getElementById('demo-pipeline-group');
-    if(!group)return;
+    const cv=document.getElementById('demo-cv');if(!cv)return;
+    const ctx=cv.getContext('2d');if(!ctx)return;
 
-    group.innerHTML='<div class="demo-pipeline" id="demo-pl"><div class="demo-pipeline-floor"></div><div class="demo-orbs-row" id="demo-orbs-row"></div></div>';
-    const pl=document.getElementById('demo-pl');
-    const row=document.getElementById('demo-orbs-row');
-    const tip=document.getElementById('demo-tooltip');
+    const G=0.18, FR=0.94, BO=0.65, WF=0.55, RES=0.75, DF=0.85;
+    const orbR=22, orbD=44;
+    const colors=['#fbeb37','#8abdf5','#ff9185','#75eaa6','#df94ff','#ffa947'];
+    const texts=['今天吃了很好吃的蛋糕，开心！','实验数据又出错了，有点难过...','代码编译又报错，好生气！😤','今天食堂的菜好难吃...','明天的组会还没准备好，好担心','论文deadline快到了，焦虑','看到大佬的paper慕了，但学到了好多！','和朋友们一起完成了实验，超有成就感！'];
+    const entryColors=[['#fbeb37'],['#8abdf5'],['#ff9185'],['#75eaa6'],['#df94ff'],['#ffa947'],['#fbeb37','#1affd1','#cccccc'],['#fbeb37','#1affd1']];
+    const isBl=[false,false,false,false,false,false,true,false];
+    const isCo=[false,false,false,false,false,false,false,true];
 
-    /* ── Build orbs ── */
-    const orbHtml=demoEntries.map(e=>{
-        const color=e.emotion.color; const glow=makeGlow(color); const grad=makeGradient(color);
-        const bl=e.emotions.length>1; const n=bl?e.emotions.length:1;
-        let bg,bs;
-        if(bl){
-            const seg=360/n, hbSeg=seg*0.2;
-            const stops=[]; for(let i=0;i<n;i++){const b0=i*seg;stops.push(`${e.emotions[(i-1+n)%n].color} ${b0}deg`,e.emotions[i].color+" "+(b0+hbSeg)+"deg");}
-            bg='radial-gradient(circle at 35% 25%, rgba(255,255,255,0.5) 0%, transparent 45%), conic-gradient(from var(--rd,0deg),'+stops.join(',')+')';
-            bs=e.emotions.map(c=>'0 0 8px '+makeGlow(c)).join(',')+', 0 0 20px '+glow+', inset 0 -3px 8px rgba(0,0,0,0.12), inset 0 3px 8px rgba(255,255,255,0.3)';
-        } else {
-            bg=grad;
-            bs=e.isCore?`0 0 18px ${glow}, 0 0 40px ${glow}, 0 0 70px ${glow}, inset 0 -3px 8px rgba(0,0,0,0.1), inset 0 3px 8px rgba(255,255,255,0.4)`:`0 0 12px ${glow}, 0 0 24px ${glow}, inset 0 -3px 8px rgba(0,0,0,0.15), inset 0 3px 8px rgba(255,255,255,0.3)`;
-        }
-        let core=''; if(e.isCore) core='<div class="demo-orb-core-pulse" style="border-color:'+glow+'"></div>';
-        return `<div class="demo-orb-wrapper" style="transform:translate(var(--mx,0),var(--my,0))" data-ei="${demoEntries.indexOf(e)}"><div class="demo-orb${e.isCore?' demo-orb-core':''}${bl?' demo-orb-blended':''}" style="background:${bg};box-shadow:${bs}"><div class="demo-orb-inner-glow"></div><div class="demo-orb-highlight"></div><div class="demo-orb-starburst"></div><div class="demo-orb-starburst-v"></div>${core}</div></div>`;
-    }).join('');
-    row.innerHTML=orbHtml;
+    let w=0,h=0,anim=null,drag=null,lx=0,ly=0,hover=null;
+    class Orb{constructor(i,c){this.i=i;this.rx=i*(orbD+4);this.x=this.rx;this.y=0;this.vx=0;this.vy=0;this.r=orbR;this.color=c;this.m=Math.PI*orbR*orbR;}}
+    const orbs=colors.map((c,i)=>new Orb(i,c));
+    orbs.push(new Orb(6,colors[0]));orbs[6].blended=true;orbs[6].bc=entryColors[6];
+    orbs.push(new Orb(7,colors[0]));orbs[7].core=true;orbs[7].blended=true;orbs[7].bc=entryColors[7];
 
-    /* ═══════ Physics ═══════ */
-    const B=44, R=B/2, GAP=4, FX=0.94, BO=0.65, GV=0.18, WF=0.55, DF=0.85, RS=0.75, MX=0.03, MV=0.03, VX=25;
-    const balls=[];
-    document.querySelectorAll('#demo-orbs-row .demo-orb-wrapper').forEach((el,i)=>{
-        balls.push({el,orbEl:el.querySelector('.demo-orb'),rx:i*(B+GAP),x:0,y:0,vx:0,vy:0,r:R,m:Math.PI*R*R});
-    });
-    let running=false,aid=null,drag=null,hover=null,lx=0,ly=0,dragging=false,tipTimer=null,id;
+    function size(){const r=cv.getBoundingClientRect();w=r.width;h=r.height;cv.width=w;cv.height=h;}
+    function gp(e){const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+    function go(o){return o.rx+o.x;}
+    function find(mx,my){for(let i=orbs.length-1;i>=0;i--){const o=orbs[i],ox=go(o)+orbR,oy=h-30-o.y-orbR;if(Math.hypot(mx-ox,my-oy)<orbR*1.3)return o;}return null;}
 
-    const gx=b=>b.rx+b.x;
-    const app=()=>balls.forEach(b=>{b.el.style.setProperty('--mx',b.x+'px');b.el.style.setProperty('--my',(-b.y)+'px');if(b.orbEl.classList.contains('demo-orb-blended'))b.orbEl.style.setProperty('--rd',(b.x/R*180/Math.PI)+'deg')});
-
-    const step=()=>{
-        let mv=false; const tw=row.clientWidth, ph=pl.clientHeight;
-        for(const b of balls){if(b===drag)continue;b.vx*=FX;if(Math.abs(b.vx)<MX)b.vx=0;else{mv=true;b.vx=Math.max(-VX,Math.min(VX,b.vx))}if(b.y>0){b.vy-=GV;b.vy*=WF}else b.vy=0;if(Math.abs(b.vy)<MV&&b.y<=0)b.vy=0;else if(Math.abs(b.vy)>=MV)mv=true;b.x+=b.vx;b.y+=b.vy;if(b.y>ph-B){b.y=ph-B;b.vy=Math.abs(b.vy)*BO}if(b.y<0){b.y=0;b.vy=Math.abs(b.vy)*BO;if(Math.abs(b.vy)<0.5)b.vy=0}const px=gx(b);if(px<0){b.x=-b.rx;b.vx=Math.abs(b.vx)*BO}if(px+B>tw){b.x=tw-B-b.rx;b.vx=-Math.abs(b.vx)*BO}}
-        const s=[...balls].sort((a,b)=>gx(a)-gx(b));
-        for(let i=0;i<s.length-1;i++){const a=s[i],b=s[i+1];if(a===drag||b===drag)continue;const R=gx(a)+a.r,l=gx(b)-b.r;const o=R-l;if(o<=0)continue;const rv=a.vx-b.vx;if(rv<=0.02){const c=o*.5;a.x-=c;b.x+=c;if(Math.abs(rv)<0.08){a.vx*=.4;b.vx*=.4}continue}const e=RS,m1=a.m,m2=b.m,ms=m1+m2;a.vx=((m1-e*m2)*a.vx+(1+e)*m2*b.vx)/ms;b.vx=((m2-e*m1)*b.vx+(1+e)*m1*a.vx)/ms;a.x-=o*(m2/ms);b.x+=o*(m1/ms)}
-        app(); if(mv){aid=requestAnimationFrame(step)}else{running=false;aid=null}}
-    const start=()=>{if(!running){running=true;aid=requestAnimationFrame(step)}};
-
-    /* ── Hit detection ── */
-    const find=(cx,cy)=>{
-        let cl=null,cd=Infinity;
-        balls.forEach(b=>{const r=b.orbEl.getBoundingClientRect(),cx2=r.left+r.width/2,cy2=r.top+r.height/2,dx=cx-cx2,dy=cy-cy2,d=Math.sqrt(dx*dx+dy*dy);if(d<r.width/2*1.3&&d<cd){cl=b;cd=d}});
-        return cl;
-    };
-
-    /* ── Tooltip ── */
-    const showTip=(b)=>{
-        const ei=parseInt(b.el.dataset.ei),e=demoEntries[ei];if(!e)return;
-        const cl=e.emotion.color,rgb=hexToRgb(cl),bl=e.emotions.length>1;
-        tip.textContent=e.text;
-        if(bl){const ss=e.emotions.map((em,i)=>{const p=Math.round(i/(e.emotions.length-1)*100),cr=hexToRgb(em.color);return'rgba('+cr.r+','+cr.g+','+cr.b+',0.82) '+p+'%'}).join(', ');tip.style.background='linear-gradient(90deg, '+ss+')'}else tip.style.background='rgba('+rgb.r+','+rgb.g+','+rgb.b+',0.82)';
+    const tip=document.getElementById('demo-tooltip');let tipT=null;
+    function sTip(o){
+        tip.textContent=texts[o.i];const cols=entryColors[o.i],rgb=hexToRgb(cols[0]);
+        if(cols.length>1){tip.style.background='linear-gradient(90deg,'+cols.map((c,i)=>'rgba('+hexToRgb(c).r+','+hexToRgb(c).g+','+hexToRgb(c).b+',0.82) '+Math.round(i/(cols.length-1)*100)+'%').join(',')+')'}
+        else tip.style.background='rgba('+rgb.r+','+rgb.g+','+rgb.b+',0.82)';
         const lum=(rgb.r*0.299+rgb.g*0.587+rgb.b*0.114)/255;
         tip.style.color=lum>0.55?'rgba(0,0,0,0.75)':'#fff';tip.style.textShadow=lum>0.55?'none':'0 1px 3px rgba(0,0,0,0.3)';
-        const rc=b.orbEl.getBoundingClientRect();tip.style.left=(rc.left+rc.width/2)+'px';tip.style.top=(rc.top-6)+'px';tip.style.transform='translate(-50%,-100%)';
-        tip.classList.add('visible');
-    };
-    const hideTip=()=>{tip.classList.remove('visible');if(tipTimer){clearTimeout(tipTimer);tipTimer=null}};
+        const cr=cv.getBoundingClientRect(),ox=cr.left+go(o)+orbR,oy=cr.top+h-30-o.y-orbD;
+        tip.style.left=ox+'px';tip.style.top=oy+'px';tip.style.transform='translate(-50%,-100%)';tip.classList.add('visible');if(tipT)clearTimeout(tipT);
+    }
+    function hTip(){tip.classList.remove('visible');if(tipT){clearTimeout(tipT);tipT=null;}}
 
-    /* ── Events on pipeline ── */
-    pl.addEventListener('mousedown',e=>{
-        if(e.button!==0)return;const b=find(e.clientX,e.clientY);if(!b)return;
-        e.preventDefault();drag=b;dragging=true;lx=e.clientX;ly=e.clientY;
-        pl.style.cursor='grabbing';hideTip();
-    });
-    pl.addEventListener('touchstart',e=>{
-        const t=e.touches[0],b=find(t.clientX,t.clientY);if(!b)return;
-        drag=b;dragging=true;lx=t.clientX;ly=t.clientY;hideTip();
-    },{passive:false});
-    document.addEventListener('mousemove',e=>{
-        if(dragging){
-            if(!(e.buttons&1)){dragging=false;drag=null;pl.style.cursor='grab';start();return}
-            const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
-            drag.x+=dx*DF;drag.vx=Math.max(-VX,Math.min(VX,dx*DF));drag.y-=dy*DF;drag.vy=-dy*DF;start();
-            return;
-        }
-        const b=find(e.clientX,e.clientY);
-        if(b!==hover){if(hover)hover.el.classList.remove('mo-pipeline-hover');hover=b;if(b)b.el.classList.add('mo-pipeline-hover')}
-        if(b){if(!tip.classList.contains('visible')){clearTimeout(tipTimer);tipTimer=setTimeout(()=>showTip(b),120)}}
-        else hideTip();
-    });
-    document.addEventListener('touchmove',e=>{
-        if(!dragging||!drag)return;const t=e.touches[0];
-        const dx=t.clientX-lx,dy=t.clientY-ly;lx=t.clientX;ly=t.clientY;
-        drag.x+=dx*DF;drag.vx=Math.max(-VX,Math.min(VX,dx*DF));drag.y-=dy*DF;drag.vy=-dy*DF;start();
-    },{passive:false});
-    document.addEventListener('mouseup',()=>{if(dragging){dragging=false;pl.style.cursor='grab';start()}drag=null});
-    document.addEventListener('touchend',()=>{if(dragging){dragging=false;start()}drag=null});
-    pl.addEventListener('mouseleave',()=>{if(hover){hover.el.classList.remove('mo-pipeline-hover');hover=null};hideTip()});
+    function draw(o,ha){
+        ctx.save();const ox=go(o),oy=h-30-o.y-orbR;ctx.translate(ox+orbR,oy+orbR);
+        if(o.blended){const cc=o.bc,n=cc.length;const cg=ctx.createConicGradient(0,0,0);for(let i=0;i<n;i++){cg.addColorStop(i/n,cc[i]);cg.addColorStop(Math.min(1,(i+1)/n),cc[i]);}ctx.fillStyle=cg}
+        else{const g=ctx.createRadialGradient(-orbR*0.3,-orbR*0.35,0,0,0,orbR);g.addColorStop(0,lighten(o.color,0.85));g.addColorStop(0.35,o.color);g.addColorStop(0.8,darken(o.color,0.15));g.addColorStop(1,darken(o.color,0.4));ctx.fillStyle=g}
+        ctx.beginPath();ctx.arc(0,0,orbR,0,Math.PI*2);ctx.fill();
+        const gg=ctx.createRadialGradient(-orbR*0.25,-orbR*0.3,0,0,0,orbR);gg.addColorStop(0,'rgba(255,255,255,0.35)');gg.addColorStop(0.4,'rgba(255,255,255,0.06)');gg.addColorStop(1,'rgba(0,0,0,0.15)');ctx.fillStyle=gg;ctx.fill();
+        ctx.beginPath();ctx.arc(-orbR*0.22,-orbR*0.28,orbR*0.14,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fill();
+        ctx.strokeStyle='rgba(255,255,255,0.18)';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-orbR*0.5,0);ctx.lineTo(orbR*0.5,0);ctx.stroke();ctx.beginPath();ctx.moveTo(0,-orbR*0.5);ctx.lineTo(0,orbR*0.5);ctx.stroke();
+        ctx.beginPath();ctx.arc(0,0,orbR,0,Math.PI*2);ctx.strokeStyle=ha?'rgba(255,255,255,0.55)':'rgba(255,255,255,0.25)';ctx.lineWidth=ha?2.5:2;ctx.stroke();
+        if(o.core){const t=Date.now()/1000;ctx.beginPath();ctx.arc(0,0,orbR+4,0,Math.PI*2);ctx.strokeStyle='rgba(255,255,255,'+(0.15+0.08*Math.sin(t*Math.PI))+')';ctx.lineWidth=3;ctx.stroke()}
+        ctx.restore();
+    }
 
-    app();
+    function step(){
+        ctx.clearRect(0,0,w,h);const fy=h-30-orbR;
+        ctx.fillStyle='rgba(255,255,255,0.02)';ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(14,h-70-orbR,w-28,70,30);ctx.fill();ctx.stroke();
+        ctx.beginPath();ctx.moveTo(40,fy+orbR+4);ctx.lineTo(w-40,fy+orbR+4);ctx.strokeStyle='rgba(100,150,255,0.18)';ctx.lineWidth=1;ctx.stroke();
+        for(const o of orbs){if(o!==drag){o.vy-=G;o.x+=o.vx;o.y+=o.vy;o.vx*=FR;o.vy*=WF;if(o.y>fy){o.y=fy;o.vy*=-BO;if(Math.abs(o.vy)<0.5)o.vy=0}if(go(o)<8){o.x=8-o.rx;o.vx*=-BO}if(go(o)+orbD>w-8){o.x=w-8-orbD-o.rx;o.vx*=-BO}}}
+        const s=[...orbs].sort((a,b)=>go(a)-go(b));
+        for(let i=0;i<s.length-1;i++){const a=s[i],b=s[i+1];if(a===drag||b===drag)continue;const aR=go(a)+orbD,bL=go(b),ov=aR-bL;if(ov<=0)continue;const rv=a.vx-b.vx;if(rv<=0.02){const c=ov*.5;a.x-=c;b.x+=c;if(Math.abs(rv)<0.08){a.vx*=.4;b.vx*=.4}}else{const mi=a.m+b.m;a.vx=((a.m-RES*b.m)*a.vx+(1+RES)*b.m*b.vx)/mi;b.vx=((b.m-RES*a.m)*b.vx+(1+RES)*a.m*b.vx)/mi;a.x-=ov*(b.m/mi);b.x+=ov*(a.m/mi)}}
+        for(const o of orbs){if(o!==drag&&Math.abs(o.vx)<0.03&&Math.abs(o.y-fy)<1){let q=true;for(const p of orbs){if(p!==drag&&(Math.abs(p.vx)>=0.03||Math.abs(p.y-fy)>=1)){q=false;break}}if(q){o.vx=o.vy=0;o.y=fy}}}
+        for(const o of orbs)draw(o,o===hover);
+        anim=requestAnimationFrame(step);
+    }
 
-    /* ── Mini-orb tooltips (emotion-specific, color-coded) ── */
-    document.querySelectorAll('.mini-orb').forEach((orb,i)=>{
+    cv.addEventListener('mousedown',e=>{const p=gp(e),o=find(p.x,p.y);if(o){drag=o;o.vx=o.vy=0;lx=p.x;ly=p.y;hTip()}});
+    document.addEventListener('mousemove',e=>{const p=gp(e);if(drag){drag.x+=(p.x-lx)*DF;drag.vx=(p.x-lx)*DF;drag.vy=(p.y-ly)*DF;lx=p.x;ly=p.y;return}const o=find(p.x,p.y);if(o!==hover){hover=o;cv.style.cursor=o?'grab':'default'}if(o&&!tip.classList.contains('visible')&&!tipT){tipT=setTimeout(()=>sTip(o),150)}else if(!o)hTip()});
+    document.addEventListener('mouseup',()=>{drag=null});
+    cv.addEventListener('mouseleave',()=>{drag=null;hover=null;hTip();cv.style.cursor='default'});
+    window.addEventListener('resize',size);size();anim=requestAnimationFrame(step);
+})();
+
+/* ── Mini-orb tooltips (emotion-colored) ── */
+(function(){
+    const tip=document.getElementById('demo-tooltip');
+    document.querySelectorAll('.mini-orb-old-disabled').forEach((orb,i)=>{
         orb.addEventListener('mouseenter',function(){
-            const idx=i%demoEntries.length,entry=demoEntries[idx],cl=entry.emotion.color,rgb=hexToRgb(cl),lum=(rgb.r*0.299+rgb.g*0.587+rgb.b*0.114)/255;
-            tip.textContent=entry.text;tip.style.background='rgba('+rgb.r+','+rgb.g+','+rgb.b+',0.82)';tip.style.color=lum>0.55?'rgba(0,0,0,0.75)':'#fff';tip.style.textShadow=lum>0.55?'none':'0 1px 3px rgba(0,0,0,0.3)';
-            const r=orb.getBoundingClientRect();tip.style.left=(r.left+r.width/2)+'px';tip.style.top=(r.top-6)+'px';tip.style.transform='translate(-50%,-100%)';
-            tip.classList.add('visible');
+            const idx=i%demoEntries.length,entry=demoEntries[idx],cl=entry.emotion.color,rgb=hexToRgb(cl);
+            tip.textContent=entry.text;tip.style.background='rgba('+rgb.r+','+rgb.g+','+rgb.b+',0.82)';
+            const lum=(rgb.r*0.299+rgb.g*0.587+rgb.b*0.114)/255;
+            tip.style.color=lum>0.55?'rgba(0,0,0,0.75)':'#fff';
+            tip.style.textShadow=lum>0.55?'none':'0 1px 3px rgba(0,0,0,0.3)';
+            const r=orb.getBoundingClientRect();tip.style.left=(r.left+r.width/2)+'px';tip.style.top=(r.top-6)+'px';
+            tip.style.transform='translate(-50%,-100%)';tip.classList.add('visible');
         });
         orb.addEventListener('mouseleave',()=>tip.classList.remove('visible'));
     });
 })();
 
-/* ═══════ Modal / Auth functions (unchanged) ═══════ */
+/* ═══════ Plugin-like DOM pipeline demos ═══════ */
+(function(){
+    const tip=document.getElementById('demo-tooltip');
+    const BALL=44,R=22,GAP=4;
+    const tokenIndex={joy:0,sad:1,ang:2,dis:3,fea:4,anx:5,adm:6,emb:7,bor:8,nos:9};
+    function entryByToken(token){
+        const idx=tokenIndex[token]??0;
+        if(idx<6)return demoEntries[idx];
+        return {emotion:emotions[idx],emotions:[emotions[idx]],text:demoEntries[idx%demoEntries.length].text,isCore:false};
+    }
+    function miniEntry(orb){
+        const m=(orb.getAttribute('style')||'').match(/var\(--(joy|sad|ang|dis|fea|anx|adm|emb|bor|nos)\)/);
+        return entryByToken(m?m[1]:'joy');
+    }
+    function lum(hex){const c=hexToRgb(hex);return(c.r*.299+c.g*.587+c.b*.114)/255}
+    function showTip(entry,anchor){
+        if(!tip||!entry)return;
+        const color=entry.emotion.color,colors=entry.emotions||[entry.emotion];
+        tip.textContent=entry.text;
+        if(colors.length>1){
+            tip.style.background='linear-gradient(90deg,'+colors.map((em,i)=>{
+                const c=hexToRgb(em.color),pct=Math.round(i/(colors.length-1)*100);
+                return`rgba(${c.r},${c.g},${c.b},0.82) ${pct}%`;
+            }).join(',')+')';
+        }else{
+            const c=hexToRgb(color);
+            tip.style.background=`rgba(${c.r},${c.g},${c.b},0.82)`;
+        }
+        const light=lum(color)>0.55;
+        tip.style.color=light?'rgba(0,0,0,0.75)':'#fff';
+        tip.style.textShadow=light?'none':'0 1px 3px rgba(0,0,0,0.3)';
+        const r=anchor.getBoundingClientRect();
+        tip.style.left=(r.left+r.width/2)+'px';
+        tip.style.top=(r.top-8)+'px';
+        tip.style.transform='translate(-50%,-100%)';
+        requestAnimationFrame(()=>tip.classList.add('visible'));
+    }
+    function hideTip(){if(tip)tip.classList.remove('visible')}
+    function conicStops(colors){
+        const seg=360/colors.length,half=Math.max(8,Math.min(15,seg*.15)),out=[];
+        for(let i=0;i<colors.length;i++){
+            const b=i*seg;
+            out.push(`${colors[(i-1+colors.length)%colors.length]} ${b}deg`);
+            out.push(`${colors[i]} ${b+half*2}deg`);
+        }
+        return out.join(',');
+    }
+    function orbEl(entry){
+        const wrap=document.createElement('div');
+        const color=entry.emotion.color,colors=entry.emotions.map(e=>e.color),glow=makeGlow(color),blended=colors.length>1;
+        wrap.className='demo-orb-wrapper';
+        wrap.dataset.text=entry.text;
+        wrap.dataset.color=color;
+        wrap.dataset.colors=colors.join(',');
+        const orb=document.createElement('div');
+        orb.className='demo-orb'+(entry.isCore?' demo-orb-core':'')+(blended?' demo-orb-blended':'');
+        if(blended){
+            orb.style.setProperty('--roll-deg','0deg');
+            orb.style.background=`radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 45%),conic-gradient(from var(--roll-deg,0deg),${conicStops(colors)})`;
+            orb.style.boxShadow=colors.map(c=>`0 0 10px ${makeGlow(c)}`).join(',')+`,0 0 22px ${glow},inset 0 -3px 8px rgba(0,0,0,0.12),inset 0 3px 8px rgba(255,255,255,0.3)`;
+        }else{
+            orb.style.background=makeGradient(color);
+            orb.style.boxShadow=entry.isCore?`0 0 20px ${glow},0 0 45px ${glow},0 0 80px ${glow},inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.4)`:`0 0 15px ${glow},0 0 30px ${glow},inset 0 -3px 8px rgba(0,0,0,0.15),inset 0 3px 8px rgba(255,255,255,0.3)`;
+        }
+        orb.innerHTML='<div class="demo-orb-inner-glow"></div><div class="demo-orb-highlight"></div><div class="demo-orb-starburst"></div><div class="demo-orb-starburst-v"></div>';
+        if(entry.isCore){
+            const p=document.createElement('div');
+            p.className='demo-orb-core-pulse';
+            p.style.borderColor=glow;
+            orb.appendChild(p);
+        }
+        wrap.appendChild(orb);
+        return wrap;
+    }
+    function makePipeline(parent,entries,rowClass){
+        const shell=document.createElement('div');
+        shell.className='demo-pipeline-row '+(rowClass||'');
+        shell.innerHTML='<div class="demo-pipeline"><div class="demo-pipeline-floor"></div><div class="demo-orbs-row"></div></div>';
+        const row=shell.querySelector('.demo-orbs-row');
+        entries.forEach(e=>row.appendChild(orbEl(e)));
+        parent.appendChild(shell);
+        initPhysics(shell.querySelector('.demo-pipeline'),row);
+    }
+    function initPhysics(pipeline,track){
+        const balls=[...track.querySelectorAll('.demo-orb-wrapper')].map((el,i)=>({el,orbEl:el.querySelector('.demo-orb'),restX:i*(BALL+GAP)+R,x:0,y:0,vx:0,vy:0,r:R,m:Math.PI*R*R}));
+        const F=.94,B=.65,MIN=.03,D=.85,G=.18,W=.55,MAX=25,E=.75;
+        let running=false,raf=null,drag=null,hover=null,lastX=0,lastY=0,timer=null;
+        const cx=b=>b.restX+b.x;
+        function apply(){balls.forEach(b=>{b.el.style.setProperty('--mx',b.x+'px');b.el.style.setProperty('--my',(-b.y)+'px');if(b.orbEl.classList.contains('demo-orb-blended'))b.orbEl.style.setProperty('--roll-deg',(b.x/b.r*180/Math.PI)+'deg')})}
+        function find(x,y){
+            const r=track.getBoundingClientRect(),pad=parseFloat(getComputedStyle(track).paddingLeft)||0,lx=x-r.left-pad,ly=y-r.top;
+            let hit=null,dist=Infinity;
+            balls.forEach(b=>{const d=Math.hypot(lx-cx(b),ly-(r.height-b.r-b.y));if(d<b.r*1.25&&d<dist){hit=b;dist=d}});
+            return hit;
+        }
+        function step(){
+            let moving=false,width=track.clientWidth,height=track.clientHeight;
+            balls.forEach(b=>{
+                if(b!==drag){
+                    b.vx*=F;if(Math.abs(b.vx)<MIN)b.vx=0;else{b.vx=Math.max(-MAX,Math.min(MAX,b.vx));moving=true}
+                    if(b.y>0){b.vy-=G;b.vy*=W}else b.vy=0;
+                    if(Math.abs(b.vy)<MIN&&b.y<=0)b.vy=0;else if(Math.abs(b.vy)>=MIN)moving=true;
+                    b.x+=b.vx;b.y+=b.vy;
+                }
+                const maxY=height-BALL;
+                if(b.y>maxY){b.y=maxY;b.vy=-Math.abs(b.vy)*B}
+                if(b.y<0){b.y=0;b.vy=Math.abs(b.vy)*B;if(Math.abs(b.vy)<.5)b.vy=0}
+                if(cx(b)-R<0){b.x=R-b.restX;b.vx=Math.abs(b.vx)*B}
+                if(cx(b)+R>width){b.x=width-R-b.restX;b.vx=-Math.abs(b.vx)*B}
+            });
+            const sorted=[...balls].sort((a,b)=>cx(a)-cx(b));
+            for(let i=0;i<sorted.length-1;i++){
+                const a=sorted[i],b=sorted[i+1];if(a===drag||b===drag)continue;
+                const overlap=(cx(a)+R)-(cx(b)-R);if(overlap<=0)continue;
+                const rel=a.vx-b.vx;
+                if(rel<=.02){const c=overlap*.5;a.x-=c;b.x+=c;if(Math.abs(rel)<.08){a.vx*=.4;b.vx*=.4}continue}
+                const sum=a.m+b.m,av=a.vx,bv=b.vx;
+                a.vx=((a.m-E*b.m)*av+(1+E)*b.m*bv)/sum;
+                b.vx=((b.m-E*a.m)*bv+(1+E)*a.m*av)/sum;
+                a.x-=overlap*(b.m/sum);b.x+=overlap*(a.m/sum);moving=true;
+            }
+            apply();
+            if(moving)raf=requestAnimationFrame(step);else{running=false;raf=null}
+        }
+        function start(){if(!running){running=true;raf=requestAnimationFrame(step)}}
+        track.addEventListener('mousedown',e=>{if(e.button!==0)return;const b=find(e.clientX,e.clientY);if(!b)return;e.preventDefault();drag=b;lastX=e.clientX;lastY=e.clientY;b.vx=b.vy=0;track.style.cursor='grabbing';hideTip()});
+        document.addEventListener('mousemove',e=>{
+            if(drag){
+                if((e.buttons&1)===0){drag=null;track.style.cursor='';start();return}
+                const dx=e.clientX-lastX,dy=e.clientY-lastY;lastX=e.clientX;lastY=e.clientY;
+                drag.x+=dx*D;drag.y-=dy*D;drag.vx=Math.max(-MAX,Math.min(MAX,dx*D));drag.vy=-dy*D;start();return;
+            }
+            const b=find(e.clientX,e.clientY);
+            if(b!==hover){if(hover)hover.el.classList.remove('mo-pipeline-hover');hover=b;if(hover)hover.el.classList.add('mo-pipeline-hover')}
+            if(timer)clearTimeout(timer);
+            if(b)timer=setTimeout(()=>{const colors=b.el.dataset.colors.split(',').map(c=>emotions.find(em=>em.color===c)).filter(Boolean);showTip({emotion:emotions.find(em=>em.color===b.el.dataset.color)||demoEntries[0].emotion,emotions:colors,text:b.el.dataset.text},b.orbEl)},120);else hideTip();
+        });
+        document.addEventListener('mouseup',()=>{if(drag){drag=null;track.style.cursor='';start()}});
+        track.addEventListener('mouseleave',()=>{if(hover)hover.el.classList.remove('mo-pipeline-hover');hover=null;if(timer)clearTimeout(timer);hideTip()});
+        apply();
+    }
+    const interactive=document.getElementById('demo-pipeline-group');
+    if(interactive)makePipeline(interactive,demoEntries,'');
+    const multi=document.getElementById('multi-pipeline-group');
+    if(multi){
+        const entries=[...demoEntries,...demoEntries.slice(0,6),demoEntries[6],demoEntries[7]],perRow=6,total=Math.ceil(entries.length/perRow);
+        for(let i=0;i<total;i++)makePipeline(multi,entries.slice(i*perRow,(i+1)*perRow),i===0?'demo-pipeline-row-top':i===total-1?'demo-pipeline-row-bottom':'demo-pipeline-row-middle');
+    }
+    document.querySelectorAll('.mini-orb').forEach(orb=>{
+        orb.addEventListener('mouseenter',()=>showTip(miniEntry(orb),orb));
+        orb.addEventListener('mouseleave',hideTip);
+    });
+})();
 
-/* ═══════ Modal / Auth functions (unchanged) ═══════ */
+/* ═══════ Modal / Auth functions ═══════ */
 function openM(id){document.getElementById(id).classList.add('ac')}
 let buyAfterLogin=false;
 document.querySelectorAll('.mol').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('ac')}));
