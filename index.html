@@ -1000,7 +1000,7 @@ function copyC(id){navigator.clipboard.writeText(document.getElementById(id).tex
 function closeM(id){document.getElementById(id).classList.remove('ac')}
 function handleBuyClick(){const tk=localStorage.getItem('mo_tk');if(tk){openM('purchase-modal');updatePurchaseHint();return}buyAfterLogin=true;openM('login-modal')}
 function getPaymentMessage(){
-    const em=localStorage.getItem('mo_em')||'xxxxxxx@qq.com';
+    const em='xxxxxx@qq.com';
     return `我已通过支付宝付款购买 Memory Orbs。账号邮箱：${em}。付款金额：14.90 元。支付宝付款订单编号：请填写。付款截图：已附。请帮我核对收款并开通激活码。`;
 }
 function updatePurchaseHint(){
