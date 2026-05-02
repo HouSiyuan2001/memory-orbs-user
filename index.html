@@ -298,9 +298,9 @@ body{
 .mod-close:hover{color:var(--tx-b)}
 .mod h2{font-size:1.4em;color:var(--tx-b);margin-bottom:8px;text-align:center}
 .mod-desc{color:var(--tx-dim);font-size:.85em;text-align:center;margin-bottom:20px}
-.qr-wrap{text-align:center;margin:14px 0;padding:18px;background:#fff;border-radius:var(--r);box-shadow:0 18px 40px rgba(0,0,0,0.18)}
+.qr-wrap{text-align:center;margin:14px 0;padding:18px;background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);box-shadow:0 18px 40px rgba(0,0,0,0.18)}
 .qr-wrap img{width:100%;max-width:300px;height:auto;display:block;margin:0 auto;border-radius:8px}
-.qr-wrap p{color:#555;font-size:.82em;margin-top:8px;font-family:'PingFang SC',sans-serif}
+.qr-wrap p{color:var(--tx-dim);font-size:.82em;margin-top:8px;font-family:'PingFang SC',sans-serif}
 #purchase-modal .qr-wrap{grid-column:1;grid-row:3;margin:0;padding:34px;border-radius:18px;display:flex;flex-direction:column;justify-content:center;min-height:calc(100vh - 220px)}
 #purchase-modal .qr-wrap img{max-width:min(760px,100%)}
 #purchase-modal .qr-wrap p{font-size:1em}
@@ -315,6 +315,8 @@ body{
 .manual-account{font-family:'SF Mono','Fira Code',monospace;color:var(--ac);word-break:break-all}
 .manual-msg{background:var(--bg2);border:1px solid var(--ac-dim);border-radius:10px;padding:12px;margin:12px 0;color:var(--tx);font-size:.78em;line-height:1.55;word-break:break-word}
 #purchase-modal .manual-msg{padding:16px;font-size:.86em}
+.manual-tip{border-color:rgba(255,169,71,.35)!important;background:rgba(255,169,71,.08)!important}
+.manual-tip strong{color:var(--anx);font-weight:600}
 .code-disp{text-align:center;margin:20px 0;padding:20px;background:var(--bg2);border:1px solid var(--ac-dim);border-radius:var(--r)}
 .code-disp .code-text{font-family:'SF Mono','Fira Code',monospace;font-size:1.25em;color:var(--ac);letter-spacing:2px;word-break:break-all}
 .code-disp .code-label{font-size:.82em;color:var(--tx-dim);margin-bottom:8px}
@@ -590,8 +592,8 @@ body{
     <div class="qr-wrap">
         <img src="./alipay-qr.png" alt="支付宝收款码">
         <p>支付宝扫码付款</p>
-        <p style="font-size:.82em;color:#9b5b00;font-weight:600">早鸟价 ¥14.9（2026-06-02 截止，之后 ¥24.9）</p>
-        <p style="font-size:.72em;color:#888">远程安装服务 +¥9，可在私聊时一起说明</p>
+        <p style="font-size:.82em;color:var(--anx);font-weight:600">早鸟价 ¥14.9（2026-06-02 截止，之后 ¥24.9）</p>
+        <p style="font-size:.72em">远程安装服务 +¥9，私聊写「爱物理的郭哥」</p>
     </div>
     <div class="manual-pay-grid">
         <div class="manual-pay-card">
@@ -601,10 +603,15 @@ body{
         </div>
         <div class="manual-pay-card">
             <h3>2. 私聊核对</h3>
-            <p>付款后复制下面这段信息发给我。我确认收款后，会把这个账号开通为可领取激活码状态。</p>
+            <p>付款后复制下面这段信息发给我，同时发支付宝付款订单编号和付款截图。我确认收款后，会把这个账号开通为可领取激活码状态。</p>
             <div class="manual-msg" id="pay-message"></div>
             <button class="btn btn-pri btn-blk" onclick="copyPaymentMessage()">复制核对信息</button>
             <a class="btn btn-out btn-blk" style="margin-top:10px" href="https://qm.qq.com/q/1092571911" target="_blank">打开 QQ 群 1092571911</a>
+        </div>
+        <div class="manual-pay-card manual-tip">
+            <h3>温馨提示</h3>
+            <p>客服回复可能比较慢，可以先在群里 @群主。群里直接回复的大多是机器人；如果想要真人回复，请 @<strong>&lt;Φ |骰子φ&gt;</strong>，然后私发账号邮箱、支付宝订单编号和付款截图。</p>
+            <p>需要远程安装服务时，私聊说明找 <strong>爱物理的郭哥</strong>。</p>
         </div>
         <div class="manual-pay-card">
             <h3>3. 领取激活码</h3>
@@ -994,7 +1001,7 @@ function closeM(id){document.getElementById(id).classList.remove('ac')}
 function handleBuyClick(){const tk=localStorage.getItem('mo_tk');if(tk){openM('purchase-modal');updatePurchaseHint();return}buyAfterLogin=true;openM('login-modal')}
 function getPaymentMessage(){
     const em=localStorage.getItem('mo_em')||'';
-    return `我已通过支付宝付款购买 Memory Orbs。账号邮箱：${em}。付款金额：14.90 元。请帮我核对收款并开通激活码。`;
+    return `我已通过支付宝付款购买 Memory Orbs。账号邮箱：${em}。付款金额：14.90 元。支付宝付款订单编号：请填写。付款截图：已附。请帮我核对收款并开通激活码。`;
 }
 function updatePurchaseHint(){
     const em=localStorage.getItem('mo_em')||'';
