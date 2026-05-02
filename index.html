@@ -11,7 +11,6 @@
          url('https://cdn.jsdelivr.net/gh/atelier-anchor/smiley-sans@v2.0.1/SmileySans-Oblique.ttf') format('truetype');
     font-weight: normal; font-style: normal; font-display: swap;
 }
-
 :root {
     --joy: #fbeb37; --sad: #8abdf5; --ang: #ff9185; --dis: #75eaa6;
     --fea: #df94ff; --anx: #ffa947; --adm: #1affd1; --emb: #ffa8d4;
@@ -19,31 +18,25 @@
     --bg: #1a1a2e; --bg2: #222240; --bg-c: rgba(255,255,255,0.04);
     --tx: #e0e0e0; --tx-dim: rgba(255,255,255,0.5); --tx-b: #fff;
     --ac: #8ab8ff; --ac-dim: rgba(138,184,255,0.3);
-    --bd: rgba(255,255,255,0.08); --r: 14px; --mw: 1040px;
-    --fs-body: 18px;
+    --bd: rgba(255,255,255,0.08); --r: 14px; --mw: 960px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
     font-family:'SmileySans','PingFang SC','Microsoft YaHei',sans-serif;
-    font-size:var(--fs-body);
-    background:var(--bg);color:var(--tx);line-height:1.75;overflow-x:hidden
+    font-size:18px;background:var(--bg);color:var(--tx);line-height:1.7;overflow-x:hidden
 }
-
-/* Nav */
 .nav{
     position:fixed;top:0;left:0;right:0;z-index:1000;
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 28px;background:rgba(26,26,46,0.85);
+    padding:12px 24px;background:rgba(26,26,46,0.85);
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     border-bottom:1px solid var(--bd)
 }
-.nav-logo{font-size:1.3em;color:var(--tx-b);font-weight:500}
+.nav-logo{font-size:1.2em;color:var(--tx-b);font-weight:500}
 .nav-acts{display:flex;gap:10px}
-
-/* Buttons */
 .btn{
-    display:inline-block;padding:10px 24px;border-radius:var(--r);
+    display:inline-block;padding:10px 22px;border-radius:var(--r);
     font-family:inherit;font-size:1em;cursor:pointer;border:none;
     transition:all .2s;text-decoration:none;color:var(--tx-b)
 }
@@ -51,91 +44,150 @@ body{
 .btn-pri:hover{transform:translateY(-1px);box-shadow:0 6px 28px rgba(123,104,238,0.45)}
 .btn-out{
     background:transparent;border:1px solid rgba(255,255,255,0.2);
-    color:var(--tx);font-size:.9em;padding:8px 18px
+    color:var(--tx);font-size:.85em;padding:7px 16px
 }
 .btn-out:hover{border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.05)}
-.btn-lg{padding:16px 40px;font-size:1.15em}
-.btn-sm{padding:7px 16px;font-size:.85em}
+.btn-lg{padding:14px 36px;font-size:1.1em}
+.btn-sm{padding:6px 14px;font-size:.85em}
 .btn-blk{width:100%;text-align:center}
-
-/* Sections */
-.sec{max-width:var(--mw);margin:0 auto;padding:90px 28px}
-.sec:first-of-type{padding-top:130px}
-.sec h2{font-size:2em;color:var(--tx-b);margin-bottom:20px;text-align:center}
-.sec h3{font-size:1.3em;color:var(--ac);margin-bottom:12px}
-.sec-sub{text-align:center;color:var(--tx-dim);font-size:.95em;margin-bottom:44px}
-
-/* Hero */
-.hero{text-align:center;padding:150px 28px 110px}
-.hero h1{font-size:3.6em;color:var(--tx-b);margin-bottom:14px}
+.sec{max-width:var(--mw);margin:0 auto;padding:60px 24px}
+.sec:first-of-type{padding-top:110px}
+.sec h2{font-size:1.9em;color:var(--tx-b);margin-bottom:14px;text-align:center}
+.sec h3{font-size:1.2em;color:var(--ac);margin-bottom:10px}
+.sec-sub{text-align:center;color:var(--tx-dim);font-size:.9em;margin-bottom:32px}
+.hero{text-align:center;padding:120px 24px 80px}
+.hero h1{font-size:3.2em;color:var(--tx-b);margin-bottom:12px}
 .hero h1 span{background:linear-gradient(135deg,var(--joy),var(--ang),var(--fea));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:var(--tx-dim);font-size:1.1em;margin-bottom:34px}
-.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-
-/* ═══════ TOC Sidebar ═══════ */
+.hero p{color:var(--tx-dim);font-size:1.05em;margin-bottom:28px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 .toc-sidebar{
-    position:fixed;right:16px;top:50%;transform:translateY(-50%);
-    z-index:900;display:flex;flex-direction:column;gap:3px;
-    padding:14px 8px;
-    background:rgba(26,26,46,0.75);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border:1px solid var(--bd);border-radius:14px
+    position:fixed;right:12px;top:50%;transform:translateY(-50%);
+    z-index:900;display:flex;flex-direction:column;gap:2px;
+    padding:10px 6px;
+    background:rgba(26,26,46,0.7);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border:1px solid var(--bd);border-radius:12px
 }
 .toc-sidebar a{
     color:var(--tx-dim);text-decoration:none;
-    padding:5px 12px;border-radius:8px;transition:all .2s;
-    white-space:nowrap;font-size:.8em
+    padding:4px 10px;border-radius:6px;transition:all .2s;
+    white-space:nowrap;font-size:.7em
 }
 .toc-sidebar a:hover{color:var(--tx-b);background:rgba(138,184,255,0.1)}
 .toc-sidebar a.active{color:var(--tx-b);background:rgba(138,184,255,0.18);font-weight:500}
 @media(max-width:768px){.toc-sidebar{display:none}}
-
-/* Feature grid */
-.f-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+.f-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
 .f-card{
-    background:var(--bg-c);border:1px solid var(--bd);
-    border-radius:var(--r);padding:28px;cursor:pointer;transition:all .25s
+    background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);
+    padding:24px;cursor:pointer;transition:all .25s
 }
-.f-card:hover{transform:translateY(-3px);border-color:var(--ac-dim);background:rgba(138,184,255,0.06)}
-.f-icon{font-size:2.2em;margin-bottom:10px}
-.f-label{font-size:1.15em;color:var(--tx-b)}
+.f-card:hover{transform:translateY(-2px);border-color:var(--ac-dim);background:rgba(138,184,255,0.06)}
+.f-icon{font-size:2em;margin-bottom:8px}
+.f-label{font-size:1.1em;color:var(--tx-b)}
+
+/* ═══════ Plugin-like Pipeline ═══════ */
+.demo-pipeline-wrap{
+    background:linear-gradient(135deg,#0a0c1a 0%,#11142d 50%,#0c0e22 100%);
+    border:1px solid rgba(255,255,255,0.06);border-radius:18px;
+    padding:20px 0 8px;margin:20px 0;position:relative;overflow:hidden;min-height:280px
+}
+.demo-pipeline-group{display:flex;flex-direction:column;gap:14px;padding:0 16px}
+.demo-pipeline{
+    position:relative;height:76px;border-radius:32px;
+    background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+    overflow:hidden;cursor:grab
+}
+.demo-pipeline:active{cursor:grabbing}
+.demo-pipeline-floor{
+    position:absolute;bottom:16px;left:24px;right:24px;height:1px;
+    background:rgba(100,150,255,0.2);pointer-events:none
+}
+.demo-orbs-row{
+    position:absolute;bottom:0;left:0;right:0;height:100%;
+    display:flex;align-items:flex-end;padding:0 14px 14px;gap:4px;overflow:hidden
+}
+.demo-orb-wrapper{
+    position:relative;display:inline-flex;flex-shrink:0;
+    transform:translate(var(--mx,0),var(--my,0));transition:none;
+    z-index:2
+}
+.demo-orb-wrapper.mo-pipeline-hover{z-index:5}
+.demo-orb{
+    width:44px;height:44px;border-radius:50%;position:relative;
+    transition:box-shadow .2s;cursor:grab;flex-shrink:0
+}
+.demo-orb-wrapper:hover{z-index:10}
+.demo-orb-inner-glow{
+    position:absolute;inset:0;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.7),transparent 50%)
+}
+.demo-orb-highlight{
+    position:absolute;top:7px;left:10px;width:12px;height:7px;
+    background:rgba(255,255,255,0.55);border-radius:50%;filter:blur(2px);pointer-events:none
+}
+.demo-orb-starburst{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:70%;height:1px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15) 40%,rgba(255,255,255,0.25) 50%,rgba(255,255,255,0.15) 60%,transparent)
+}
+.demo-orb-starburst-v{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:1px;height:70%;pointer-events:none;
+    background:linear-gradient(180deg,transparent,rgba(255,255,255,0.15) 40%,rgba(255,255,255,0.25) 50%,rgba(255,255,255,0.15) 60%,transparent)
+}
+.demo-orb-core-pulse{
+    position:absolute;inset:-6px;border-radius:50%;
+    border:2px solid;opacity:.6;pointer-events:none;
+    animation:d-core-pulse 2s ease-in-out infinite
+}
+@keyframes d-core-pulse{0%,100%{transform:scale(1);opacity:.3}50%{transform:scale(1.35);opacity:.07}}
+.demo-orb-wrapper .demo-orb-label{
+    display:none
+}
+
+/* ═══════ Plugin-like Tooltip ═══════ */
+.demo-tooltip{
+    position:fixed;z-index:9999;pointer-events:none;opacity:0;
+    max-width:320px;padding:6px 12px;border-radius:8px;
+    color:#fff;font-size:11px;line-height:1.4;word-break:break-word;
+    transform:translate(-50%,-100%) translateY(4px);
+    transition:opacity .12s,transform .12s;
+    white-space:normal;overflow:visible;text-shadow:0 1px 3px rgba(0,0,0,0.3)
+}
+.demo-tooltip.visible{opacity:1;transform:translate(-50%,-100%) translateY(0)}
+
+/* ═══════ Blended / Core Orb Display ═══════ */
+.orb-showcase{display:flex;gap:24px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.orb-showcase-item{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.orb-showcase-item .orb-badge{font-size:.8em;color:var(--tx-dim)}
+.orb-demo-single{width:60px;height:60px;border-radius:50%;position:relative;flex-shrink:0}
+.orb-demo-single .demo-orb-highlight{top:9px;left:13px;width:15px;height:9px}
+.orb-demo-single .demo-orb-inner-glow{background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.6),transparent 45%)}
+.orb-demo-single .demo-orb-starburst{width:75%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15) 40%,rgba(255,255,255,0.3) 50%,rgba(255,255,255,0.15) 60%,transparent)}
+.orb-demo-single .demo-orb-starburst-v{height:75%}
 
 /* Emotion chips */
-.e-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:28px 0}
-.chip{display:flex;align-items:center;gap:7px;background:var(--bg-c);border:1px solid var(--bd);border-radius:22px;padding:7px 18px;font-size:.95em}
-.chip-dot{width:11px;height:11px;border-radius:50%}
-.synth{display:flex;gap:24px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+.e-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:22px 0}
+.chip{display:flex;align-items:center;gap:6px;background:var(--bg-c);border:1px solid var(--bd);border-radius:18px;padding:5px 14px;font-size:.85em}
+.chip-dot{width:10px;height:10px;border-radius:50%}
+.synth{display:flex;gap:20px;justify-content:center;margin-top:16px;flex-wrap:wrap}
 .synth-it{display:flex;flex-direction:column;align-items:center}
-.synth-d{width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,0.2)}
-.synth-d.mix{background:conic-gradient(var(--joy) 0deg 120deg,var(--sad) 120deg 240deg,var(--ang) 240deg 360deg)}
-.synth-d.core{background:linear-gradient(135deg,#fce96b,var(--joy));box-shadow:0 0 20px rgba(251,235,55,0.5)}
-.synth-l{font-size:.8em;color:var(--tx-dim);margin-top:5px}
+.synth-d{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,0.15)}
+.synth-d.mix{background:conic-gradient(var(--joy) 0deg 120deg,var(--sad) 120deg 240deg,var(--fea) 240deg 360deg)}
+.synth-d.core{background:linear-gradient(135deg,#fce96b,var(--joy));box-shadow:0 0 18px rgba(251,235,55,0.4)}
+.synth-l{font-size:.75em;color:var(--tx-dim);margin-top:4px}
 
-/* ── Theme Demos (accurate from plugin) ── */
-.theme-row{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}
-.t-demo{
-    border-radius:18px;overflow:visible;position:relative;
-    min-height:220px;display:flex;flex-direction:column;
-    justify-content:flex-end;padding:22px;
-    border:1px solid var(--bd);transition:all .3s
-}
-.t-demo:hover{transform:translateY(-3px)}
-.t-name{font-size:1.1em;color:var(--tx-b);margin-top:14px;text-align:center}
-
-/* Mini pipeline (shared) */
-.mini-pl{
-    height:84px;border-radius:32px;position:relative;
-    display:flex;align-items:flex-end;justify-content:center;
-    padding:0 28px;gap:6px
-}
-.mini-orb{
-    width:48px;height:48px;border-radius:50%;flex-shrink:0;
-    position:relative;transition:transform .3s;cursor:pointer
-}
-.mini-orb:hover{transform:translateY(-5px) scale(1.12)}
+/* Theme demos */
+.theme-row{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+.t-demo{border-radius:16px;overflow:visible;position:relative;min-height:190px;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;border:1px solid var(--bd);transition:all .3s}
+.t-demo:hover{transform:translateY(-2px)}
+.t-name{font-size:1em;color:var(--tx-b);margin-top:12px;text-align:center}
+.mini-pl{height:68px;border-radius:28px;position:relative;display:flex;align-items:flex-end;justify-content:center;padding:0 22px;gap:5px}
+.mini-orb{width:40px;height:40px;border-radius:50%;flex-shrink:0;position:relative;transition:transform .3s;cursor:pointer}
+.mini-orb:hover{transform:translateY(-4px) scale(1.1)}
 .mini-orb .hi{
-    position:absolute;top:6px;left:9px;width:13px;height:8px;
-    background:rgba(255,255,255,0.6);border-radius:50%;filter:blur(2px);pointer-events:none
+    position:absolute;top:5px;left:8px;width:11px;height:6px;
+    background:rgba(255,255,255,0.5);border-radius:50%;filter:blur(2px);pointer-events:none
 }
 .mini-orb .in-glow{
     position:absolute;inset:0;border-radius:50%;
@@ -143,243 +195,123 @@ body{
 }
 .mini-orb .star-burst{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:80%;height:1px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3) 40%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0.3) 60%,transparent);pointer-events:none
+    width:75%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2) 40%,rgba(255,255,255,0.35) 50%,rgba(255,255,255,0.2) 60%,transparent);pointer-events:none
 }
 .mini-orb .star-burst-v{
     position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:1px;height:80%;
-    background:linear-gradient(180deg,transparent,rgba(255,255,255,0.3) 40%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0.3) 60%,transparent);pointer-events:none
+    width:1px;height:75%;
+    background:linear-gradient(180deg,transparent,rgba(255,255,255,0.2) 40%,rgba(255,255,255,0.35) 50%,rgba(255,255,255,0.2) 60%,transparent);pointer-events:none
 }
 .mini-orb .core-ring{
-    position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.25);
-    animation:pulse-ring 2.5s ease-in-out infinite
+    position:absolute;inset:-3px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.2);
+    animation:mini-pulse 2.5s ease-in-out infinite
 }
-@keyframes pulse-ring{0%,100%{transform:scale(1);opacity:.2}50%{transform:scale(1.35);opacity:.05}}
-
-/* Orb hover tooltip */
-.orb-tooltip{
-    position:fixed;z-index:2000;pointer-events:none;opacity:0;
-    background:var(--bg2);color:var(--tx-b);border:1px solid var(--ac-dim);
-    border-radius:10px;padding:8px 14px;font-size:.85em;
-    white-space:nowrap;max-width:260px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.4);
-    transition:opacity .15s;text-align:center
-}
-.orb-tooltip.show{opacity:1}
-
-/* Theme: Cosmos */
-.t-cosmos{
-    background:linear-gradient(135deg,#050612 0%,#0a0c1a 25%,#11142d 50%,#0c0e22 75%,#050612 100%);
-    position:relative;overflow:hidden
-}
-.t-cosmos::before{
-    content:'';position:absolute;inset:0;
-    background:
-        radial-gradient(2px 2px at 10% 20%,rgba(255,255,255,0.3),transparent),
-        radial-gradient(1.5px 1.5px at 25% 15%,rgba(255,255,255,0.2),transparent),
-        radial-gradient(1px 1px at 40% 30%,rgba(255,255,255,0.25),transparent),
-        radial-gradient(2px 2px at 60% 10%,rgba(255,255,255,0.2),transparent),
-        radial-gradient(1.5px 1.5px at 75% 25%,rgba(255,255,255,0.3),transparent),
-        radial-gradient(1px 1px at 85% 15%,rgba(255,255,255,0.2),transparent),
-        radial-gradient(2px 2px at 15% 35%,rgba(255,255,255,0.15),transparent),
-        radial-gradient(1px 1px at 50% 40%,rgba(255,255,255,0.25),transparent);
-    pointer-events:none
-}
-.t-cosmos .mini-pl{
-    background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
-    box-shadow:inset 0 2px 12px rgba(100,120,255,0.06),0 0 20px rgba(100,120,255,0.04)
-}
-.t-cosmos .mini-orb{outline:2px solid rgba(255,255,255,0.35);outline-offset:1px;animation:star-float 4s ease-in-out infinite}
-.t-cosmos .mini-orb:nth-child(2n){animation-delay:1s}
-.t-cosmos .mini-orb:nth-child(3n){animation-delay:2s}
-@keyframes star-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-
-/* Theme: Classic */
-.t-classic{
-    background:linear-gradient(170deg,#f5f3ff 0%,#ede9fe 25%,#f0ecff 50%,#f8f7ff 100%)
-}
-.t-classic .mini-pl{
-    background:rgba(30,27,55,0.03);border:1px solid rgba(30,27,55,0.06)
-}
-.t-classic .mini-orb{animation:cli-float 3.5s ease-in-out infinite}
-.t-classic .mini-orb:nth-child(2n){animation-delay:.4s}
-.t-classic .mini-orb:nth-child(3n){animation-delay:.8s}
-@keyframes cli-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-
-/* Theme: Sketch */
-.t-sketch{
-    background:
-        repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(100,140,180,0.08) 31px,rgba(100,140,180,0.08) 32px),
-        repeating-linear-gradient(90deg,transparent,transparent 31px,rgba(100,140,180,0.05) 31px,rgba(100,140,180,0.05) 32px),
-        linear-gradient(180deg,#faf8f0 0%,#f5f0e3 40%,#f0ead8 100%)
-}
-.t-sketch .mini-pl{
-    background:rgba(80,60,40,0.02);border:1.5px dashed rgba(80,60,40,0.15);
-    border-radius:26px 30px 22px 28px
-}
-.t-sketch .mini-orb{
-    border:2.5px solid rgba(80,60,40,0.25);box-shadow:2px 3px 0 rgba(80,60,40,0.08) !important;
-    filter:saturate(.85) contrast(1.05);animation:sk-wobble 4s ease-in-out infinite !important
-}
-.t-sketch .mini-orb:nth-child(3n+1){border-radius:52% 48% 50% 50% / 46% 52% 48% 54%}
-.t-sketch .mini-orb:nth-child(3n+2){border-radius:46% 54% 48% 52% / 52% 48% 52% 48%}
-.t-sketch .mini-orb:nth-child(3n+0){border-radius:48% 52% 46% 54% / 50% 46% 54% 50%}
-@keyframes sk-wobble{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3px) rotate(1deg)}50%{transform:translateY(-6px) rotate(0)}75%{transform:translateY(-2px) rotate(-1deg)}}
-
-/* Theme: Glass */
-.t-glass{
-    background:
-        radial-gradient(ellipse at 15% 20%,rgba(200,170,255,0.35) 0%,transparent 50%),
-        radial-gradient(ellipse at 85% 15%,rgba(140,200,255,0.3) 0%,transparent 45%),
-        radial-gradient(ellipse at 50% 85%,rgba(255,160,220,0.28) 0%,transparent 50%),
-        linear-gradient(160deg,#e8e0f8 0%,#dce6f8 30%,#e8e0f8 60%,#f0e4f8 100%)
-}
-.t-glass .mini-pl{
-    background:rgba(255,255,255,0.3);border:1px solid rgba(160,140,200,0.15);
-    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-    box-shadow:inset 0 1px 16px rgba(168,130,255,0.06),0 2px 12px rgba(168,130,255,0.06)
-}
-.t-glass .mini-orb{
-    outline:2px solid rgba(255,255,255,0.45);outline-offset:1px;
-    animation:gl-float 5s ease-in-out infinite
-}
-.t-glass .mini-orb:nth-child(2n){animation-delay:.8s}
-.t-glass .mini-orb:nth-child(3n){animation-delay:1.6s}
-@keyframes gl-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-
-/* Multi-row pipeline demo */
-.multi-row-demo{
-    display:flex;flex-direction:column;gap:14px;margin:24px 0
-}
-.mr-pipeline{
-    height:78px;border-radius:30px;position:relative;
-    background:var(--bg-c);border:1px solid var(--bd);
-    display:flex;align-items:flex-end;justify-content:center;
-    gap:8px;padding:0 28px
-}
-
-/* Interactive demo */
-#demo-cv{
-    width:100%;height:380px;border-radius:18px;
-    background:linear-gradient(135deg,#0a0c1a 0%,#11142d 50%,#0c0e22 100%);
-    border:1px solid rgba(255,255,255,0.06);margin:24px 0;
-    cursor:grab;position:relative;overflow:hidden;display:block
-}
-#demo-cv:active{cursor:grabbing}
-
-/* Code */
-.code-blk{
-    background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);
-    padding:20px 24px;font-family:'SF Mono','Fira Code',monospace;
-    font-size:.9em;color:var(--ac);overflow-x:auto;margin:18px 0
-}
-
-/* Feature items */
-.f-item{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:24px 28px;margin-bottom:14px}
+@keyframes mini-pulse{0%,100%{transform:scale(1);opacity:.15}50%{transform:scale(1.3);opacity:.04}}
+.t-cosmos{background:linear-gradient(135deg,#050612,#0a0c1a 25%,#11142d 50%,#0c0e22 75%,#050612);position:relative;overflow:hidden}
+.t-cosmos::before{content:'';position:absolute;inset:0;background:radial-gradient(2px 2px at 10% 20%,rgba(255,255,255,0.3),transparent),radial-gradient(1.5px 1.5px at 25% 15%,rgba(255,255,255,0.2),transparent),radial-gradient(1px 1px at 40% 30%,rgba(255,255,255,0.25),transparent),radial-gradient(2px 2px at 60% 10%,rgba(255,255,255,0.2),transparent),radial-gradient(1.5px 1.5px at 75% 25%,rgba(255,255,255,0.3),transparent),radial-gradient(1px 1px at 85% 15%,rgba(255,255,255,0.2),transparent);pointer-events:none}
+.t-cosmos .mini-pl{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);box-shadow:inset 0 2px 10px rgba(100,120,255,0.05),0 0 16px rgba(100,120,255,0.03)}
+.t-cosmos .mini-orb{outline:2px solid rgba(255,255,255,0.3);outline-offset:1px;animation:cs-float 4s ease-in-out infinite}
+.t-cosmos .mini-orb:nth-child(2n){animation-delay:.8s}.t-cosmos .mini-orb:nth-child(3n){animation-delay:1.6s}
+@keyframes cs-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.t-classic{background:linear-gradient(170deg,#f5f3ff,#ede9fe 25%,#f0ecff 50%,#f8f7ff)}
+.t-classic .mini-pl{background:rgba(30,27,55,0.02);border:1px solid rgba(30,27,55,0.05)}
+.t-classic .mini-orb{animation:cl-float 3.5s ease-in-out infinite}
+.t-classic .mini-orb:nth-child(2n){animation-delay:.3s}.t-classic .mini-orb:nth-child(3n){animation-delay:.6s}
+@keyframes cl-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.t-sketch{background:repeating-linear-gradient(0deg,transparent,transparent 30px,rgba(100,140,180,0.06) 30px,rgba(100,140,180,0.06) 31px),repeating-linear-gradient(90deg,transparent,transparent 30px,rgba(100,140,180,0.04) 30px,rgba(100,140,180,0.04) 31px),linear-gradient(180deg,#faf8f0,#f5f0e3 40%,#f0ead8)}
+.t-sketch .mini-pl{background:rgba(80,60,40,0.02);border:1.5px dashed rgba(80,60,40,0.12);border-radius:22px 26px 18px 24px}
+.t-sketch .mini-orb{border:2.5px solid rgba(80,60,40,0.2);filter:saturate(.85) contrast(1.05);animation:sk-wb 4s ease-in-out infinite!important}
+.t-sketch .mini-orb:nth-child(3n+1){border-radius:50% 48% 48% 50%/46% 52% 46% 54%}
+.t-sketch .mini-orb:nth-child(3n+2){border-radius:46% 54% 46% 52%/52% 48% 50% 48%}
+.t-sketch .mini-orb:nth-child(3n+0){border-radius:48% 52% 44% 56%/50% 46% 52% 50%}
+@keyframes sk-wb{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-2px) rotate(1deg)}50%{transform:translateY(-5px) rotate(0)}75%{transform:translateY(-1px) rotate(-1deg)}}
+/* Light-themed titles → dark text */
+.t-classic .t-name, .t-sketch .t-name, .t-glass .t-name{color:#1a1a2e}
+/* Glass theme background (matching plugin) */
+.t-glass{background:radial-gradient(ellipse at 15% 20%,rgba(200,170,255,0.3),transparent 50%),radial-gradient(ellipse at 85% 15%,rgba(140,200,255,0.25),transparent 45%),radial-gradient(ellipse at 50% 85%,rgba(255,160,220,0.22),transparent 50%),linear-gradient(160deg,#e8e0f8,#dce6f8 30%,#e8e0f8 60%,#f0e4f8)}
+.t-glass .mini-pl{background:rgba(255,255,255,0.25);border:1px solid rgba(160,140,200,0.12);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);box-shadow:inset 0 1px 14px rgba(168,130,255,0.04),0 2px 10px rgba(168,130,255,0.04)}
+.t-glass .mini-orb{outline:2px solid rgba(255,255,255,0.4);outline-offset:1px;animation:gl-fl 4.5s ease-in-out infinite}
+.t-glass .mini-orb:nth-child(2n){animation-delay:.6s}.t-glass .mini-orb:nth-child(3n){animation-delay:1.2s}
+@keyframes gl-fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.multi-row-demo{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.mr-pipeline{height:68px;border-radius:26px;position:relative;background:var(--bg-c);border:1px solid var(--bd);display:flex;align-items:flex-end;justify-content:center;gap:6px;padding:0 24px}
+.code-blk{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:16px 20px;font-family:'SF Mono','Fira Code',monospace;font-size:.85em;color:var(--ac);overflow-x:auto;margin:14px 0}
+.f-item{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:18px 22px;margin-bottom:10px}
 .f-item h3{color:var(--tx-b)}
-.f-item p{color:var(--tx-dim);font-size:.9em;margin-top:6px}
-
-/* Steps */
-.steps{margin-top:24px}
-.step{display:flex;align-items:flex-start;gap:18px;padding:18px 0;border-bottom:1px solid var(--bd)}
-.step-num{width:40px;height:40px;border-radius:50%;background:var(--ac-dim);color:var(--tx-b);display:flex;align-items:center;justify-content:center;font-size:1em;flex-shrink:0}
-.step-body h4{color:var(--tx-b);font-size:1em}
-.step-body p{color:var(--tx-dim);font-size:.85em;margin-top:4px}
-.step-body code{background:var(--bg2);padding:2px 8px;border-radius:4px;font-size:.9em}
-
-/* Footer */
-.footer{
-    text-align:center;padding:64px 28px;border-top:1px solid var(--bd);
-    color:var(--tx-dim);font-size:.85em
-}
-.footer a{color:var(--ac);text-decoration:none;margin:0 10px}
+.f-item p{color:var(--tx-dim);font-size:.85em;margin-top:4px}
+.steps{margin-top:18px}
+.step{display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--bd)}
+.step-num{width:34px;height:34px;border-radius:50%;background:var(--ac-dim);color:var(--tx-b);display:flex;align-items:center;justify-content:center;font-size:.9em;flex-shrink:0}
+.step-body h4{color:var(--tx-b);font-size:.95em}
+.step-body p{color:var(--tx-dim);font-size:.82em;margin-top:3px}
+.step-body code{background:var(--bg2);padding:2px 7px;border-radius:4px;font-size:.88em}
+.footer{text-align:center;padding:48px 24px;border-top:1px solid var(--bd);color:var(--tx-dim);font-size:.82em}
+.footer a{color:var(--ac);text-decoration:none;margin:0 8px}
 .footer a:hover{text-decoration:underline}
-.footer p{margin:8px 0}
-
-/* Modal */
-.mol{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:24px}
+.footer p{margin:6px 0}
+.mol{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:20px}
 .mol.ac{display:flex}
-.mod{background:var(--bg);border:1px solid var(--bd);border-radius:18px;padding:40px;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.mod-close{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--tx-dim);font-size:1.6em;cursor:pointer}
+.mod{background:var(--bg);border:1px solid var(--bd);border-radius:16px;padding:32px;max-width:500px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
+.mod-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--tx-dim);font-size:1.5em;cursor:pointer}
 .mod-close:hover{color:var(--tx-b)}
-.mod h2{font-size:1.55em;color:var(--tx-b);margin-bottom:10px;text-align:center}
-.mod-desc{color:var(--tx-dim);font-size:.9em;text-align:center;margin-bottom:24px}
-
-/* QR */
-.qr-wrap{text-align:center;margin:18px 0;padding:24px;background:#fff;border-radius:var(--r)}
-.qr-wrap img{max-width:280px;height:auto;display:block;margin:0 auto;border-radius:10px}
-.qr-wrap p{color:#666;font-size:.85em;margin-top:10px;font-family:'PingFang SC',sans-serif}
-
-/* Code display */
-.code-disp{text-align:center;margin:24px 0;padding:24px;background:var(--bg2);border:1px solid var(--ac-dim);border-radius:var(--r)}
-.code-disp .code-text{font-family:'SF Mono','Fira Code',monospace;font-size:1.35em;color:var(--ac);letter-spacing:2px;word-break:break-all}
-.code-disp .code-label{font-size:.85em;color:var(--tx-dim);margin-bottom:10px}
-
-/* Form */
-.fg{margin-bottom:18px}
-.fg label{display:block;font-size:.9em;color:var(--tx-dim);margin-bottom:7px}
-.fg input{width:100%;padding:12px 16px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--bd);color:var(--tx-b);font-family:inherit;font-size:1em;transition:border-color .2s}
+.mod h2{font-size:1.4em;color:var(--tx-b);margin-bottom:8px;text-align:center}
+.mod-desc{color:var(--tx-dim);font-size:.85em;text-align:center;margin-bottom:20px}
+.qr-wrap{text-align:center;margin:14px 0;padding:20px;background:#fff;border-radius:var(--r)}
+.qr-wrap img{max-width:240px;height:auto;display:block;margin:0 auto;border-radius:8px}
+.qr-wrap p{color:#666;font-size:.82em;margin-top:8px;font-family:'PingFang SC',sans-serif}
+.code-disp{text-align:center;margin:20px 0;padding:20px;background:var(--bg2);border:1px solid var(--ac-dim);border-radius:var(--r)}
+.code-disp .code-text{font-family:'SF Mono','Fira Code',monospace;font-size:1.25em;color:var(--ac);letter-spacing:2px;word-break:break-all}
+.code-disp .code-label{font-size:.82em;color:var(--tx-dim);margin-bottom:8px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:.85em;color:var(--tx-dim);margin-bottom:6px}
+.fg input{width:100%;padding:10px 14px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--bd);color:var(--tx-b);font-family:inherit;font-size:1em;transition:border-color .2s}
 .fg input:focus{outline:none;border-color:var(--ac-dim)}
-
-/* Tabs */
-.tabs{display:flex;margin-bottom:24px;border-bottom:1px solid var(--bd)}
-.tab-btn{flex:1;padding:12px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:.95em;color:var(--tx-dim);transition:all .2s;border-bottom:2px solid transparent}
+.tabs{display:flex;margin-bottom:20px;border-bottom:1px solid var(--bd)}
+.tab-btn{flex:1;padding:10px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:.9em;color:var(--tx-dim);transition:all .2s;border-bottom:2px solid transparent}
 .tab-btn.ac{color:var(--tx-b);border-bottom-color:var(--ac)}
 .tab-c{display:none}.tab-c.ac{display:block}
-
-/* Keys */
-.keys{margin-top:24px}
-.key-it{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:18px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.key-code{font-family:'SF Mono','Fira Code',monospace;color:var(--ac);font-size:.95em;word-break:break-all}
-.key-st{font-size:.8em;padding:4px 12px;border-radius:12px;white-space:nowrap}
+.keys{margin-top:20px}
+.key-it{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.key-code{font-family:'SF Mono','Fira Code',monospace;color:var(--ac);font-size:.9em;word-break:break-all}
+.key-st{font-size:.78em;padding:3px 10px;border-radius:12px;white-space:nowrap}
 .key-st.activated{background:rgba(117,234,166,0.15);color:var(--dis)}
 .key-st.authorized{background:rgba(138,184,255,0.15);color:var(--ac)}
-
-/* Toast */
-.toast{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:14px 28px;color:var(--tx-b);z-index:3000;font-size:.95em;opacity:0;transition:opacity .3s;pointer-events:none}
-.toast.sh{opacity:1}
-.toast.succ{border-color:var(--dis)}
-.toast.err{border-color:var(--ang)}
-
-/* Responsive */
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:12px 24px;color:var(--tx-b);z-index:3000;font-size:.9em;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.sh{opacity:1}.toast.succ{border-color:var(--dis)}.toast.err{border-color:var(--ang)}
 @media(max-width:768px){
     .toc-sidebar{display:none}
     .f-grid,.theme-row{grid-template-columns:1fr}
-    .hero h1{font-size:2.4em}.sec{padding:64px 18px}.sec:first-of-type{padding-top:110px}
-    .nav{padding:12px 18px}.mod{padding:28px 22px;max-width:92vw}
-    .code-disp .code-text{font-size:1.1em}
-    #demo-cv{height:300px}
+    .hero h1{font-size:2.2em}.sec{padding:48px 16px}.sec:first-of-type{padding-top:100px}
+    .nav{padding:10px 16px}.mod{padding:24px 18px;max-width:92vw}
+    .code-disp .code-text{font-size:1em}
+    .demo-pipeline-wrap{min-height:200px}
+    .orb-showcase{gap:16px}
 }
-
-/* User center */
 .nav-user{
-    display:flex;align-items:center;gap:8px;cursor:pointer;padding:7px 16px;
-    border-radius:22px;background:var(--bg-c);border:1px solid var(--bd);
-    transition:all .2s;font-size:.9em;max-width:220px
+    display:flex;align-items:center;gap:6px;cursor:pointer;padding:6px 14px;
+    border-radius:20px;background:var(--bg-c);border:1px solid var(--bd);
+    transition:all .2s;font-size:.85em;max-width:200px
 }
 .nav-user:hover{background:rgba(138,184,255,0.1);border-color:var(--ac-dim)}
-.nav-user .u-avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#7b68ee);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:.8em;flex-shrink:0}
+.nav-user .u-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#7b68ee);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:.78em;flex-shrink:0}
 .nav-user .u-email{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--tx-b)}
-.uc-header{padding:18px 0;border-bottom:1px solid var(--bd);margin-bottom:24px;display:flex;align-items:center;gap:14px}
-.uc-header .u-avatar-lg{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#7b68ee,#5b9bd5);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:1.15em;flex-shrink:0}
-.uc-header .u-info{flex:1}.uc-header .u-email-lg{color:var(--tx-b);font-size:1em}
-.uc-header .u-since{color:var(--tx-dim);font-size:.8em}
-.uc-section{margin-bottom:28px}
-.uc-section h3{font-size:1em;color:var(--tx-dim);margin-bottom:14px;text-transform:none}
-.uc-plugin-card{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:18px;cursor:pointer;transition:all .2s}
+.uc-header{padding:16px 0;border-bottom:1px solid var(--bd);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.uc-header .u-avatar-lg{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#7b68ee,#5b9bd5);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:1.1em;flex-shrink:0}
+.uc-header .u-info{flex:1}.uc-header .u-email-lg{color:var(--tx-b);font-size:.95em}
+.uc-header .u-since{color:var(--tx-dim);font-size:.78em}
+.uc-section{margin-bottom:24px}
+.uc-section h3{font-size:.95em;color:var(--tx-dim);margin-bottom:12px}
+.uc-plugin-card{background:var(--bg-c);border:1px solid var(--bd);border-radius:var(--r);padding:16px;cursor:pointer;transition:all .2s}
 .uc-plugin-card:hover{border-color:var(--ac-dim);background:rgba(138,184,255,0.06)}
-.uc-plugin-card .pl-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.uc-plugin-card .pl-name{color:var(--tx-b);font-size:1em}
-.uc-plugin-card .pl-ver{color:var(--tx-dim);font-size:.8em}
-.uc-plugin-card .pl-detail{margin-top:14px;padding-top:14px;border-top:1px solid var(--bd);display:none}
+.uc-plugin-card .pl-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.uc-plugin-card .pl-name{color:var(--tx-b);font-size:.95em}
+.uc-plugin-card .pl-ver{color:var(--tx-dim);font-size:.78em}
+.uc-plugin-card .pl-detail{margin-top:12px;padding-top:12px;border-top:1px solid var(--bd);display:none}
 .uc-plugin-card .pl-detail.open{display:block}
-.uc-plugin-card .pl-code{font-family:'SF Mono','Fira Code',monospace;color:var(--ac);font-size:.9em;word-break:break-all;margin:8px 0}
-.uc-plugin-card .pl-actions{display:flex;gap:10px;margin-top:10px}
-
-/* Navbar adjustments */
-.nav-acts{gap:8px}@media(max-width:640px){.nav-user .u-email{display:none}.nav-user{max-width:48px;justify-content:center}}
-
+.uc-plugin-card .pl-code{font-family:'SF Mono','Fira Code',monospace;color:var(--ac);font-size:.85em;word-break:break-all;margin:6px 0}
+.uc-plugin-card .pl-actions{display:flex;gap:8px;margin-top:8px}
+.nav-acts{gap:6px}@media(max-width:640px){.nav-user .u-email{display:none}.nav-user{max-width:44px;justify-content:center}}
 .hidden{display:none!important}
 </style>
 </head>
@@ -393,20 +325,17 @@ body{
     </div>
 </nav>
 
-<!-- ═══════ TOC Sidebar ═══════ -->
 <nav class="toc-sidebar" id="toc-sidebar">
     <a href="#what" data-section="what">什么是记忆球</a>
     <a href="#features" data-section="features">核心特色</a>
     <a href="#emotions" data-section="emotions">情绪系统</a>
     <a href="#themes" data-section="themes">四种主题</a>
     <a href="#pipeline" data-section="pipeline">多排管道</a>
-    <a href="#markdown" data-section="markdown">Markdown 嵌入</a>
     <a href="#demo" data-section="demo">互动演示</a>
     <a href="#start" data-section="start">开始使用</a>
 </nav>
 
-<!-- Orb hover tooltip -->
-<div class="orb-tooltip" id="orb-tooltip"></div>
+<div class="demo-tooltip" id="demo-tooltip"></div>
 
 <section class="hero" id="top">
     <h1>Memory Orbs<br><span>记忆球</span></h1>
@@ -420,9 +349,9 @@ body{
 <section class="sec" id="what">
     <h2>什么是记忆球</h2>
     <p class="sec-sub">Obsidian 情绪可视化插件</p>
-    <div class="f-item"><h3>🧠 情绪标签 → 视觉记忆球</h3><p>在日记中用 #情绪/开心 这样的标签记录心情，插件自动为每种情绪生成一个发光的彩色球体。灵感来自 Pixar《头脑特工队》。</p></div>
-    <div class="f-item"><h3>🫧 管道式交互</h3><p>球体在圆角管道中排列、滚动、碰撞，模拟真实的物理效果。拖拽时产生弹性摆动，释放后自动衰减回原位。</p></div>
-    <div class="f-item"><h3>📊 数据驱动</h3><p>统计面板追踪情绪频率、分布和趋势，让你直观了解自己的情绪变化。</p></div>
+    <div class="f-item"><h3>🧠 情绪标签 → 视觉记忆球</h3><p>在日记中用 #情绪/开心 等标签记录心情，插件自动为每种情绪生成一个发光的彩色球体。支持混合球（多情绪合成）和核心记忆（脉冲光晕）两种特殊形态。</p></div>
+    <div class="f-item"><h3>🫧 管道式物理交互</h3><p>球体在圆角管道中排列。拖拽产生弹性碰撞，释放后自然衰减回原位。模拟一维弹性碰撞（动量守恒 + 恢复系数控制能量损失）。</p></div>
+    <div class="f-item"><h3>📊 数据驱动</h3><p>统计面板追踪情绪频率、分布和趋势，含核心记忆占比分析。</p></div>
 </section>
 
 <section class="sec" id="features">
@@ -430,82 +359,90 @@ body{
     <div class="f-grid">
         <div class="f-card" onclick="document.getElementById('themes').scrollIntoView({behavior:'smooth'})"><div class="f-icon">🎨</div><div class="f-label">4 种视觉主题</div></div>
         <div class="f-card" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})"><div class="f-icon">🕹️</div><div class="f-label">拖拽互动演示</div></div>
-        <div class="f-card" onclick="document.getElementById('emotions').scrollIntoView({behavior:'smooth'})"><div class="f-icon">🎯</div><div class="f-label">情绪系统（10种+混合球）</div></div>
-        <div class="f-card" onclick="document.getElementById('markdown').scrollIntoView({behavior:'smooth'})"><div class="f-icon">📝</div><div class="f-label">Markdown 嵌入</div></div>
+        <div class="f-card" onclick="document.getElementById('emotions').scrollIntoView({behavior:'smooth'})"><div class="f-icon">🎯</div><div class="f-label">情绪系统（10种+混合球+核心记忆）</div></div>
+        <div class="f-card" onclick="document.getElementById('pipeline').scrollIntoView({behavior:'smooth'})"><div class="f-icon">📝</div><div class="f-label">多排管道 + Markdown 嵌入</div></div>
     </div>
 </section>
 
 <section class="sec" id="emotions">
     <h2>情绪系统</h2>
-    <p class="sec-sub">10 种基础情绪 + 合成记忆（混合球）</p>
+    <p class="sec-sub">10 种基础情绪 + 合成记忆（混合球）+ 核心记忆</p>
     <div class="e-chips">
-        <div class="chip"><div class="chip-dot" style="background:var(--joy)"></div>快乐</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--sad)"></div>伤心</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--ang)"></div>生气</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--dis)"></div>讨厌</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--fea)"></div>害怕</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--anx)"></div>焦虑</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--adm)"></div>慕慕</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--emb)"></div>尴尬</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--bor)"></div>无聊</div>
-        <div class="chip"><div class="chip-dot" style="background:var(--nos)"></div>怀旧</div>
+        <div class="chip"><div class="chip-dot" style="background:var(--joy)"></div>快乐 <span style="color:var(--tx-dim);font-size:.8em">乐乐</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--sad)"></div>伤心 <span style="color:var(--tx-dim);font-size:.8em">忧忧</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--ang)"></div>生气 <span style="color:var(--tx-dim);font-size:.8em">怒怒</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--dis)"></div>讨厌 <span style="color:var(--tx-dim);font-size:.8em">厌厌</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--fea)"></div>害怕 <span style="color:var(--tx-dim);font-size:.8em">怕怕</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--anx)"></div>焦虑 <span style="color:var(--tx-dim);font-size:.8em">焦焦</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--adm)"></div>慕慕 <span style="color:var(--tx-dim);font-size:.8em">慕慕</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--emb)"></div>尴尬 <span style="color:var(--tx-dim);font-size:.8em">尬尬</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--bor)"></div>无聊 <span style="color:var(--tx-dim);font-size:.8em">丧丧</span></div>
+        <div class="chip"><div class="chip-dot" style="background:var(--nos)"></div>怀旧 <span style="color:var(--tx-dim);font-size:.8em">怀旧奶奶</span></div>
     </div>
-    <div class="synth">
-        <div class="synth-it"><div class="synth-d mix"></div><span class="synth-l">合成球（多情绪合并）</span></div>
-        <div class="synth-it"><div class="synth-d core"></div><span class="synth-l">核心记忆（脉冲光晕）</span></div>
+
+    <!-- ═══ Blended & Core Orb Showcase ═══ -->
+    <div class="orb-showcase">
+        <div class="orb-showcase-item">
+            <div class="orb-demo-single" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5) 0%,transparent 45%),conic-gradient(from 0deg,#fbeb37 0deg,#fbeb37 30deg,#8abdf5 34deg,#8abdf5 150deg,#df94ff 154deg,#df94ff 270deg,#fbeb37 274deg,#fbeb37 360deg);box-shadow:0 0 12px rgba(251,235,55,0.3),0 0 22px rgba(138,189,245,0.22),0 0 12px rgba(223,148,255,0.22),inset 0 -3px 8px rgba(0,0,0,0.12),inset 0 3px 8px rgba(255,255,255,0.3)">
+                <div class="demo-orb-inner-glow"></div><div class="demo-orb-highlight"></div>
+            </div>
+            <span class="orb-badge">🧬 合成球（5种情绪混合）</span>
+        </div>
+        <div class="orb-showcase-item">
+            <div class="orb-demo-single" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),#fbeb37 40%,#c9a800 80%,#7a6600);box-shadow:0 0 20px rgba(251,235,55,0.5),0 0 45px rgba(251,235,55,0.25),0 0 80px rgba(251,235,55,0.1),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.4)">
+                <div class="demo-orb-inner-glow"></div><div class="demo-orb-highlight"></div>
+                <div class="demo-orb-core-pulse" style="border-color:rgba(251,235,55,0.6)"></div>
+            </div>
+            <span class="orb-badge">✨ 核心记忆（脉冲光晕）</span>
+        </div>
     </div>
 </section>
 
-<!-- ═══════ 四种主题（精准还原插件效果）═══════ -->
+<!-- ═══════ 四种主题 ═══════ -->
 <section class="sec" id="themes">
     <h2>四种主题</h2>
     <p class="sec-sub">一键切换，同一批数据不同的氛围</p>
     <div class="theme-row">
-
-        <!-- Cosmos 星空 -->
+        <!-- Cosmos -->
         <div class="t-demo t-cosmos">
             <div class="mini-pl">
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 14px rgba(251,235,55,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 14px rgba(138,189,245,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 14px rgba(223,148,255,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--ang) 40%,#c05040 80%,#5a1810);box-shadow:0 0 14px rgba(255,145,133,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 12px rgba(251,235,55,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 12px rgba(138,189,245,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 12px rgba(223,148,255,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--ang) 40%,#c05040 80%,#5a1810);box-shadow:0 0 12px rgba(255,145,133,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div><div class="star-burst"></div><div class="star-burst-v"></div></div>
             </div>
             <div class="t-name">🌌 Cosmos · 星空</div>
         </div>
-
-        <!-- Classic 经典 -->
+        <!-- Classic -->
         <div class="t-demo t-classic">
             <div class="mini-pl">
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 14px rgba(251,235,55,0.4),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--dis) 40%,#4a9070 80%,#1a4028);box-shadow:0 0 14px rgba(117,234,166,0.4),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 14px rgba(138,189,245,0.4),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--anx) 40%,#c07020 80%,#5a3008);box-shadow:0 0 14px rgba(255,169,71,0.4),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 12px rgba(251,235,55,0.35),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--dis) 40%,#4a9070 80%,#1a4028);box-shadow:0 0 12px rgba(117,234,166,0.35),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 12px rgba(138,189,245,0.35),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--anx) 40%,#c07020 80%,#5a3008);box-shadow:0 0 12px rgba(255,169,71,0.35),inset 0 -3px 8px rgba(0,0,0,0.1),inset 0 3px 8px rgba(255,255,255,0.3)"><div class="in-glow"></div><div class="hi"></div></div>
             </div>
             <div class="t-name">📦 Classic · 经典</div>
         </div>
-
-        <!-- Sketch 手绘 -->
+        <!-- Sketch -->
         <div class="t-demo t-sketch">
             <div class="mini-pl">
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:2px 3px 0 rgba(80,60,40,0.15)!important"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--ang) 40%,#b04030 80%,#501008);box-shadow:2px 3px 0 rgba(80,60,40,0.15)!important"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:2px 3px 0 rgba(80,60,40,0.15)!important"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--dis) 40%,#4a9070 80%,#1a4028);box-shadow:2px 3px 0 rgba(80,60,40,0.15)!important"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--joy) 40%,#c9a800 80%,#7a6600)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--ang) 40%,#b04030 80%,#501008)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--sad) 40%,#5a8ac0 80%,#2d4d70)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,#fff,var(--dis) 40%,#4a9070 80%,#1a4028)"><div class="in-glow"></div><div class="hi"></div></div>
             </div>
             <div class="t-name">✏️ Sketch · 手绘</div>
         </div>
-
-        <!-- Glass 磨砂玻璃 -->
+        <!-- Glass -->
         <div class="t-demo t-glass">
             <div class="mini-pl">
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 12px rgba(223,148,255,0.3),inset 0 0 14px rgba(223,148,255,0.08),0 3px 12px rgba(0,0,0,0.06)"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--adm) 40%,#00c090 80%,#005030);box-shadow:0 0 12px rgba(26,255,209,0.3),inset 0 0 14px rgba(26,255,209,0.08),0 3px 12px rgba(0,0,0,0.06)"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 12px rgba(251,235,55,0.3),inset 0 0 14px rgba(251,235,55,0.08),0 3px 12px rgba(0,0,0,0.06)"><div class="in-glow"></div><div class="hi"></div></div>
-                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.7),var(--emb) 40%,#c06080 80%,#502028);box-shadow:0 0 12px rgba(255,168,212,0.3),inset 0 0 14px rgba(255,168,212,0.08),0 3px 12px rgba(0,0,0,0.06)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 10px rgba(223,148,255,0.25),inset 0 0 12px rgba(223,148,255,0.06),0 2px 10px rgba(0,0,0,0.05)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--adm) 40%,#00c090 80%,#005030);box-shadow:0 0 10px rgba(26,255,209,0.25),inset 0 0 12px rgba(26,255,209,0.06),0 2px 10px rgba(0,0,0,0.05)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 10px rgba(251,235,55,0.25),inset 0 0 12px rgba(251,235,55,0.06),0 2px 10px rgba(0,0,0,0.05)"><div class="in-glow"></div><div class="hi"></div></div>
+                <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.65),var(--emb) 40%,#c06080 80%,#502028);box-shadow:0 0 10px rgba(255,168,212,0.25),inset 0 0 12px rgba(255,168,212,0.06),0 2px 10px rgba(0,0,0,0.05)"><div class="in-glow"></div><div class="hi"></div></div>
             </div>
             <div class="t-name">🪟 Glass · 磨砂玻璃</div>
         </div>
-
     </div>
 </section>
 
@@ -515,18 +452,18 @@ body{
     <p class="sec-sub">球数超过一排时自动换行，每根管道独立运作</p>
     <div class="multi-row-demo">
         <div class="mr-pipeline">
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 14px rgba(251,235,55,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 14px rgba(138,189,245,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--ang) 40%,#c05040 80%,#5a1810);box-shadow:0 0 14px rgba(255,145,133,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--dis) 40%,#4a9070 80%,#1a4028);box-shadow:0 0 14px rgba(117,234,166,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 14px rgba(223,148,255,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--joy) 40%,#c9a800 80%,#7a6600);box-shadow:0 0 12px rgba(251,235,55,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--sad) 40%,#5a8ac0 80%,#2d4d70);box-shadow:0 0 12px rgba(138,189,245,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--ang) 40%,#c05040 80%,#5a1810);box-shadow:0 0 12px rgba(255,145,133,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--dis) 40%,#4a9070 80%,#1a4028);box-shadow:0 0 12px rgba(117,234,166,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--fea) 40%,#a060c0 80%,#5a1868);box-shadow:0 0 12px rgba(223,148,255,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
         </div>
         <div class="mr-pipeline">
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--anx) 40%,#c07020 80%,#5a3008);box-shadow:0 0 14px rgba(255,169,71,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--adm) 40%,#00c090 80%,#005030);box-shadow:0 0 14px rgba(26,255,209,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--emb) 40%,#c06080 80%,#502028);box-shadow:0 0 14px rgba(255,168,212,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--bor) 40%,#4a6080 80%,#1a2830);box-shadow:0 0 14px rgba(111,148,184,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
-            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--nos) 40%,#888 80%,#333);box-shadow:0 0 14px rgba(204,204,204,0.4),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--anx) 40%,#c07020 80%,#5a3008);box-shadow:0 0 12px rgba(255,169,71,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--adm) 40%,#00c090 80%,#005030);box-shadow:0 0 12px rgba(26,255,209,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--emb) 40%,#c06080 80%,#502028);box-shadow:0 0 12px rgba(255,168,212,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--bor) 40%,#4a6080 80%,#1a2830);box-shadow:0 0 12px rgba(111,148,184,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
+            <div class="mini-orb" style="background:radial-gradient(circle at 35% 25%,rgba(255,255,255,0.5),var(--nos) 40%,#888 80%,#333);box-shadow:0 0 12px rgba(204,204,204,0.35),inset 0 -2px 6px rgba(0,0,0,0.15)"><div class="in-glow"></div><div class="hi"></div></div>
         </div>
     </div>
     <div class="f-item"><h3>🔄 自动换行</h3><p>超出单排容量后，自动创建下一根管道，每根独立运作，物理引擎确保排列整齐。</p></div>
@@ -536,15 +473,22 @@ body{
     <h2>Markdown 嵌入</h2>
     <p class="sec-sub">在任何笔记中用代码块插入记忆球管道</p>
     <div class="code-blk">```memory-orbs<br>type: pipeline<br>emotions: 快乐, 伤心, 焦虑<br>theme: cosmos<br>```</div>
-    <p style="color:var(--tx-dim);font-size:.9em;text-align:center;margin-top:14px">复制到 Obsidian 中即可看到可视化管道 ✨</p>
+    <p style="color:var(--tx-dim);font-size:.85em;text-align:center;margin-top:12px">复制到 Obsidian 中即可看到可视化管道 ✨</p>
 </section>
 
-<!-- ═══════ 互动演示 ═══════ -->
+<!-- ═══════ 互动演示（匹配插件逻辑） ═══════ -->
 <section class="sec" id="demo">
     <h2>互动演示</h2>
-    <p class="sec-sub">拖拽记忆球体验真实的物理碰撞效果</p>
-    <canvas id="demo-cv"></canvas>
-    <p style="color:var(--tx-dim);font-size:.85em;text-align:center;margin-top:10px">✦ 拖拽小球观察弹性摆动、碰撞和衰减 ✦</p>
+    <p class="sec-sub">拖拽记忆球体验插件物理引擎效果</p>
+
+    <div class="demo-pipeline-wrap" id="demo-pipeline-wrap">
+        <div class="demo-pipeline-group" id="demo-pipeline-group"></div>
+    </div>
+
+    <p style="color:var(--tx-dim);font-size:.8em;text-align:center;margin-top:10px">
+        ✦ 拖拽小球体验弹性碰撞、衰减和 spring back ✦<br>
+        <span style="font-size:.9em">🟡 快乐 · 🔵 伤心 · 🔴 生气 · 🟢 讨厌 · 🟣 害怕 · 🟠 焦虑 · 🧬 混合球</span>
+    </p>
 </section>
 
 <section class="sec" id="start">
@@ -559,13 +503,11 @@ body{
 
 <footer class="footer">
     <p><a href="https://gitee.com/housiyuan123/memory-orbs-user" target="_blank">Gitee 用户仓库</a> <a href="https://qm.qq.com/q/1092571911" target="_blank">QQ 群 1092571911</a> <a href="https://b23.tv/a89jLec" target="_blank">B站 骰子xCosmology</a></p>
-    <p style="margin-top:12px">灵感来自 Pixar《头脑特工队》</p>
+    <p style="margin-top:10px">灵感来自 Pixar《头脑特工队》</p>
     <p>字体 SmileySans-Oblique 由 <a href="https://github.com/atelier-anchor/smiley-sans" target="_blank">atelier-anchor</a> 开源，SIL OFL 1.1</p>
 </footer>
 
 <!-- ═══════════════ MODALS ═══════════════ -->
-
-<!-- Purchase -->
 <div class="mol" id="purchase-modal"><div class="mod">
     <button class="mod-close" onclick="closeM('purchase-modal')">&times;</button>
     <h2>购买 Memory Orbs</h2><p class="mod-desc">扫码付款后点击按钮，激活码将自动关联到你的账号</p>
@@ -574,9 +516,9 @@ body{
             <img src="./alipay-qr.png" alt="支付宝收款码">
             <p>请使用支付宝扫码付款</p>
             <p style="font-size:.8em;color:var(--anx);font-weight:500">🚀 早鸟价 ¥14.9（2026-06-02 截止，之后 ¥24.9）</p>
-            <p style="font-size:.75em;color:#999">另提供远程安装服务 +¥9（QQ 群 1092571911 联系）</p>
+            <p style="font-size:.72em;color:#999">另提供远程安装服务 +¥9（QQ 群 1092571911 联系）</p>
         </div>
-        <p style="text-align:center;color:var(--tx-dim);font-size:.85em;margin-bottom:14px" id="p-login-hint"></p>
+        <p style="text-align:center;color:var(--tx-dim);font-size:.82em;margin-bottom:12px" id="p-login-hint"></p>
         <button class="btn btn-pri btn-blk" onclick="doPurchase()">我已扫码付款，获取激活码</button>
     </div>
     <div id="ps2" class="hidden">
@@ -584,7 +526,7 @@ body{
             <div class="code-label">你的激活码</div>
             <div class="code-text" id="p-code"></div>
             <button class="btn btn-out btn-sm" style="margin-top:14px" onclick="copyC('p-code')">📋 复制激活码</button>
-            <p style="color:var(--tx-dim);font-size:.8em;margin-top:10px">⚠️ 请务必<a href="javascript:void(0)" onclick="closeM('purchase-modal');openM('login-modal')" style="color:var(--ac)">注册/登录</a>保存，否则丢失无法找回</p>
+            <p style="color:var(--tx-dim);font-size:.78em;margin-top:8px">⚠️ 请务必<a href="javascript:void(0)" onclick="closeM('purchase-modal');openM('login-modal')" style="color:var(--ac)">注册/登录</a>保存，否则丢失无法找回</p>
         </div>
         <div class="code-disp" id="ps2-login" style="display:none">
             <div class="code-label">激活码已关联到你的账号</div>
@@ -595,7 +537,6 @@ body{
     </div>
 </div></div>
 
-<!-- Login/Register -->
 <div class="mol" id="login-modal"><div class="mod">
     <button class="mod-close" onclick="closeM('login-modal')">&times;</button>
     <div class="tabs">
@@ -614,15 +555,14 @@ body{
     </div>
 </div></div>
 
-<!-- User Center -->
-<div class="mol" id="uc-modal"><div class="mod" style="max-width:520px">
+<div class="mol" id="uc-modal"><div class="mod" style="max-width:480px">
     <button class="mod-close" onclick="closeM('uc-modal')">&times;</button>
     <div class="uc-header" id="uc-header"></div>
     <div class="uc-section">
         <h3>我的插件</h3>
         <div id="uc-plugins"><p style="color:var(--tx-dim);text-align:center">加载中...</p></div>
     </div>
-    <button class="btn btn-out btn-blk" style="margin-top:10px" onclick="doLogout()">退出登录</button>
+    <button class="btn btn-out btn-blk" style="margin-top:8px" onclick="doLogout()">退出登录</button>
 </div></div>
 
 <div class="toast" id="toast"></div>
@@ -630,57 +570,58 @@ body{
 <script>
 const API='https://memory-orbs-activation.531442151.workers.dev';
 
-/* ── Orb hover tooltip phrases ── */
-const orbPhrases=[
-    '开心！今天吃了好吃的蛋糕 🍰',
-    '有点焦虑... 论文deadline快到了',
-    '看到毛毛卖萌，治愈了~',
-    '生气！代码又出bug了 😤',
-    '和大果冻一起看星星，幸福',
-    '今天物理讨论很有收获！慕慕',
-    '无聊的一天，啥也不想干 🥱',
-    '好尴尬... 在组会上说错话了',
-    '害怕明天的组会汇报 😨',
-    '讨厌这鬼天气',
-    '怀旧中...想起去年的今天',
-    '焦虑：论文写到第几页了？',
-    '开心！买到了喜欢的书 📚',
-    '伤心...实验数据又错了',
-    '默默仰望大佬的paper',
-    '今天的夕阳好美 🌇',
-    '练琴好累但是值得 🎻',
-    '毛毛又打翻了水杯...',
-    '灵感来了挡不住！✍️',
-    '困...但是睡不着 💤'
+/* ── Emotion data (matching plugin's DEFAULT_EMOTIONS) ── */
+const emotions = [
+    { key:'joy', label:'快乐', character:'乐乐',   color:'#fbeb37' },
+    { key:'sad', label:'伤心', character:'忧忧',   color:'#8abdf5' },
+    { key:'angry', label:'生气', character:'怒怒',  color:'#ff9185' },
+    { key:'disgust', label:'讨厌', character:'厌厌', color:'#75eaa6' },
+    { key:'fear', label:'害怕', character:'怕怕',   color:'#df94ff' },
+    { key:'anxiety', label:'焦虑', character:'焦焦', color:'#ffa947' },
+    { key:'envy', label:'慕慕', character:'慕慕',   color:'#1affd1' },
+    { key:'embarrassed', label:'尴尬', character:'尬尬', color:'#ffa8d4' },
+    { key:'ennui', label:'无聊', character:'丧丧',   color:'#6f94b8' },
+    { key:'nostalgia', label:'怀旧', character:'怀旧奶奶', color:'#cccccc' }
 ];
-let orbTooltipTimer=null;
+const emoMap = new Map(emotions.map(e=>[e.key,e]));
 
-function showOrbTooltip(e,el){
-    const tip=document.getElementById('orb-tooltip');
-    const text=orbPhrases[Math.floor(Math.random()*orbPhrases.length)];
-    tip.textContent=text;
-    const rect=el.getBoundingClientRect();
-    tip.style.left=(rect.left+rect.width/2)+'px';
-    tip.style.top=(rect.top-44)+'px';
-    tip.style.transform='translate(-50%,-100%)';
-    clearTimeout(orbTooltipTimer);
-    orbTooltipTimer=setTimeout(()=>tip.classList.add('show'),60);
+/* ── Color utils (matching plugin) ── */
+function hexToRgb(hex){
+    const h=hex.replace('#','');
+    return {r:parseInt(h.substring(0,2),16),g:parseInt(h.substring(2,4),16),b:parseInt(h.substring(4,6),16)};
 }
-function hideOrbTooltip(){
-    const tip=document.getElementById('orb-tooltip');
-    tip.classList.remove('show');
-    clearTimeout(orbTooltipTimer);
+function lighten(hex,amt){
+    const{r,g,b}=hexToRgb(hex);
+    return`rgb(${Math.min(255,Math.round(r+(255-r)*amt))},${Math.min(255,Math.round(g+(255-g)*amt))},${Math.min(255,Math.round(b+(255-b)*amt))})`;
+}
+function darken(hex,amt){
+    const{r,g,b}=hexToRgb(hex);
+    return`#${Math.round(r*(1-amt)).toString(16).padStart(2,'0')}${Math.round(g*(1-amt)).toString(16).padStart(2,'0')}${Math.round(b*(1-amt)).toString(16).padStart(2,'0')}`;
+}
+function makeGlow(hex,alpha=0.6){
+    const{r,g,b}=hexToRgb(hex);
+    return`rgba(${r},${g},${b},${alpha})`;
+}
+function makeGradient(hex){
+    const h=lighten(hex,0.85),m=hex,d=darken(hex,0.15),dd=darken(hex,0.4);
+    return`radial-gradient(circle at 35% 30%, ${h}, ${m} 40%, ${d} 80%, ${dd})`;
 }
 
-/* ── Attach tooltip to all mini-orbs ── */
-document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('.mini-orb').forEach(orb=>{
-        orb.addEventListener('mouseenter',function(e){showOrbTooltip(e,this)});
-        orb.addEventListener('mouseleave',hideOrbTooltip);
-    });
-});
+/* ── Demo texts (emotion-colored excerpts matching plugin diary entries) ── */
+const demoEntries = [
+    { emotion:emoMap.get('joy'),      emotions:[emoMap.get('joy')],      text:'今天吃了很好吃的蛋糕，开心！', isCore:false },
+    { emotion:emoMap.get('sad'),      emotions:[emoMap.get('sad')],      text:'实验数据又出错了，有点难过...', isCore:false },
+    { emotion:emoMap.get('angry'),    emotions:[emoMap.get('angry')],    text:'代码编译又报错，好生气！😤', isCore:false },
+    { emotion:emoMap.get('disgust'),  emotions:[emoMap.get('disgust')],  text:'今天食堂的菜好难吃...', isCore:false },
+    { emotion:emoMap.get('fear'),     emotions:[emoMap.get('fear')],     text:'明天的组会还没准备好，好担心', isCore:false },
+    { emotion:emoMap.get('anxiety'),  emotions:[emoMap.get('anxiety')],  text:'论文deadline快到了，焦虑', isCore:false },
+    // Blended (mixed emotions)
+    { emotion:emoMap.get('joy'),      emotions:[emoMap.get('joy'),emoMap.get('envy'),emoMap.get('nostalgia')], text:'看到大佬的paper慕了，但学到了好多！', isCore:false },
+    // Core memory
+    { emotion:emoMap.get('joy'),      emotions:[emoMap.get('joy'),emoMap.get('adm')], text:'和朋友们一起完成了实验，超有成就感！', isCore:true },
+];
 
-/* ── TOC scroll tracking ── */
+/* ═══════ TOC scroll tracking ═══════ */
 (function(){
     const tocLinks=document.querySelectorAll('.toc-sidebar a');
     const sections=[...tocLinks].map(a=>document.getElementById(a.dataset.section)).filter(Boolean);
@@ -696,6 +637,122 @@ document.addEventListener('DOMContentLoaded',function(){
     sections.forEach(s=>observer.observe(s));
 })();
 
+/* ═══════ Interactive Demo Pipeline (rewritten - matching plugin logic) ═══════ */
+(function(){
+    const group=document.getElementById('demo-pipeline-group');
+    if(!group)return;
+
+    group.innerHTML='<div class="demo-pipeline" id="demo-pl"><div class="demo-pipeline-floor"></div><div class="demo-orbs-row" id="demo-orbs-row"></div></div>';
+    const pl=document.getElementById('demo-pl');
+    const row=document.getElementById('demo-orbs-row');
+    const tip=document.getElementById('demo-tooltip');
+
+    /* ── Build orbs ── */
+    const orbHtml=demoEntries.map(e=>{
+        const color=e.emotion.color; const glow=makeGlow(color); const grad=makeGradient(color);
+        const bl=e.emotions.length>1; const n=bl?e.emotions.length:1;
+        let bg,bs;
+        if(bl){
+            const seg=360/n, hbSeg=seg*0.2;
+            const stops=[]; for(let i=0;i<n;i++){const b0=i*seg;stops.push(`${e.emotions[(i-1+n)%n].color} ${b0}deg`,e.emotions[i].color+" "+(b0+hbSeg)+"deg");}
+            bg='radial-gradient(circle at 35% 25%, rgba(255,255,255,0.5) 0%, transparent 45%), conic-gradient(from var(--rd,0deg),'+stops.join(',')+')';
+            bs=e.emotions.map(c=>'0 0 8px '+makeGlow(c)).join(',')+', 0 0 20px '+glow+', inset 0 -3px 8px rgba(0,0,0,0.12), inset 0 3px 8px rgba(255,255,255,0.3)';
+        } else {
+            bg=grad;
+            bs=e.isCore?`0 0 18px ${glow}, 0 0 40px ${glow}, 0 0 70px ${glow}, inset 0 -3px 8px rgba(0,0,0,0.1), inset 0 3px 8px rgba(255,255,255,0.4)`:`0 0 12px ${glow}, 0 0 24px ${glow}, inset 0 -3px 8px rgba(0,0,0,0.15), inset 0 3px 8px rgba(255,255,255,0.3)`;
+        }
+        let core=''; if(e.isCore) core='<div class="demo-orb-core-pulse" style="border-color:'+glow+'"></div>';
+        return `<div class="demo-orb-wrapper" style="transform:translate(var(--mx,0),var(--my,0))" data-ei="${demoEntries.indexOf(e)}"><div class="demo-orb${e.isCore?' demo-orb-core':''}${bl?' demo-orb-blended':''}" style="background:${bg};box-shadow:${bs}"><div class="demo-orb-inner-glow"></div><div class="demo-orb-highlight"></div><div class="demo-orb-starburst"></div><div class="demo-orb-starburst-v"></div>${core}</div></div>`;
+    }).join('');
+    row.innerHTML=orbHtml;
+
+    /* ═══════ Physics ═══════ */
+    const B=44, R=B/2, GAP=4, FX=0.94, BO=0.65, GV=0.18, WF=0.55, DF=0.85, RS=0.75, MX=0.03, MV=0.03, VX=25;
+    const balls=[];
+    document.querySelectorAll('#demo-orbs-row .demo-orb-wrapper').forEach((el,i)=>{
+        balls.push({el,orbEl:el.querySelector('.demo-orb'),rx:i*(B+GAP),x:0,y:0,vx:0,vy:0,r:R,m:Math.PI*R*R});
+    });
+    let running=false,aid=null,drag=null,hover=null,lx=0,ly=0,dragging=false,tipTimer=null,id;
+
+    const gx=b=>b.rx+b.x;
+    const app=()=>balls.forEach(b=>{b.el.style.setProperty('--mx',b.x+'px');b.el.style.setProperty('--my',(-b.y)+'px');if(b.orbEl.classList.contains('demo-orb-blended'))b.orbEl.style.setProperty('--rd',(b.x/R*180/Math.PI)+'deg')});
+
+    const step=()=>{
+        let mv=false; const tw=row.clientWidth, ph=pl.clientHeight;
+        for(const b of balls){if(b===drag)continue;b.vx*=FX;if(Math.abs(b.vx)<MX)b.vx=0;else{mv=true;b.vx=Math.max(-VX,Math.min(VX,b.vx))}if(b.y>0){b.vy-=GV;b.vy*=WF}else b.vy=0;if(Math.abs(b.vy)<MV&&b.y<=0)b.vy=0;else if(Math.abs(b.vy)>=MV)mv=true;b.x+=b.vx;b.y+=b.vy;if(b.y>ph-B){b.y=ph-B;b.vy=Math.abs(b.vy)*BO}if(b.y<0){b.y=0;b.vy=Math.abs(b.vy)*BO;if(Math.abs(b.vy)<0.5)b.vy=0}const px=gx(b);if(px<0){b.x=-b.rx;b.vx=Math.abs(b.vx)*BO}if(px+B>tw){b.x=tw-B-b.rx;b.vx=-Math.abs(b.vx)*BO}}
+        const s=[...balls].sort((a,b)=>gx(a)-gx(b));
+        for(let i=0;i<s.length-1;i++){const a=s[i],b=s[i+1];if(a===drag||b===drag)continue;const R=gx(a)+a.r,l=gx(b)-b.r;const o=R-l;if(o<=0)continue;const rv=a.vx-b.vx;if(rv<=0.02){const c=o*.5;a.x-=c;b.x+=c;if(Math.abs(rv)<0.08){a.vx*=.4;b.vx*=.4}continue}const e=RS,m1=a.m,m2=b.m,ms=m1+m2;a.vx=((m1-e*m2)*a.vx+(1+e)*m2*b.vx)/ms;b.vx=((m2-e*m1)*b.vx+(1+e)*m1*a.vx)/ms;a.x-=o*(m2/ms);b.x+=o*(m1/ms)}
+        app(); if(mv){aid=requestAnimationFrame(step)}else{running=false;aid=null}}
+    const start=()=>{if(!running){running=true;aid=requestAnimationFrame(step)}};
+
+    /* ── Hit detection ── */
+    const find=(cx,cy)=>{
+        let cl=null,cd=Infinity;
+        balls.forEach(b=>{const r=b.orbEl.getBoundingClientRect(),cx2=r.left+r.width/2,cy2=r.top+r.height/2,dx=cx-cx2,dy=cy-cy2,d=Math.sqrt(dx*dx+dy*dy);if(d<r.width/2*1.3&&d<cd){cl=b;cd=d}});
+        return cl;
+    };
+
+    /* ── Tooltip ── */
+    const showTip=(b)=>{
+        const ei=parseInt(b.el.dataset.ei),e=demoEntries[ei];if(!e)return;
+        const cl=e.emotion.color,rgb=hexToRgb(cl),bl=e.emotions.length>1;
+        tip.textContent=e.text;
+        if(bl){const ss=e.emotions.map((em,i)=>{const p=Math.round(i/(e.emotions.length-1)*100),cr=hexToRgb(em.color);return'rgba('+cr.r+','+cr.g+','+cr.b+',0.82) '+p+'%'}).join(', ');tip.style.background='linear-gradient(90deg, '+ss+')'}else tip.style.background='rgba('+rgb.r+','+rgb.g+','+rgb.b+',0.82)';
+        const lum=(rgb.r*0.299+rgb.g*0.587+rgb.b*0.114)/255;
+        tip.style.color=lum>0.55?'rgba(0,0,0,0.75)':'#fff';tip.style.textShadow=lum>0.55?'none':'0 1px 3px rgba(0,0,0,0.3)';
+        const rc=b.orbEl.getBoundingClientRect();tip.style.left=(rc.left+rc.width/2)+'px';tip.style.top=(rc.top-6)+'px';tip.style.transform='translate(-50%,-100%)';
+        tip.classList.add('visible');
+    };
+    const hideTip=()=>{tip.classList.remove('visible');if(tipTimer){clearTimeout(tipTimer);tipTimer=null}};
+
+    /* ── Events on pipeline ── */
+    pl.addEventListener('mousedown',e=>{
+        if(e.button!==0)return;const b=find(e.clientX,e.clientY);if(!b)return;
+        e.preventDefault();drag=b;dragging=true;lx=e.clientX;ly=e.clientY;
+        pl.style.cursor='grabbing';hideTip();
+    });
+    pl.addEventListener('touchstart',e=>{
+        const t=e.touches[0],b=find(t.clientX,t.clientY);if(!b)return;
+        drag=b;dragging=true;lx=t.clientX;ly=t.clientY;hideTip();
+    },{passive:false});
+    document.addEventListener('mousemove',e=>{
+        if(dragging){
+            if(!(e.buttons&1)){dragging=false;drag=null;pl.style.cursor='grab';start();return}
+            const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;
+            drag.x+=dx*DF;drag.vx=Math.max(-VX,Math.min(VX,dx*DF));drag.y-=dy*DF;drag.vy=-dy*DF;start();
+            return;
+        }
+        const b=find(e.clientX,e.clientY);
+        if(b!==hover){if(hover)hover.el.classList.remove('mo-pipeline-hover');hover=b;if(b)b.el.classList.add('mo-pipeline-hover')}
+        if(b){if(!tip.classList.contains('visible')){clearTimeout(tipTimer);tipTimer=setTimeout(()=>showTip(b),120)}}
+        else hideTip();
+    });
+    document.addEventListener('touchmove',e=>{
+        if(!dragging||!drag)return;const t=e.touches[0];
+        const dx=t.clientX-lx,dy=t.clientY-ly;lx=t.clientX;ly=t.clientY;
+        drag.x+=dx*DF;drag.vx=Math.max(-VX,Math.min(VX,dx*DF));drag.y-=dy*DF;drag.vy=-dy*DF;start();
+    },{passive:false});
+    document.addEventListener('mouseup',()=>{if(dragging){dragging=false;pl.style.cursor='grab';start()}drag=null});
+    document.addEventListener('touchend',()=>{if(dragging){dragging=false;start()}drag=null});
+    pl.addEventListener('mouseleave',()=>{if(hover){hover.el.classList.remove('mo-pipeline-hover');hover=null};hideTip()});
+
+    app();
+
+    /* ── Mini-orb tooltips (emotion-specific, color-coded) ── */
+    document.querySelectorAll('.mini-orb').forEach((orb,i)=>{
+        orb.addEventListener('mouseenter',function(){
+            const idx=i%demoEntries.length,entry=demoEntries[idx],cl=entry.emotion.color,rgb=hexToRgb(cl),lum=(rgb.r*0.299+rgb.g*0.587+rgb.b*0.114)/255;
+            tip.textContent=entry.text;tip.style.background='rgba('+rgb.r+','+rgb.g+','+rgb.b+',0.82)';tip.style.color=lum>0.55?'rgba(0,0,0,0.75)':'#fff';tip.style.textShadow=lum>0.55?'none':'0 1px 3px rgba(0,0,0,0.3)';
+            const r=orb.getBoundingClientRect();tip.style.left=(r.left+r.width/2)+'px';tip.style.top=(r.top-6)+'px';tip.style.transform='translate(-50%,-100%)';
+            tip.classList.add('visible');
+        });
+        orb.addEventListener('mouseleave',()=>tip.classList.remove('visible'));
+    });
+})();
+
+/* ═══════ Modal / Auth functions (unchanged) ═══════ */
+
+/* ═══════ Modal / Auth functions (unchanged) ═══════ */
 function openM(id){document.getElementById(id).classList.add('ac')}
 let buyAfterLogin=false;
 document.querySelectorAll('.mol').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('ac')}));
@@ -708,27 +765,9 @@ function swTab(id,btn){
 
 let tt;function toast(msg,ty){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+ty+' sh';clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('sh'),3000)}
 function copyC(id){navigator.clipboard.writeText(document.getElementById(id).textContent.trim()).then(()=>toast('已复制！','succ'))}
-
-function closeM(id){
-    document.getElementById(id).classList.remove('ac');
-    if(id==='purchase-modal'){
-        document.getElementById('ps1').classList.remove('hidden');
-        document.getElementById('ps2').classList.add('hidden');
-        updatePurchaseHint();
-    }
-}
-
-function handleBuyClick(){
-    const tk=localStorage.getItem('mo_tk');
-    if(tk){openM('purchase-modal');updatePurchaseHint();return}
-    buyAfterLogin=true;
-    openM('login-modal');
-}
-function updatePurchaseHint(){
-    const em=localStorage.getItem('mo_em');
-    document.getElementById('p-login-hint').textContent=em?'当前账号：'+em:'⚠️ 注册/登录后购买，激活码自动关联账号';
-}
-
+function closeM(id){document.getElementById(id).classList.remove('ac');if(id==='purchase-modal'){document.getElementById('ps1').classList.remove('hidden');document.getElementById('ps2').classList.add('hidden');updatePurchaseHint()}}
+function handleBuyClick(){const tk=localStorage.getItem('mo_tk');if(tk){openM('purchase-modal');updatePurchaseHint();return}buyAfterLogin=true;openM('login-modal')}
+function updatePurchaseHint(){const em=localStorage.getItem('mo_em');document.getElementById('p-login-hint').textContent=em?'当前账号：'+em:'⚠️ 注册/登录后购买，激活码自动关联账号'}
 async function doPurchase(){
     const tk=localStorage.getItem('mo_tk');
     const body=tk?{token:tk}:{email:prompt('请输入你的邮箱以接收激活码：','')};
@@ -743,7 +782,6 @@ async function doPurchase(){
         }else toast('失败: '+(d.reason||''),'err')
     }catch{toast('网络错误','err')}
 }
-
 async function doRegister(){
     const e=document.getElementById('r-email').value.trim(),p=document.getElementById('r-pw').value;
     if(!e||!e.includes('@')){toast('请输入有效邮箱','err');return}
@@ -760,7 +798,6 @@ async function doRegister(){
         }else toast('注册失败: '+(d.reason||''),'err')
     }catch{toast('网络错误','err')}
 }
-
 async function doLogin(){
     const e=document.getElementById('l-email').value.trim(),p=document.getElementById('l-pw').value;
     if(!e||!p){toast('请填写完整','err');return}
@@ -772,205 +809,30 @@ async function doLogin(){
         else toast('登录失败: '+(d.reason||''),'err')
     }catch{toast('网络错误','err')}
 }
-
 function doLogout(){localStorage.removeItem('mo_tk');localStorage.removeItem('mo_em');closeM('uc-modal');updateNav();toast('已退出','succ')}
-
 async function loadUserCenter(){
     const tk=localStorage.getItem('mo_tk'),em=localStorage.getItem('mo_em');
     if(!tk)return;
-    document.getElementById('uc-header').innerHTML=`
-        <div class="u-avatar-lg">${(em||'?')[0].toUpperCase()}</div>
-        <div class="u-info"><div class="u-email-lg">${em||''}</div><div class="u-since">Memory Orbs 用户</div></div>`;
+    document.getElementById('uc-header').innerHTML=`<div class="u-avatar-lg">${(em||'?')[0].toUpperCase()}</div><div class="u-info"><div class="u-email-lg">${em||''}</div><div class="u-since">Memory Orbs 用户</div></div>`;
     try{
         const r=await fetch(API+'/my-keys',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:tk})});
         const d=await r.json();
         const el=document.getElementById('uc-plugins');
         if(d.keys&&d.keys.length>0){
-            el.innerHTML=d.keys.map(k=>`<div class="uc-plugin-card" onclick="this.querySelector('.pl-detail').classList.toggle('open')">
-                <div class="pl-top"><span class="pl-name">🧠 Memory Orbs</span><span class="pl-ver">v1.0.0</span></div>
-                <div class="pl-detail"><div class="pl-code">${k.code}</div><div class="pl-actions"><span class="key-st ${k.status}">${k.status==='activated'?'已激活':'可使用'}</span><button class="btn btn-out btn-sm" onclick="event.stopPropagation();navigator.clipboard.writeText('${k.code}').then(()=>toast('已复制','succ'))">📋 复制</button></div></div>
-            </div>`).join('')
+            el.innerHTML=d.keys.map(k=>`<div class="uc-plugin-card" onclick="this.querySelector('.pl-detail').classList.toggle('open')"><div class="pl-top"><span class="pl-name">🧠 Memory Orbs</span><span class="pl-ver">v1.0.0</span></div><div class="pl-detail"><div class="pl-code">${k.code}</div><div class="pl-actions"><span class="key-st ${k.status}">${k.status==='activated'?'已激活':'可使用'}</span><button class="btn btn-out btn-sm" onclick="event.stopPropagation();navigator.clipboard.writeText('${k.code}').then(()=>toast('已复制','succ'))">📋 复制</button></div></div></div>`).join('')
         }else el.innerHTML='<p style="color:var(--tx-dim);text-align:center">暂无插件，请先购买</p>'
         openM('uc-modal')
     }catch{toast('获取失败','err')}
 }
-
 function updateNav(){
     const tk=localStorage.getItem('mo_tk'),em=localStorage.getItem('mo_em'),el=document.getElementById('nav-acts');
     if(tk&&em){
-        el.innerHTML=`
-            <div class="nav-user" onclick="loadUserCenter()" title="用户中心">
-                <div class="u-avatar">${em[0].toUpperCase()}</div>
-                <span class="u-email">${em}</span>
-            </div>
-            <button class="btn btn-pri" onclick="handleBuyClick()">购买</button>`
+        el.innerHTML=`<div class="nav-user" onclick="loadUserCenter()" title="用户中心"><div class="u-avatar">${em[0].toUpperCase()}</div><span class="u-email">${em}</span></div><button class="btn btn-pri" onclick="handleBuyClick()">购买</button>`
     }else{
-        el.innerHTML=`
-            <button class="btn btn-out" onclick="openM('login-modal')">登录</button>
-            <button class="btn btn-pri" onclick="handleBuyClick()">购买</button>`
+        el.innerHTML=`<button class="btn btn-out" onclick="openM('login-modal')">登录</button><button class="btn btn-pri" onclick="handleBuyClick()">购买</button>`
     }
 }
 updateNav();
-
-// ── Interactive Canvas Demo (matching plugin physics) ──
-(function(){
-    const cv=document.getElementById('demo-cv');if(!cv)return;
-    const ctx=cv.getContext('2d');if(!ctx)return;
-
-    class Orb{
-        constructor(x,y,c){this.x=x;this.y=y;this.vx=0;this.vy=0;this.r=28;this.color=c;this.mass=Math.PI*28*28/10000}
-    }
-    const orbs=[],colors=['#fbeb37','#8abdf5','#ff9185','#75eaa6','#df94ff','#ffa947'];
-    const G=0.18,FR=0.94,BO=0.65,RES=0.75,DF=0.85,WF=0.55,SNAPT=2;
-    let w,h,anim,dragging=null,dx=0,dy=0,lastX=0,lastY=0;
-    let hoveredOrb=null;
-
-    function resize(){
-        const r=cv.getBoundingClientRect();w=r.width;h=r.height;
-        cv.width=w;cv.height=h;
-        const plH=h-30,floorY=plH-30;
-        if(!orbs.length){for(let i=0;i<6;i++){orbs.push(new Orb(80+i*78,floorY-28,colors[i]))}}
-    }
-    resize();window.addEventListener('resize',resize);
-
-    function getMousePos(e){
-        const r=cv.getBoundingClientRect();
-        return{x:e.clientX-r.left,y:e.clientY-r.top};
-    }
-
-    function findHoveredOrb(mx,my){
-        for(let i=orbs.length-1;i>=0;i--){
-            if(Math.hypot(mx-orbs[i].x,my-orbs[i].y)<orbs[i].r*1.2)return orbs[i];
-        }
-        return null;
-    }
-
-    function draw(){
-        ctx.clearRect(0,0,w,h);
-        const plH=h-30,floorY=plH-30;
-
-        // Pipeline
-        const rx=18,ry=plH-66,rw=w-36,rh=66,rr=32;
-        ctx.beginPath();ctx.moveTo(rx+rr,ry);ctx.lineTo(rx+rw-rr,ry);ctx.arcTo(rx+rw,ry,rx+rw,ry+rr,rr);ctx.lineTo(rx+rw,ry+rh);ctx.lineTo(rx,ry+rh);ctx.lineTo(rx,ry+rr);ctx.arcTo(rx,ry,rx+rr,ry,rr);ctx.closePath();
-        ctx.fillStyle='rgba(255,255,255,0.03)';ctx.fill();
-        ctx.strokeStyle='rgba(255,255,255,0.06)';ctx.lineWidth=1;ctx.stroke();
-
-        // Floor line
-        ctx.beginPath();ctx.moveTo(42,floorY+4);ctx.lineTo(w-42,floorY+4);
-        ctx.strokeStyle='rgba(100,150,255,0.25)';ctx.lineWidth=1;ctx.stroke();
-
-        // Physics update
-        for(const o of orbs){
-            if(o!==dragging){o.vy-=G;o.x+=o.vx;o.y+=o.vy;o.vx*=FR;o.vy*=WF;if(o.y>floorY-o.r){o.y=floorY-o.r;o.vy*=-BO;o.vy=Math.abs(o.vy)<.5?0:o.vy}if(o.x-o.r<20){o.x=20+o.r;o.vx*=-BO}if(o.x+o.r>w-20){o.x=w-20-o.r;o.vx*=-BO}}
-        }
-        for(let i=0;i<orbs.length;i++)for(let j=i+1;j<orbs.length;j++){
-            const a=orbs[i],b=orbs[j];if(a===dragging||b===dragging)continue;
-            const dx2=b.x-a.x,dy2=b.y-a.y,dist=Math.hypot(dx2,dy2);
-            if(dist<a.r+b.r&&dist>0){
-                const nx=dx2/dist,ny=dy2/dist,overlap=a.r+b.r-dist;
-                const mr=a.mass/(a.mass+b.mass);
-                a.x-=nx*overlap*(1-mr);a.y-=ny*overlap*(1-mr);
-                b.x+=nx*overlap*mr;b.y+=ny*overlap*mr;
-                const rv=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;
-                if(rv>0){a.vx-=rv*nx;a.vy-=rv*ny;b.vx+=rv*nx;b.vy+=rv*ny}
-            }
-        }
-        for(const o of orbs){
-            if(o.vx>SNAPT||o.vx<-SNAPT||Math.abs(o.y-(floorY-o.r))>1)continue;
-            if(orbs.every(b=>b===o||(Math.abs(b.vx)<.03&&Math.abs(b.y-(floorY-b.r))<1))){
-                o.vx=o.vy=0;o.y=floorY-o.r;
-            }
-        }
-
-        // Draw orbs
-        for(const o of orbs){
-            ctx.save();
-            // Body
-            ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,Math.PI*2);
-            ctx.fillStyle=o.color;ctx.shadowColor=o.color;ctx.shadowBlur=18;ctx.fill();
-            ctx.shadowBlur=0;
-            // 3D gradient
-            const grad=ctx.createRadialGradient(o.x-o.r*.25,o.y-o.r*.35,o.r*.1,o.x,o.y,o.r);
-            grad.addColorStop(0,'rgba(255,255,255,0.5)');grad.addColorStop(1,'rgba(0,0,0,0.25)');
-            ctx.fillStyle=grad;ctx.fill();
-            // Highlight dot
-            ctx.beginPath();ctx.arc(o.x-o.r*.25,o.y-o.r*.3,o.r*.13,0,Math.PI*2);
-            ctx.fillStyle='rgba(255,255,255,0.6)';ctx.fill();
-            // Star cross (cosmos style)
-            ctx.translate(o.x,o.y);
-            ctx.beginPath();ctx.rect(-o.r*.44,-.5,o.r*.88,1);ctx.fillStyle='rgba(255,255,255,0.22)';ctx.fill();
-            ctx.beginPath();ctx.rect(-.5,-o.r*.44,1,o.r*.88);ctx.fillStyle='rgba(255,255,255,0.22)';ctx.fill();
-            ctx.restore();
-            // Outline
-            ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,Math.PI*2);
-            ctx.strokeStyle=o===hoveredOrb?'rgba(255,255,255,0.7)':'rgba(255,255,255,0.3)';ctx.lineWidth=o===hoveredOrb?2.5:2;ctx.stroke();
-        }
-
-        // Hovered orb glow
-        if(hoveredOrb&&hoveredOrb!==dragging){
-            ctx.save();
-            ctx.beginPath();ctx.arc(hoveredOrb.x,hoveredOrb.y,hoveredOrb.r+6,0,Math.PI*2);
-            ctx.strokeStyle='rgba(255,255,255,0.25)';ctx.lineWidth=2;ctx.stroke();
-            ctx.restore();
-        }
-
-        anim=requestAnimationFrame(draw);
-    }
-
-    // Mouse events
-    cv.addEventListener('mousedown',function(e){
-        const pos=getMousePos(e);
-        const orb=findHoveredOrb(pos.x,pos.y);
-        if(orb){dragging=orb;dx=pos.x-orb.x;dy=pos.y-orb.y;orb.vx=orb.vy=0;lastX=pos.x;lastY=pos.y}
-    });
-    cv.addEventListener('mousemove',function(e){
-        const pos=getMousePos(e);
-        if(dragging){
-            dragging.x=pos.x-dx;dragging.vx=(pos.x-lastX)*DF;dragging.vy=(pos.y-lastY)*DF;lastX=pos.x;lastY=pos.y;
-            const floorY=(h-30)-30;
-            if(dragging.y+dragging.r>floorY){dragging.y=floorY-dragging.r;dragging.vy=0}
-        }else{
-            const prev=hoveredOrb;
-            hoveredOrb=findHoveredOrb(pos.x,pos.y);
-            if(hoveredOrb!==prev){
-                cv.style.cursor=hoveredOrb?'grab':'default';
-                if(hoveredOrb)showOrbTooltip(e,cv);
-                else hideOrbTooltip();
-                // Update tooltip position while hovering orb
-                if(hoveredOrb){
-                    const tip=document.getElementById('orb-tooltip');
-                    if(tip.classList.contains('show')){
-                        const r=cv.getBoundingClientRect();
-                        tip.style.left=(r.left+hoveredOrb.x)+'px';
-                        tip.style.top=(r.top+hoveredOrb.y-40)+'px';
-                        tip.style.transform='translate(-50%,-100%)';
-                    }
-                }
-            }
-        }
-    });
-    cv.addEventListener('mouseup',function(){dragging=null});
-    cv.addEventListener('mouseleave',function(){dragging=null;hoveredOrb=null;hideOrbTooltip()});
-
-    // Touch events
-    cv.addEventListener('touchstart',function(e){e.preventDefault();const t=e.touches[0];const pos=getMousePos(t);const orb=findHoveredOrb(pos.x,pos.y);if(orb){dragging=orb;dx=pos.x-orb.x;dy=pos.y-orb.y;orb.vx=orb.vy=0}lastX=pos.x;lastY=pos.y},{passive:false});
-    cv.addEventListener('touchmove',function(e){e.preventDefault();if(!dragging)return;const t=e.touches[0];const pos=getMousePos(t);dragging.x=pos.x-dx;dragging.vx=(pos.x-lastX)*DF;dragging.vy=(pos.y-lastY)*DF;lastX=pos.x;lastY=pos.y;const floorY=(h-30)-30;if(dragging.y+dragging.r>floorY){dragging.y=floorY-dragging.r;dragging.vy=0}},{passive:false});
-    cv.addEventListener('touchend',function(){dragging=null});
-
-    draw();
-})();
-
-/* ── Re-bind mini-orb tooltips after any DOM updates ── */
-const orbTooltipObserver=new MutationObserver(function(){
-    document.querySelectorAll('.mini-orb').forEach(orb=>{
-        if(!orb.dataset.tooltipBound){
-            orb.dataset.tooltipBound='1';
-            orb.addEventListener('mouseenter',function(e){showOrbTooltip(e,this)});
-            orb.addEventListener('mouseleave',hideOrbTooltip);
-        }
-    });
-});
-orbTooltipObserver.observe(document.body,{childList:true,subtree:true});
 </script>
 </body>
 </html>
