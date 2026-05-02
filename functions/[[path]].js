@@ -137,13 +137,13 @@ export async function onRequest({ request, env }) {
 				if (!record) {
 					return json({ valid: false, reason: "email_not_authorized" });
 				}
-				if (record.startsWith("activated_")) {
-					return json({ valid: false, reason: "already_activated" });
-				}
-
 				const expectedCode = await generateCode(normalized, env.SECRET);
 				if (normalizeCode(code) !== expectedCode) {
 					return json({ valid: false, reason: "invalid_code" });
+				}
+
+				if (record.startsWith("activated_")) {
+					return json({ valid: true, already_activated: true });
 				}
 
 				await env.MEMORY_ORBS_USERS.put(normalized, `activated_${Date.now()}`);
