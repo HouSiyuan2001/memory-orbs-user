@@ -343,7 +343,7 @@ body{
     <div class="nav-logo">🧠 Memory Orbs</div>
     <div class="nav-acts">
         <button class="btn btn-out" onclick="openM('login-modal')">登录</button>
-        <button class="btn btn-pri" onclick="openM('purchase-modal')">购买</button>
+        <button class="btn btn-pri" onclick="handleBuyClick()">购买</button>
     </div>
 </nav>
 
@@ -351,7 +351,7 @@ body{
     <h1>Memory Orbs<br><span>记忆球</span></h1>
     <p>将日记中的情绪标签变成发光的记忆球 —— 灵感来自《头脑特工队》</p>
     <div class="hero-btns">
-        <button class="btn btn-pri btn-lg" onclick="openM('purchase-modal')">立即购买</button>
+        <button class="btn btn-pri btn-lg" onclick="handleBuyClick()">立即购买</button>
         <a href="#what" class="btn btn-out">了解更多 ↓</a>
     </div>
 </section>
@@ -510,19 +510,28 @@ body{
 <!-- Purchase -->
 <div class="mol" id="purchase-modal"><div class="mod">
     <button class="mod-close" onclick="closeM('purchase-modal')">&times;</button>
-    <h2>购买 Memory Orbs</h2><p class="mod-desc">扫码付款后填写邮箱，即可获取激活码</p>
+    <h2>购买 Memory Orbs</h2><p class="mod-desc">扫码付款后点击按钮，激活码将自动关联到你的账号</p>
     <div id="ps1">
         <div class="qr-wrap">
             <img src="./alipay-qr.png" alt="支付宝收款码" style="max-width:220px;height:auto;display:block;margin:0 auto;border-radius:8px">
             <p>请使用支付宝扫码付款</p>
             <p style="font-size:.7em;color:#999">建议支付金额：¥5.99（买断制）</p>
         </div>
-        <div class="fg"><label>你的邮箱</label><input type="email" id="p-email" placeholder="请输入接收激活码的邮箱"></div>
-        <button class="btn btn-pri btn-blk" onclick="doPurchase()">我已付款，获取激活码</button>
+        <p style="text-align:center;color:var(--tx-dim);font-size:.8em;margin-bottom:12px" id="p-login-hint"></p>
+        <button class="btn btn-pri btn-blk" onclick="doPurchase()">我已扫码付款，获取激活码</button>
     </div>
     <div id="ps2" class="hidden">
-        <div class="code-disp"><div class="code-label">你的激活码</div><div class="code-text" id="p-code"></div><button class="btn btn-out btn-sm" style="margin-top:12px" onclick="copyC('p-code')">📋 复制激活码</button></div>
-        <p style="text-align:center;color:var(--tx-dim);font-size:.8em">建议 <a href="javascript:void(0)" onclick="closeM('purchase-modal');openM('login-modal')" style="color:var(--ac)">注册账号</a> 保存密钥</p>
+        <div class="code-disp" id="ps2-no-login">
+            <div class="code-label">你的激活码</div>
+            <div class="code-text" id="p-code"></div>
+            <button class="btn btn-out btn-sm" style="margin-top:12px" onclick="copyC('p-code')">📋 复制激活码</button>
+            <p style="color:var(--tx-dim);font-size:.75em;margin-top:8px">⚠️ 请务必<a href="javascript:void(0)" onclick="closeM('purchase-modal');openM('login-modal')" style="color:var(--ac)">注册/登录</a>保存，否则丢失无法找回</p>
+        </div>
+        <div class="code-disp" id="ps2-login" style="display:none">
+            <div class="code-label">激活码已关联到你的账号</div>
+            <div class="code-text" id="p-code-login"></div>
+            <button class="btn btn-out btn-sm" style="margin-top:12px" onclick="copyC('p-code-login')">📋 复制激活码</button>
+        </div>
         <button class="btn btn-out btn-blk" style="margin-top:12px" onclick="closeM('purchase-modal')">关闭</button>
     </div>
 </div></div>
@@ -559,7 +568,7 @@ body{
 const API='https://memory-orbs-activation.531442151.workers.dev';
 
 function openM(id){document.getElementById(id).classList.add('ac')}
-function closeM(id){document.getElementById(id).classList.remove('ac');if(id==='purchase-modal'){document.getElementById('ps1').classList.remove('hidden');document.getElementById('ps2').classList.add('hidden')}}
+let buyAfterLogin=false; // flag: open purchase modal after login
 document.querySelectorAll('.mol').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('ac')}));
 
 function swTab(id,btn){
@@ -571,14 +580,38 @@ function swTab(id,btn){
 let tt;function toast(msg,ty){const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+ty+' sh';clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('sh'),3000)}
 function copyC(id){navigator.clipboard.writeText(document.getElementById(id).textContent.trim()).then(()=>toast('已复制！','succ'))}
 
+function closeM(id){
+    document.getElementById(id).classList.remove('ac');
+    if(id==='purchase-modal'){
+        document.getElementById('ps1').classList.remove('hidden');
+        document.getElementById('ps2').classList.add('hidden');
+        updatePurchaseHint();
+    }
+}
+
+function handleBuyClick(){
+    const tk=localStorage.getItem('mo_tk');
+    if(tk){openM('purchase-modal');updatePurchaseHint();return}
+    buyAfterLogin=true;
+    openM('login-modal');
+}
+function updatePurchaseHint(){
+    const em=localStorage.getItem('mo_em');
+    document.getElementById('p-login-hint').textContent=em?'当前账号：'+em:'⚠️ 注册/登录后购买，激活码自动关联账号';
+}
+
 async function doPurchase(){
-    const e=document.getElementById('p-email').value.trim();
-    if(!e||!e.includes('@')){toast('请输入有效邮箱','err');return}
+    const tk=localStorage.getItem('mo_tk');
+    const body=tk?{token:tk}:{email:prompt('请输入你的邮箱以接收激活码：','')};
+    if(!tk&&(!body.email||!body.email.includes('@'))){toast('需要提供有效邮箱','err');return}
     try{
-        const r=await fetch(API+'/purchase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e})});
+        const r=await fetch(API+'/purchase',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
         const d=await r.json();
-        if(d.success){document.getElementById('p-code').textContent=d.code;document.getElementById('ps1').classList.add('hidden');document.getElementById('ps2').classList.remove('hidden')}
-        else toast('失败: '+(d.reason||''),'err')
+        if(d.success){
+            if(tk){document.getElementById('p-code-login').textContent=d.code;document.getElementById('ps2-no-login').style.display='none';document.getElementById('ps2-login').style.display='block'}
+            else{document.getElementById('p-code').textContent=d.code;document.getElementById('ps2-no-login').style.display='block';document.getElementById('ps2-login').style.display='none'}
+            document.getElementById('ps1').classList.add('hidden');document.getElementById('ps2').classList.remove('hidden')
+        }else toast('失败: '+(d.reason||''),'err')
     }catch{toast('网络错误','err')}
 }
 
@@ -589,8 +622,14 @@ async function doRegister(){
     try{
         const r=await fetch(API+'/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,password:p})});
         const d=await r.json();
-        if(d.success){toast('注册成功！请登录','succ');document.querySelector('#login-modal .tab-btn').click()}
-        else toast('注册失败: '+(d.reason||''),'err')
+        if(d.success){
+            // Auto-login after register
+            const lr=await fetch(API+'/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,password:p})});
+            const ld=await lr.json();
+            if(ld.success){localStorage.setItem('mo_tk',ld.token);localStorage.setItem('mo_em',ld.email);closeM('login-modal');updateNav();toast('注册成功！','succ');
+                if(buyAfterLogin){buyAfterLogin=false;openM('purchase-modal');updatePurchaseHint()}else loadKeys()}
+            else toast('注册成功！请手动登录','succ')
+        }else toast('注册失败: '+(d.reason||''),'err')
     }catch{toast('网络错误','err')}
 }
 
@@ -600,12 +639,13 @@ async function doLogin(){
     try{
         const r=await fetch(API+'/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:e,password:p})});
         const d=await r.json();
-        if(d.success){localStorage.setItem('mo_tk',d.token);localStorage.setItem('mo_em',d.email);closeM('login-modal');toast('登录成功！','succ');loadKeys()}
+        if(d.success){localStorage.setItem('mo_tk',d.token);localStorage.setItem('mo_em',d.email);closeM('login-modal');updateNav();toast('登录成功！','succ');
+            if(buyAfterLogin){buyAfterLogin=false;openM('purchase-modal');updatePurchaseHint()}else loadKeys()}
         else toast('登录失败: '+(d.reason||''),'err')
     }catch{toast('网络错误','err')}
 }
 
-function doLogout(){localStorage.removeItem('mo_tk');localStorage.removeItem('mo_em');closeM('keys-modal');toast('已退出','succ')}
+function doLogout(){localStorage.removeItem('mo_tk');localStorage.removeItem('mo_em');closeM('keys-modal');updateNav();toast('已退出','succ')}
 
 async function loadKeys(){
     const tk=localStorage.getItem('mo_tk');if(!tk)return;
@@ -619,10 +659,12 @@ async function loadKeys(){
     }catch{toast('获取失败','err')}
 }
 
-(function(){
+function updateNav(){
     const tk=localStorage.getItem('mo_tk');
-    if(tk){const b=document.querySelector('.nav-acts .btn-out');if(b){b.textContent='我的密钥';b.setAttribute('onclick','loadKeys()')}}
-})();
+    const b=document.querySelector('.nav-acts .btn-out');
+    if(b){b.textContent=tk?'我的密钥':'登录';b.setAttribute('onclick',tk?'loadKeys()':"openM('login-modal')");}
+}
+updateNav();
 
 // ── Interactive Canvas Demo (matching plugin physics) ──
 (function(){
