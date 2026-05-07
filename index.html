@@ -58,8 +58,26 @@ body{
 .sec h3{font-size:1.2em;color:var(--ac);margin-bottom:10px}
 .sec-sub{text-align:center;color:var(--tx-dim);font-size:.9em;margin-bottom:32px}
 .hero{text-align:center;padding:120px 24px 80px}
-.hero-brand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
-.hero-brand img{width:68px;height:68px;border-radius:16px;object-fit:cover;box-shadow:0 18px 42px rgba(0,0,0,0.32)}
+.hero-brand{display:flex;align-items:center;justify-content:center;margin:0 auto 18px;min-height:164px}
+.brand-orbit{position:relative;width:184px;height:150px;display:grid;place-items:center;isolation:isolate}
+.brand-orbit::before{content:"";position:absolute;inset:18px 4px;border:1px solid rgba(255,232,174,.72);border-radius:50%;transform:rotate(-13deg);filter:drop-shadow(0 0 8px rgba(255,218,132,.35));transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.brand-orbit::after{content:"";position:absolute;inset:26px 0;border:1px solid rgba(184,150,255,.62);border-radius:50%;transform:rotate(16deg);filter:drop-shadow(0 0 8px rgba(159,128,255,.28));transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.hero-logo-main{width:112px;height:112px;border-radius:28px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 22px 38px rgba(0,0,0,.34)) drop-shadow(0 0 24px rgba(179,140,255,.28));transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s}
+.orbit-dot{position:absolute;z-index:3;width:16px;height:16px;border-radius:50%;background:var(--dot);box-shadow:0 0 14px color-mix(in srgb,var(--dot),transparent 35%),inset 0 2px 5px rgba(255,255,255,.66);transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.orbit-dot::after{content:"";position:absolute;top:3px;left:4px;width:5px;height:3px;border-radius:50%;background:rgba(255,255,255,.78);filter:blur(.4px)}
+.orbit-dot.d1{left:18px;top:70px;--dot:#8abdf5}
+.orbit-dot.d2{right:24px;top:42px;width:13px;height:13px;--dot:#ffd7a1}
+.orbit-dot.d3{right:30px;bottom:38px;width:15px;height:15px;--dot:#ffa8d4}
+.orbit-dot.d4{left:42px;bottom:30px;width:18px;height:18px;--dot:#b892dd}
+.brand-star{position:absolute;z-index:4;color:#fff0cb;font-size:28px;text-shadow:0 0 18px rgba(255,228,172,.72);transform:translateY(-2px);transition:transform .55s}
+.brand-orbit:hover::before{transform:rotate(20deg) scale(1.04)}
+.brand-orbit:hover::after{transform:rotate(-22deg) scale(1.05)}
+.brand-orbit:hover .hero-logo-main{transform:translateY(-4px) scale(1.08);filter:drop-shadow(0 28px 48px rgba(0,0,0,.38)) drop-shadow(0 0 32px rgba(255,226,160,.34))}
+.brand-orbit:hover .brand-star{transform:translateY(-5px) scale(1.15) rotate(18deg)}
+.brand-orbit:hover .d1{transform:translate(-12px,-8px) scale(1.1)}
+.brand-orbit:hover .d2{transform:translate(16px,-12px) scale(1.18)}
+.brand-orbit:hover .d3{transform:translate(14px,12px) scale(1.12)}
+.brand-orbit:hover .d4{transform:translate(-16px,10px) scale(1.15)}
 .hero h1{font-size:3.2em;color:var(--tx-b);margin-bottom:12px}
 .hero h1 span{background:linear-gradient(135deg,var(--joy),var(--ang),var(--fea));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--tx-dim);font-size:1.05em;margin-bottom:28px}
@@ -344,6 +362,7 @@ body{
     .toc-sidebar{display:none}
     .f-grid,.theme-row{grid-template-columns:1fr}
     .hero h1{font-size:2.2em}.sec{padding:48px 16px}.sec:first-of-type{padding-top:100px}
+    .hero-brand{min-height:140px}.brand-orbit{width:156px;height:128px}.hero-logo-main{width:94px;height:94px;border-radius:24px}.brand-star{font-size:24px}
     .nav{padding:10px 16px}.mod{padding:24px 18px;max-width:92vw}
     .code-disp .code-text{font-size:1em}
     .demo-pipeline-wrap{min-height:200px}
@@ -416,7 +435,14 @@ body{
 
 <section class="hero" id="top">
     <div class="hero-brand">
-        <img src="./logo.png" alt="Memory Orbs logo">
+        <div class="brand-orbit" aria-label="Memory Orbs logo">
+            <img class="hero-logo-main" src="./logo.png" alt="Memory Orbs logo">
+            <span class="brand-star">✦</span>
+            <span class="orbit-dot d1"></span>
+            <span class="orbit-dot d2"></span>
+            <span class="orbit-dot d3"></span>
+            <span class="orbit-dot d4"></span>
+        </div>
     </div>
     <h1>Memory Orbs<br><span>记忆球</span></h1>
     <p>将日记中的情绪标签变成发光的记忆球 —— 灵感来自《头脑特工队》</p>
