@@ -24,12 +24,12 @@ __export(main_exports, {
 module.exports = __toCommonJS(main_exports);
 var import_obsidian = require("obsidian");
 var DEFAULT_EMOTIONS = [
-  { key: "Joy", label: "\u5FEB\u4E50", character: "\u4E50\u4E50", color: "#fbeb37" },
+  { key: "Joy", label: "\u5FEB\u4E50", character: "\u4E50\u4E50", color: "#ffea00" },
   { key: "sad", label: "\u4F24\u5FC3", character: "\u5FE7\u5FE7", color: "#8abdf5" },
-  { key: "angry", label: "\u751F\u6C14", character: "\u6012\u6012", color: "#ff9185" },
-  { key: "disgust", label: "\u8BA8\u538C", character: "\u538C\u538C", color: "#75eaa6" },
-  { key: "fear", label: "\u5BB3\u6015", character: "\u6015\u6015", color: "#df94ff" },
-  { key: "anxiety", label: "\u7126\u8651", character: "\u7126\u7126", color: "#ffa947" },
+  { key: "angry", label: "\u751F\u6C14", character: "\u6012\u6012", color: "#fd4430" },
+  { key: "disgust", label: "\u8BA8\u538C", character: "\u538C\u538C", color: "#1aff79" },
+  { key: "fear", label: "\u5BB3\u6015", character: "\u6015\u6015", color: "#b892dd" },
+  { key: "anxiety", label: "\u7126\u8651", character: "\u7126\u7126", color: "#ff8f0f" },
   { key: "envy", label: "\u6155\u6155", character: "\u6155\u6155", color: "#1affd1" },
   { key: "embarrassed", label: "\u5C34\u5C2C", character: "\u5C2C\u5C2C", color: "#ffa8d4" },
   { key: "ennui", label: "\u65E0\u804A", character: "\u4E27\u4E27", color: "#6f94b8" },
