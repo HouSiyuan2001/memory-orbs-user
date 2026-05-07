@@ -508,6 +508,7 @@ var MemoryOrbsView = class extends import_obsidian.ItemView {
     const effectiveMode = this.currentMode;
     container.empty();
     container.addClass("memory-orbs-container");
+    container.removeClass("mo-small-window");
     container.toggleClass("mo-ui-collapsed", this.isUiCollapsed);
     const isLimited = !this.plugin.settings.activated;
     const vt = isLimited ? "classic" : this.plugin.settings.visualTheme;
