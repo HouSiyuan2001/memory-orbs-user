@@ -24,12 +24,12 @@ __export(main_exports, {
 module.exports = __toCommonJS(main_exports);
 var import_obsidian = require("obsidian");
 var DEFAULT_EMOTIONS = [
-  { key: "Joy", label: "\u5FEB\u4E50", character: "\u4E50\u4E50", color: "#fbeb37" },
+  { key: "Joy", label: "\u5FEB\u4E50", character: "\u4E50\u4E50", color: "#ffea00" },
   { key: "sad", label: "\u4F24\u5FC3", character: "\u5FE7\u5FE7", color: "#8abdf5" },
-  { key: "angry", label: "\u751F\u6C14", character: "\u6012\u6012", color: "#ff9185" },
-  { key: "disgust", label: "\u8BA8\u538C", character: "\u538C\u538C", color: "#75eaa6" },
-  { key: "fear", label: "\u5BB3\u6015", character: "\u6015\u6015", color: "#df94ff" },
-  { key: "anxiety", label: "\u7126\u8651", character: "\u7126\u7126", color: "#ffa947" },
+  { key: "angry", label: "\u751F\u6C14", character: "\u6012\u6012", color: "#fd4430" },
+  { key: "disgust", label: "\u8BA8\u538C", character: "\u538C\u538C", color: "#1aff79" },
+  { key: "fear", label: "\u5BB3\u6015", character: "\u6015\u6015", color: "#b892dd" },
+  { key: "anxiety", label: "\u7126\u8651", character: "\u7126\u7126", color: "#ff8f0f" },
   { key: "envy", label: "\u6155\u6155", character: "\u6155\u6155", color: "#1affd1" },
   { key: "embarrassed", label: "\u5C34\u5C2C", character: "\u5C2C\u5C2C", color: "#ffa8d4" },
   { key: "ennui", label: "\u65E0\u804A", character: "\u4E27\u4E27", color: "#6f94b8" },
@@ -312,31 +312,27 @@ var MemoryOrbsEmbedRenderer = class {
       const dayMemories = await this.parser.getMemories(range.start, range.end);
       if (renderVersion !== this.renderVersion) return;
       loading.remove();
-      const isLimited = !this.plugin.settings.activated;
-      let displayDays = dayMemories;
-      if (isLimited) {
-        const today = this.getTodayString();
-        displayDays = dayMemories.filter((d) => d.date === today);
+      if (!this.plugin.settings.activated) {
+        const banner = body.createDiv({
+          cls: "mo-activation-banner mo-activation-banner-embed"
+        });
+        banner.createSpan({ text: "\u{1F512} \u8BF7\u5148\u6FC0\u6D3B Memory Orbs \u4EE5\u67E5\u770B\u8BB0\u5FC6\u7403" });
+        const btn = banner.createEl("button", {
+          text: "\u{1F511} \u6FC0\u6D3B",
+          cls: "mod-cta"
+        });
+        btn.addEventListener("click", () => {
+          new ActivateModal(this.plugin.app, this.plugin).open();
+        });
+        return;
       }
-      const allEntries = displayDays.flatMap((day) => day.entries);
+      const allEntries = dayMemories.flatMap((day) => day.entries);
       if (allEntries.length === 0) {
         const empty = body.createDiv({ cls: "mo-empty" });
         empty.createSpan({ text: "\u8FD9\u4E2A\u65F6\u95F4\u6BB5\u8FD8\u6CA1\u6709\u8BB0\u5FC6\u7403 \u2728" });
-        if (isLimited) {
-          empty.createDiv({
-            cls: "mo-activation-banner",
-            text: "\u{1F511} \u672A\u6FC0\u6D3B\uFF0C\u4EC5\u5C55\u793A\u4ECA\u5929\u3002\u8BF7\u6FC0\u6D3B\u4EE5\u89E3\u9501\u5168\u90E8\u529F\u80FD\u3002"
-          });
-        }
         return;
       }
       this.createEmbedPipelines(body, allEntries, tooltipEl);
-      if (isLimited) {
-        body.createDiv({
-          cls: "mo-activation-banner mo-activation-banner-embed",
-          text: "\u{1F511} \u672A\u6FC0\u6D3B\uFF0C\u4EC5\u5C55\u793A\u4ECA\u5929\u3002\u8BF7\u5728\u63D2\u4EF6\u8BBE\u7F6E\u4E2D\u6FC0\u6D3B\u3002"
-        });
-      }
     } catch (e) {
       loading.remove();
       body.createDiv({ cls: "mo-empty", text: "\u5D4C\u5165\u8BB0\u5FC6\u7403\u52A0\u8F7D\u5931\u8D25\u4E86 \u{1F622}" });
@@ -554,90 +550,95 @@ var MemoryOrbsView = class extends import_obsidian.ItemView {
     let statsBtn = null;
     if (isLimited) {
       toolbar = container.createDiv({ cls: "mo-toolbar" });
-      const limitedNav = toolbar.createDiv({ cls: "mo-nav" });
-      limitedNav.createDiv({ cls: "mo-nav-title", text: "\u4ECA\u65E5\u8BB0\u5FC6\u7403" });
+      const lock = toolbar.createDiv({ cls: "mo-nav" });
+      lock.createDiv({ cls: "mo-nav-title", text: "\u{1F512} Memory Orbs \u5DF2\u9501\u5B9A" });
       const activateBtn = toolbar.createEl("button", {
         cls: "mo-theme-btn mod-cta",
-        text: "\u{1F511} \u6FC0\u6D3B\u4EE5\u89E3\u9501\u5168\u90E8\u529F\u80FD"
+        text: "\u{1F511} \u6FC0\u6D3B\u4EE5\u89E3\u9501"
       });
       activateBtn.title = "\u6FC0\u6D3B Memory Orbs";
       activateBtn.addEventListener("click", () => {
         new ActivateModal(this.plugin.app, this.plugin).open();
       });
-    } else {
-      toolbar = container.createDiv({ cls: "mo-toolbar" });
-      const nav = toolbar.createDiv({ cls: "mo-nav" });
-      prevBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25C0" });
-      const titleEl = nav.createDiv({ cls: "mo-nav-title" });
-      nextBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25B6" });
-      this.updateTitle(titleEl);
-      const modeGroup = toolbar.createDiv({ cls: "mo-mode-group" });
-      const modes = [
-        { key: "day", label: "\u65E5" },
-        { key: "week", label: "\u5468" },
-        { key: "month", label: "\u6708" }
-      ];
-      for (const mode of modes) {
-        const btn = modeGroup.createEl("button", {
-          cls: `mo-mode-btn ${this.currentMode === mode.key ? "active" : ""}`,
-          text: mode.label
-        });
-        btn.addEventListener("click", () => {
-          this.currentMode = mode.key;
-          this.render();
-        });
-      }
-      const legend = toolbar.createDiv({ cls: "mo-legend" });
-      for (const emotion of this.emotions) {
-        const dot = legend.createDiv({ cls: "mo-legend-dot" });
-        dot.style.backgroundColor = emotion.color;
-        dot.style.boxShadow = `0 0 6px ${makeGlow(emotion.color)}`;
-        dot.title = `${emotion.character} ${emotion.label}`;
-        dot.addEventListener("click", () => {
-          this.showEmotionDetail(emotion);
-        });
-      }
-      const themeIcons = { cosmos: "\u{1F30C}", classic: "\u2600\uFE0F", sketch: "\u270F\uFE0F", glass: "\u{1F52E}" };
-      const themeLabels = { cosmos: "\u661F\u7A7A", classic: "\u7ECF\u5178", sketch: "\u624B\u7ED8", glass: "\u73BB\u7483" };
-      const themeCycle = ["cosmos", "classic", "sketch", "glass"];
-      const currentVt = this.plugin.settings.visualTheme;
-      const themeBtn = toolbar.createEl("button", {
-        cls: "mo-theme-btn",
-        text: `${themeIcons[currentVt]} ${themeLabels[currentVt]}`
+      const emptyDiv = container.createDiv({ cls: "mo-empty" });
+      emptyDiv.createSpan({ text: "\u8BF7\u70B9\u51FB\u4E0A\u65B9\u300C\u6FC0\u6D3B\u300D\u6309\u94AE\u89E3\u9501\u5168\u90E8\u529F\u80FD \u2728" });
+      this._cleanupFns.push(() => {
       });
-      themeBtn.title = `\u89C6\u89C9\u4E3B\u9898: ${themeLabels[currentVt]}`;
-      themeBtn.addEventListener("click", async () => {
-        const idx = themeCycle.indexOf(currentVt);
-        const newVt = themeCycle[(idx + 1) % themeCycle.length];
-        this.plugin.settings.visualTheme = newVt;
-        await this.plugin.saveSettings();
-        this.render();
-      });
-      statsBtn = toolbar.createEl("button", {
-        cls: "mo-stats-btn",
-        text: "\u{1F4CA} \u7EDF\u8BA1"
-      });
-      statsBtn.title = "\u67E5\u770B\u60C5\u7EEA\u7EDF\u8BA1";
-      const refreshBtn = toolbar.createEl("button", { cls: "mo-theme-btn" });
-      refreshBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`;
-      refreshBtn.title = "\u5237\u65B0\u8BB0\u5FC6\u7403";
-      refreshBtn.addEventListener("click", () => {
-        this._rangeCache.clear();
-        this._parser = null;
-        this.render();
-      });
-      const collapseBtn = toolbar.createEl("button", {
-        cls: "mo-collapse-btn",
-        text: this.isUiCollapsed ? "\u2922" : "\u2921"
-      });
-      collapseBtn.title = this.isUiCollapsed ? "\u6062\u590D\u754C\u9762" : "\u6536\u7F29\u754C\u9762";
-      collapseBtn.addEventListener("click", () => {
-        this.isUiCollapsed = !this.isUiCollapsed;
-        this.render();
-      });
-      prevBtn.addEventListener("click", () => this.navigate(-1));
-      nextBtn.addEventListener("click", () => this.navigate(1));
+      if (scroll) scroll.remove();
+      return;
     }
+    toolbar = container.createDiv({ cls: "mo-toolbar" });
+    const nav = toolbar.createDiv({ cls: "mo-nav" });
+    prevBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25C0" });
+    const titleEl = nav.createDiv({ cls: "mo-nav-title" });
+    nextBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25B6" });
+    this.updateTitle(titleEl);
+    const modeGroup = toolbar.createDiv({ cls: "mo-mode-group" });
+    const modes = [
+      { key: "day", label: "\u65E5" },
+      { key: "week", label: "\u5468" },
+      { key: "month", label: "\u6708" }
+    ];
+    for (const mode of modes) {
+      const btn = modeGroup.createEl("button", {
+        cls: `mo-mode-btn ${this.currentMode === mode.key ? "active" : ""}`,
+        text: mode.label
+      });
+      btn.addEventListener("click", () => {
+        this.currentMode = mode.key;
+        this.render();
+      });
+    }
+    const legend = toolbar.createDiv({ cls: "mo-legend" });
+    for (const emotion of this.emotions) {
+      const dot = legend.createDiv({ cls: "mo-legend-dot" });
+      dot.style.backgroundColor = emotion.color;
+      dot.style.boxShadow = `0 0 6px ${makeGlow(emotion.color)}`;
+      dot.title = `${emotion.character} ${emotion.label}`;
+      dot.addEventListener("click", () => {
+        this.showEmotionDetail(emotion);
+      });
+    }
+    const themeIcons = { cosmos: "\u{1F30C}", classic: "\u2600\uFE0F", sketch: "\u270F\uFE0F", glass: "\u{1F52E}" };
+    const themeLabels = { cosmos: "\u661F\u7A7A", classic: "\u7ECF\u5178", sketch: "\u624B\u7ED8", glass: "\u73BB\u7483" };
+    const themeCycle = ["cosmos", "classic", "sketch", "glass"];
+    const currentVt = this.plugin.settings.visualTheme;
+    const themeBtn = toolbar.createEl("button", {
+      cls: "mo-theme-btn",
+      text: `${themeIcons[currentVt]} ${themeLabels[currentVt]}`
+    });
+    themeBtn.title = `\u89C6\u89C9\u4E3B\u9898: ${themeLabels[currentVt]}`;
+    themeBtn.addEventListener("click", async () => {
+      const idx = themeCycle.indexOf(currentVt);
+      const newVt = themeCycle[(idx + 1) % themeCycle.length];
+      this.plugin.settings.visualTheme = newVt;
+      await this.plugin.saveSettings();
+      this.render();
+    });
+    statsBtn = toolbar.createEl("button", {
+      cls: "mo-stats-btn",
+      text: "\u{1F4CA} \u7EDF\u8BA1"
+    });
+    statsBtn.title = "\u67E5\u770B\u60C5\u7EEA\u7EDF\u8BA1";
+    const refreshBtn = toolbar.createEl("button", { cls: "mo-theme-btn" });
+    refreshBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    refreshBtn.title = "\u5237\u65B0\u8BB0\u5FC6\u7403";
+    refreshBtn.addEventListener("click", () => {
+      this._rangeCache.clear();
+      this._parser = null;
+      this.render();
+    });
+    const collapseBtn = toolbar.createEl("button", {
+      cls: "mo-collapse-btn",
+      text: this.isUiCollapsed ? "\u2922" : "\u2921"
+    });
+    collapseBtn.title = this.isUiCollapsed ? "\u6062\u590D\u754C\u9762" : "\u6536\u7F29\u754C\u9762";
+    collapseBtn.addEventListener("click", () => {
+      this.isUiCollapsed = !this.isUiCollapsed;
+      this.render();
+    });
+    prevBtn.addEventListener("click", () => this.navigate(-1));
+    nextBtn.addEventListener("click", () => this.navigate(1));
     const orbsContainer = container.createDiv({ cls: "mo-orbs-wrapper" });
     const loading = orbsContainer.createDiv({ cls: "mo-loading", text: "\u6B63\u5728\u63D0\u53D6\u8BB0\u5FC6..." });
     try {
