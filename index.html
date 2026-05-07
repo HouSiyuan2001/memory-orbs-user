@@ -58,22 +58,25 @@ body{
 .sec h3{font-size:1.2em;color:var(--ac);margin-bottom:10px}
 .sec-sub{text-align:center;color:var(--tx-dim);font-size:.9em;margin-bottom:32px}
 .hero{text-align:center;padding:120px 24px 80px}
-.hero-brand{display:flex;align-items:center;justify-content:center;margin:0 auto 18px;min-height:164px}
-.brand-orbit{position:relative;width:184px;height:150px;display:grid;place-items:center;isolation:isolate}
-.brand-orbit::before{content:"";position:absolute;inset:18px 4px;border:1px solid rgba(255,232,174,.72);border-radius:50%;transform:rotate(-13deg);filter:drop-shadow(0 0 8px rgba(255,218,132,.35));transition:transform .65s cubic-bezier(.2,.8,.2,1)}
-.brand-orbit::after{content:"";position:absolute;inset:26px 0;border:1px solid rgba(184,150,255,.62);border-radius:50%;transform:rotate(16deg);filter:drop-shadow(0 0 8px rgba(159,128,255,.28));transition:transform .65s cubic-bezier(.2,.8,.2,1)}
-.hero-logo-main{width:112px;height:112px;border-radius:28px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 22px 38px rgba(0,0,0,.34)) drop-shadow(0 0 24px rgba(179,140,255,.28));transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s}
+.hero-brand{display:flex;align-items:center;justify-content:center;margin:0 auto 10px;min-height:228px}
+.brand-orbit{position:relative;width:min(430px,88vw);height:214px;display:grid;place-items:center;isolation:isolate}
+.brand-orbit::before{content:"";position:absolute;inset:38px 24px;border:1px solid rgba(255,232,174,.72);border-radius:50%;transform:rotate(-13deg);filter:drop-shadow(0 0 8px rgba(255,218,132,.35));transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.brand-orbit::after{content:"";position:absolute;inset:52px 18px;border:1px solid rgba(184,150,255,.62);border-radius:50%;transform:rotate(16deg);filter:drop-shadow(0 0 8px rgba(159,128,255,.28));transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.hero-logo-main{width:168px;height:168px;border-radius:38px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 28px 48px rgba(0,0,0,.38)) drop-shadow(0 0 30px rgba(179,140,255,.32));transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s}
 .orbit-dot{position:absolute;z-index:3;width:16px;height:16px;border-radius:50%;background:var(--dot);box-shadow:0 0 14px color-mix(in srgb,var(--dot),transparent 35%),inset 0 2px 5px rgba(255,255,255,.66);transition:transform .65s cubic-bezier(.2,.8,.2,1)}
 .orbit-dot::after{content:"";position:absolute;top:3px;left:4px;width:5px;height:3px;border-radius:50%;background:rgba(255,255,255,.78);filter:blur(.4px)}
-.orbit-dot.d1{left:18px;top:70px;--dot:#8abdf5}
-.orbit-dot.d2{right:24px;top:42px;width:13px;height:13px;--dot:#ffd7a1}
-.orbit-dot.d3{right:30px;bottom:38px;width:15px;height:15px;--dot:#ffa8d4}
-.orbit-dot.d4{left:42px;bottom:30px;width:18px;height:18px;--dot:#b892dd}
-.brand-star{position:absolute;z-index:4;color:#fff0cb;font-size:28px;text-shadow:0 0 18px rgba(255,228,172,.72);transform:translateY(-2px);transition:transform .55s}
+.orbit-dot.d1{left:52px;top:104px;--dot:#8abdf5}
+.orbit-dot.d2{right:64px;top:50px;width:13px;height:13px;--dot:#ffd7a1}
+.orbit-dot.d3{right:72px;bottom:54px;width:15px;height:15px;--dot:#ffa8d4}
+.orbit-dot.d4{left:92px;bottom:42px;width:18px;height:18px;--dot:#b892dd}
+.brand-star{position:absolute;z-index:4;right:calc(50% - 42px);top:62px;color:#fff0cb;font-size:30px;text-shadow:0 0 18px rgba(255,228,172,.72);transform:translate(0,0) rotate(-8deg);transition:transform .55s}
+.brand-spark{position:absolute;z-index:1;width:3px;height:3px;border-radius:50%;background:rgba(255,240,205,.92);box-shadow:0 0 9px rgba(255,232,174,.75);animation:brand-sparkle 3.8s ease-in-out infinite;opacity:.7}
+.brand-spark.s1{left:70px;top:34px;animation-delay:.1s}.brand-spark.s2{left:126px;bottom:20px;width:2px;height:2px;animation-delay:.8s}.brand-spark.s3{right:102px;top:26px;animation-delay:1.2s}.brand-spark.s4{right:44px;bottom:74px;width:2px;height:2px;animation-delay:1.8s}.brand-spark.s5{left:34px;bottom:78px;animation-delay:2.4s}.brand-spark.s6{right:164px;bottom:28px;width:2px;height:2px;animation-delay:3s}
+@keyframes brand-sparkle{0%,100%{transform:translateY(0) scale(.8);opacity:.25}45%{transform:translateY(-8px) scale(1.35);opacity:1}70%{transform:translateY(3px) scale(.95);opacity:.55}}
 .brand-orbit:hover::before{transform:rotate(20deg) scale(1.04)}
 .brand-orbit:hover::after{transform:rotate(-22deg) scale(1.05)}
-.brand-orbit:hover .hero-logo-main{transform:translateY(-4px) scale(1.08);filter:drop-shadow(0 28px 48px rgba(0,0,0,.38)) drop-shadow(0 0 32px rgba(255,226,160,.34))}
-.brand-orbit:hover .brand-star{transform:translateY(-5px) scale(1.15) rotate(18deg)}
+.brand-orbit:hover .hero-logo-main{transform:translateY(-4px) scale(1.06);filter:drop-shadow(0 34px 54px rgba(0,0,0,.4)) drop-shadow(0 0 36px rgba(255,226,160,.36))}
+.brand-orbit:hover .brand-star{transform:translate(10px,-12px) scale(1.18) rotate(22deg)}
 .brand-orbit:hover .d1{transform:translate(-12px,-8px) scale(1.1)}
 .brand-orbit:hover .d2{transform:translate(16px,-12px) scale(1.18)}
 .brand-orbit:hover .d3{transform:translate(14px,12px) scale(1.12)}
@@ -362,7 +365,7 @@ body{
     .toc-sidebar{display:none}
     .f-grid,.theme-row{grid-template-columns:1fr}
     .hero h1{font-size:2.2em}.sec{padding:48px 16px}.sec:first-of-type{padding-top:100px}
-    .hero-brand{min-height:140px}.brand-orbit{width:156px;height:128px}.hero-logo-main{width:94px;height:94px;border-radius:24px}.brand-star{font-size:24px}
+    .hero-brand{min-height:176px}.brand-orbit{width:min(310px,92vw);height:166px}.hero-logo-main{width:126px;height:126px;border-radius:30px}.brand-star{right:calc(50% - 34px);top:46px;font-size:24px}
     .nav{padding:10px 16px}.mod{padding:24px 18px;max-width:92vw}
     .code-disp .code-text{font-size:1em}
     .demo-pipeline-wrap{min-height:200px}
@@ -442,6 +445,12 @@ body{
             <span class="orbit-dot d2"></span>
             <span class="orbit-dot d3"></span>
             <span class="orbit-dot d4"></span>
+            <span class="brand-spark s1"></span>
+            <span class="brand-spark s2"></span>
+            <span class="brand-spark s3"></span>
+            <span class="brand-spark s4"></span>
+            <span class="brand-spark s5"></span>
+            <span class="brand-spark s6"></span>
         </div>
     </div>
     <h1>Memory Orbs<br><span>记忆球</span></h1>
