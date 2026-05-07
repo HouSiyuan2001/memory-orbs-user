@@ -33,7 +33,9 @@ body{
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
     border-bottom:1px solid var(--bd)
 }
-.nav-logo{font-size:1.2em;color:var(--tx-b);font-weight:500}
+.nav-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.nav-logo-mark{width:32px;height:32px;border-radius:8px;display:block;flex-shrink:0;object-fit:cover;box-shadow:0 8px 18px rgba(0,0,0,0.18)}
+.nav-logo{font-size:1.2em;color:var(--tx-b);font-weight:500;white-space:nowrap}
 .nav-acts{display:flex;gap:10px}
 .btn{
     display:inline-block;padding:10px 22px;border-radius:var(--r);
@@ -56,6 +58,8 @@ body{
 .sec h3{font-size:1.2em;color:var(--ac);margin-bottom:10px}
 .sec-sub{text-align:center;color:var(--tx-dim);font-size:.9em;margin-bottom:32px}
 .hero{text-align:center;padding:120px 24px 80px}
+.hero-brand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.hero-brand img{width:68px;height:68px;border-radius:16px;object-fit:cover;box-shadow:0 18px 42px rgba(0,0,0,0.32)}
 .hero h1{font-size:3.2em;color:var(--tx-b);margin-bottom:12px}
 .hero h1 span{background:linear-gradient(135deg,var(--joy),var(--ang),var(--fea));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--tx-dim);font-size:1.05em;margin-bottom:28px}
@@ -388,7 +392,10 @@ body{
 <body>
 
 <nav class="nav">
-    <div class="nav-logo">🧠 Memory Orbs</div>
+    <div class="nav-brand">
+        <img class="nav-logo-mark" src="./logo.png" alt="Memory Orbs logo">
+        <div class="nav-logo">Memory Orbs</div>
+    </div>
     <div class="nav-acts" id="nav-acts">
         <button class="btn btn-out" onclick="openM('login-modal')">登录</button>
         <button class="btn btn-pri" onclick="handleBuyClick()">购买</button>
@@ -408,6 +415,9 @@ body{
 <div class="demo-tooltip" id="demo-tooltip"></div>
 
 <section class="hero" id="top">
+    <div class="hero-brand">
+        <img src="./logo.png" alt="Memory Orbs logo">
+    </div>
     <h1>Memory Orbs<br><span>记忆球</span></h1>
     <p>将日记中的情绪标签变成发光的记忆球 —— 灵感来自《头脑特工队》</p>
     <div class="hero-btns">

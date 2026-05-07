@@ -2041,9 +2041,12 @@ var DEFAULT_SETTINGS = {
   lastVerifiedAt: 0,
   verifyFailCount: 0
 };
-var WORKER_BASE = "https://memory-orbs.pages.dev";
+var WEBSITE_BASE = "https://memory-orbs.pages.dev";
+var WORKER_BASE = WEBSITE_BASE;
 var ACTIVATION_WORKER_URL = WORKER_BASE + "/activate";
 var VERIFY_WORKER_URL = WORKER_BASE + "/verify";
+var WEBSITE_BUY_URL = WEBSITE_BASE + "/?v=fullscreen-pay-modal#what";
+var WEBSITE_HOME_URL = WEBSITE_BASE + "/";
 var VERIFY_INTERVAL = 24 * 60 * 60 * 1e3;
 var MAX_VERIFY_FAILS = 3;
 async function requestActivation(email, code) {
@@ -2197,10 +2200,14 @@ var MemoryOrbsSettingTab = class extends import_obsidian.PluginSettingTab {
           leaf.view.render();
         }
       } else {
-        const reason = result.error === "email_not_authorized" ? "\u8BE5\u90AE\u7BB1\u672A\u6388\u6743\uFF0C\u8BF7\u786E\u8BA4\u5DF2\u5728 B\u7AD9\u5DE5\u574A\u8D2D\u4E70" : result.error === "invalid_code" ? "\u6FC0\u6D3B\u7801\u9519\u8BEF\uFF0C\u8BF7\u68C0\u67E5\u540E\u91CD\u8BD5" : result.error === "network_error" ? "\u7F51\u7EDC\u8FDE\u63A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u8BD5" : "\u6FC0\u6D3B\u5931\u8D25\uFF1A" + (result.error || "\u672A\u77E5\u9519\u8BEF");
+        const reason = result.error === "email_not_authorized" ? "\u8BE5\u90AE\u7BB1\u672A\u6388\u6743\uFF0C\u8BF7\u786E\u8BA4\u5DF2\u5728\u7F51\u7AD9\u8D2D\u4E70" : result.error === "invalid_code" ? "\u6FC0\u6D3B\u7801\u9519\u8BEF\uFF0C\u8BF7\u68C0\u67E5\u540E\u91CD\u8BD5" : result.error === "network_error" ? "\u7F51\u7EDC\u8FDE\u63A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u8BD5" : "\u6FC0\u6D3B\u5931\u8D25\uFF1A" + (result.error || "\u672A\u77E5\u9519\u8BEF");
         msgEl.setText("\u274C " + reason);
         msgEl.addClass("mo-activation-error");
       }
+    });
+    new import_obsidian.Setting(containerEl).setName("\u6253\u5F00\u8D2D\u4E70\u9875\u9762").setDesc("\u8DF3\u8F6C\u5230\u4F60\u7684\u7F51\u7AD9\uFF0C\u67E5\u770B\u8D2D\u4E70\u548C\u6FC0\u6D3B\u8BF4\u660E").addButton((button) => {
+      button.setButtonText("\u6253\u5F00\u7F51\u7AD9");
+      button.onClick(() => window.open(WEBSITE_BUY_URL, "_blank", "noopener,noreferrer"));
     });
     new import_obsidian.Setting(containerEl).setName("\u65E5\u8BB0\u76EE\u5F55").setDesc("\u5B58\u653E\u65E5\u8BB0\u6587\u4EF6\u7684\u6587\u4EF6\u5939\u8DEF\u5F84\uFF08\u76F8\u5BF9\u4E8E\u5E93\u6839\u76EE\u5F55\uFF09").addText((text) => {
       text.setValue(this.plugin.settings.diaryDir);
@@ -2430,7 +2437,7 @@ var ActivateModal = class extends import_obsidian.Modal {
           leaf.view.render();
         }
       } else {
-        const reason = result.error === "email_not_authorized" ? "\u8BE5\u90AE\u7BB1\u672A\u6388\u6743\uFF0C\u8BF7\u786E\u8BA4\u5DF2\u5728 B\u7AD9\u5DE5\u574A\u8D2D\u4E70" : result.error === "invalid_code" ? "\u6FC0\u6D3B\u7801\u9519\u8BEF\uFF0C\u8BF7\u68C0\u67E5\u540E\u91CD\u8BD5" : result.error === "network_error" ? "\u7F51\u7EDC\u8FDE\u63A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u8BD5" : "\u6FC0\u6D3B\u5931\u8D25\uFF1A" + (result.error || "\u672A\u77E5\u9519\u8BEF");
+        const reason = result.error === "email_not_authorized" ? "\u8BE5\u90AE\u7BB1\u672A\u6388\u6743\uFF0C\u8BF7\u786E\u8BA4\u5DF2\u5728\u7F51\u7AD9\u8D2D\u4E70" : result.error === "invalid_code" ? "\u6FC0\u6D3B\u7801\u9519\u8BEF\uFF0C\u8BF7\u68C0\u67E5\u540E\u91CD\u8BD5" : result.error === "network_error" ? "\u7F51\u7EDC\u8FDE\u63A5\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u7F51\u7EDC\u540E\u91CD\u8BD5" : "\u6FC0\u6D3B\u5931\u8D25\uFF1A" + (result.error || "\u672A\u77E5\u9519\u8BEF");
         msgEl.setText("\u274C " + reason);
         msgEl.addClass("mo-activation-error");
       }
@@ -2439,8 +2446,13 @@ var ActivateModal = class extends import_obsidian.Modal {
     cancelBtn.addEventListener("click", () => this.close());
     const whereDesc = contentEl.createDiv({ cls: "mo-activation-where" });
     whereDesc.createEl("p", {
-      text: "\u{1F4A1} \u83B7\u53D6\u6FC0\u6D3B\u8D44\u683C\uFF1A\u8BF7\u5728 B\u7AD9\u5DE5\u574A\u641C\u7D22\u300CMemory Orbs\u300D\u8D2D\u4E70\u540E\uFF0C\u7528\u4E0B\u5355\u90AE\u7BB1\u6FC0\u6D3B\u3002"
+      text: "\u{1F4A1} \u83B7\u53D6\u6FC0\u6D3B\u8D44\u683C\uFF1A\u8BF7\u5148\u6253\u5F00\u7F51\u7AD9\u5B8C\u6210\u8D2D\u4E70\uFF0C\u6536\u5230\u6FC0\u6D3B\u4FE1\u606F\u540E\u518D\u7528\u4E0B\u5355\u90AE\u7BB1\u6FC0\u6D3B\u3002"
     });
+    const siteBtn = whereDesc.createEl("button", {
+      text: "\u6253\u5F00\u8D2D\u4E70\u9875\u9762",
+      cls: "mod-cta"
+    });
+    siteBtn.addEventListener("click", () => window.open(WEBSITE_BUY_URL, "_blank", "noopener,noreferrer"));
   }
   onClose() {
     const { contentEl } = this;
