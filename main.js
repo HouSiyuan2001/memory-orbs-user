@@ -566,79 +566,79 @@ var MemoryOrbsView = class extends import_obsidian.ItemView {
       });
       if (scroll) scroll.remove();
       return;
-      toolbar = container.createDiv({ cls: "mo-toolbar" });
-      const nav = toolbar.createDiv({ cls: "mo-nav" });
-      prevBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25C0" });
-      const titleEl = nav.createDiv({ cls: "mo-nav-title" });
-      nextBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25B6" });
-      this.updateTitle(titleEl);
-      const modeGroup = toolbar.createDiv({ cls: "mo-mode-group" });
-      const modes = [
-        { key: "day", label: "\u65E5" },
-        { key: "week", label: "\u5468" },
-        { key: "month", label: "\u6708" }
-      ];
-      for (const mode of modes) {
-        const btn = modeGroup.createEl("button", {
-          cls: `mo-mode-btn ${this.currentMode === mode.key ? "active" : ""}`,
-          text: mode.label
-        });
-        btn.addEventListener("click", () => {
-          this.currentMode = mode.key;
-          this.render();
-        });
-      }
-      const legend = toolbar.createDiv({ cls: "mo-legend" });
-      for (const emotion of this.emotions) {
-        const dot = legend.createDiv({ cls: "mo-legend-dot" });
-        dot.style.backgroundColor = emotion.color;
-        dot.style.boxShadow = `0 0 6px ${makeGlow(emotion.color)}`;
-        dot.title = `${emotion.character} ${emotion.label}`;
-        dot.addEventListener("click", () => {
-          this.showEmotionDetail(emotion);
-        });
-      }
-      const themeIcons = { cosmos: "\u{1F30C}", classic: "\u2600\uFE0F", sketch: "\u270F\uFE0F", glass: "\u{1F52E}" };
-      const themeLabels = { cosmos: "\u661F\u7A7A", classic: "\u7ECF\u5178", sketch: "\u624B\u7ED8", glass: "\u73BB\u7483" };
-      const themeCycle = ["cosmos", "classic", "sketch", "glass"];
-      const currentVt = this.plugin.settings.visualTheme;
-      const themeBtn = toolbar.createEl("button", {
-        cls: "mo-theme-btn",
-        text: `${themeIcons[currentVt]} ${themeLabels[currentVt]}`
-      });
-      themeBtn.title = `\u89C6\u89C9\u4E3B\u9898: ${themeLabels[currentVt]}`;
-      themeBtn.addEventListener("click", async () => {
-        const idx = themeCycle.indexOf(currentVt);
-        const newVt = themeCycle[(idx + 1) % themeCycle.length];
-        this.plugin.settings.visualTheme = newVt;
-        await this.plugin.saveSettings();
-        this.render();
-      });
-      statsBtn = toolbar.createEl("button", {
-        cls: "mo-stats-btn",
-        text: "\u{1F4CA} \u7EDF\u8BA1"
-      });
-      statsBtn.title = "\u67E5\u770B\u60C5\u7EEA\u7EDF\u8BA1";
-      const refreshBtn = toolbar.createEl("button", { cls: "mo-theme-btn" });
-      refreshBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`;
-      refreshBtn.title = "\u5237\u65B0\u8BB0\u5FC6\u7403";
-      refreshBtn.addEventListener("click", () => {
-        this._rangeCache.clear();
-        this._parser = null;
-        this.render();
-      });
-      const collapseBtn = toolbar.createEl("button", {
-        cls: "mo-collapse-btn",
-        text: this.isUiCollapsed ? "\u2922" : "\u2921"
-      });
-      collapseBtn.title = this.isUiCollapsed ? "\u6062\u590D\u754C\u9762" : "\u6536\u7F29\u754C\u9762";
-      collapseBtn.addEventListener("click", () => {
-        this.isUiCollapsed = !this.isUiCollapsed;
-        this.render();
-      });
-      prevBtn.addEventListener("click", () => this.navigate(-1));
-      nextBtn.addEventListener("click", () => this.navigate(1));
     }
+    toolbar = container.createDiv({ cls: "mo-toolbar" });
+    const nav = toolbar.createDiv({ cls: "mo-nav" });
+    prevBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25C0" });
+    const titleEl = nav.createDiv({ cls: "mo-nav-title" });
+    nextBtn = nav.createEl("button", { cls: "mo-nav-btn", text: "\u25B6" });
+    this.updateTitle(titleEl);
+    const modeGroup = toolbar.createDiv({ cls: "mo-mode-group" });
+    const modes = [
+      { key: "day", label: "\u65E5" },
+      { key: "week", label: "\u5468" },
+      { key: "month", label: "\u6708" }
+    ];
+    for (const mode of modes) {
+      const btn = modeGroup.createEl("button", {
+        cls: `mo-mode-btn ${this.currentMode === mode.key ? "active" : ""}`,
+        text: mode.label
+      });
+      btn.addEventListener("click", () => {
+        this.currentMode = mode.key;
+        this.render();
+      });
+    }
+    const legend = toolbar.createDiv({ cls: "mo-legend" });
+    for (const emotion of this.emotions) {
+      const dot = legend.createDiv({ cls: "mo-legend-dot" });
+      dot.style.backgroundColor = emotion.color;
+      dot.style.boxShadow = `0 0 6px ${makeGlow(emotion.color)}`;
+      dot.title = `${emotion.character} ${emotion.label}`;
+      dot.addEventListener("click", () => {
+        this.showEmotionDetail(emotion);
+      });
+    }
+    const themeIcons = { cosmos: "\u{1F30C}", classic: "\u2600\uFE0F", sketch: "\u270F\uFE0F", glass: "\u{1F52E}" };
+    const themeLabels = { cosmos: "\u661F\u7A7A", classic: "\u7ECF\u5178", sketch: "\u624B\u7ED8", glass: "\u73BB\u7483" };
+    const themeCycle = ["cosmos", "classic", "sketch", "glass"];
+    const currentVt = this.plugin.settings.visualTheme;
+    const themeBtn = toolbar.createEl("button", {
+      cls: "mo-theme-btn",
+      text: `${themeIcons[currentVt]} ${themeLabels[currentVt]}`
+    });
+    themeBtn.title = `\u89C6\u89C9\u4E3B\u9898: ${themeLabels[currentVt]}`;
+    themeBtn.addEventListener("click", async () => {
+      const idx = themeCycle.indexOf(currentVt);
+      const newVt = themeCycle[(idx + 1) % themeCycle.length];
+      this.plugin.settings.visualTheme = newVt;
+      await this.plugin.saveSettings();
+      this.render();
+    });
+    statsBtn = toolbar.createEl("button", {
+      cls: "mo-stats-btn",
+      text: "\u{1F4CA} \u7EDF\u8BA1"
+    });
+    statsBtn.title = "\u67E5\u770B\u60C5\u7EEA\u7EDF\u8BA1";
+    const refreshBtn = toolbar.createEl("button", { cls: "mo-theme-btn" });
+    refreshBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    refreshBtn.title = "\u5237\u65B0\u8BB0\u5FC6\u7403";
+    refreshBtn.addEventListener("click", () => {
+      this._rangeCache.clear();
+      this._parser = null;
+      this.render();
+    });
+    const collapseBtn = toolbar.createEl("button", {
+      cls: "mo-collapse-btn",
+      text: this.isUiCollapsed ? "\u2922" : "\u2921"
+    });
+    collapseBtn.title = this.isUiCollapsed ? "\u6062\u590D\u754C\u9762" : "\u6536\u7F29\u754C\u9762";
+    collapseBtn.addEventListener("click", () => {
+      this.isUiCollapsed = !this.isUiCollapsed;
+      this.render();
+    });
+    prevBtn.addEventListener("click", () => this.navigate(-1));
+    nextBtn.addEventListener("click", () => this.navigate(1));
     const orbsContainer = container.createDiv({ cls: "mo-orbs-wrapper" });
     const loading = orbsContainer.createDiv({ cls: "mo-loading", text: "\u6B63\u5728\u63D0\u53D6\u8BB0\u5FC6..." });
     try {
