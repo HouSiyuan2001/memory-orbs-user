@@ -2447,9 +2447,12 @@
     padding: 8px 12px !important;
 }
 
-/* 小窗口模式下隐藏工具栏 */
+/* 小窗口模式保留工具栏，避免旧版本残留的 mo-small-window 只显示球体 */
 .memory-orbs-container.mo-small-window .mo-toolbar {
-    display: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-bottom: 6px !important;
 }
 
 /* 小窗口模式下调整管道布局 */
