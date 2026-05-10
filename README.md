@@ -8,8 +8,6 @@
 
 👉 **[点击查看完整产品介绍页](https://memory-orbs.pages.dev/)**
 
-（按方向键 / 空格翻页，拖拽记忆球体验物理效果 ✨。国内可直连访问 🌍）
-
 ---
 
 ## 📦 安装方式
@@ -28,12 +26,6 @@
 ### 激活码
 
 联系作者 **骰子** 获取激活码，在插件设置中输入即可解锁完整功能。
-
----
-
-## 📝 使用说明
-
-详见 [docs/USER_GUIDE.md](https://github.com/HouSiyuan2001/memory-orbs-dev/blob/main/docs/USER_GUIDE.md)（开发者仓库）
 
 ---
 
