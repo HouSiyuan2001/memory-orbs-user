@@ -29,6 +29,12 @@
 
 ---
 
+## 📖 使用方法
+
+详细教程见 [docs/USER_GUIDE.md](docs/USER_GUIDE.md)，里面包含示例库使用、心情标签写法、BRAT 自动更新、插件设置、笔记嵌入和常见问题。
+
+---
+
 ## 👤 作者
 
 **骰子** — [B站: 骰子xCosmology](https://b23.tv/a89jLec)
