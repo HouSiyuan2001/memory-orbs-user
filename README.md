@@ -10,6 +10,16 @@
 
 ---
 
+## 🔗 入口说明
+
+- 官网：`https://memory-orbs.pages.dev/`，用于查看插件介绍、功能展示和在线说明。
+- GitHub 用户仓库：`https://github.com/HouSiyuan2001/memory-orbs-user`，用于 BRAT 安装和自动更新。
+- 示例库：`https://gitee.com/housiyuan123/example-obsidian-library-of-dice`，用于直接查看完整的 Obsidian 工作流和插件演示。
+
+如果你想先了解怎么用，直接看 [docs/USER_GUIDE.md](docs/USER_GUIDE.md)。
+
+---
+
 ## 📦 安装方式
 
 ### 通过 BRAT（推荐，自动更新）
