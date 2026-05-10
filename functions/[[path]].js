@@ -100,7 +100,7 @@ async function verifyToken(token, env) {
 
 export async function onRequest({ request, env }) {
 		const url = new URL(request.url);
-		const apiPaths = new Set(["/activate", "/verify", "/register", "/login", "/my-keys", "/purchase", "/stats"]);
+		const apiPaths = new Set(["/activate", "/verify", "/register", "/login", "/my-keys", "/purchase"]);
 		if (!apiPaths.has(url.pathname)) {
 			return env.ASSETS.fetch(request);
 		}
@@ -283,77 +283,6 @@ export async function onRequest({ request, env }) {
 				return json({ keys: [{ code, status, email }] });
 			} catch (e) {
 				return json({ keys: [] });
-			}
-		}
-
-		// ──────────────────────────────────────────
-		// POST /stats — 管理员统计
-		// ──────────────────────────────────────────
-		if (url.pathname === "/stats") {
-			try {
-				const { token } = await request.json();
-				if (!token || token !== env.ADMIN_TOKEN) {
-					return new Response("unauthorized", { status: 401 });
-				}
-
-				const kv = env.MEMORY_ORBS_USERS;
-				let paid = 0, pending = 0, accounts = 0;
-				let admin = 0, gift = 0, refunded = 0;
-				const activatedUsers = [];
-				const pendingUsers = [];
-
-				let cursor = undefined;
-				do {
-					const result = await kv.list({ cursor, limit: 1000 });
-					cursor = result.cursor;
-					for (const key of result.keys) {
-						const name = key.name;
-						if (name.startsWith("session:")) continue;
-						if (name.startsWith("account:")) { accounts++; continue; }
-						if (name.startsWith("purchase:")) continue;
-						if (name.startsWith("user_orders:")) continue;
-						if (name.startsWith("refunded:")) { refunded++; continue; }
-						if (!name.includes("@")) continue;
-						const val = await kv.get(name);
-						if (!val) continue;
-
-						const type = val.startsWith("admin") ? "admin"
-							: val.startsWith("gift") ? "gift"
-							: "paid";
-
-						const tsMatch = val.match(/_(\d+)$/);
-						const ts = tsMatch ? parseInt(tsMatch[1], 10) : 0;
-						const isActivated = val.startsWith("activated_") || val.startsWith("admin_") || val.startsWith("gift_");
-
-						if (type === "admin") {
-							admin++;
-							if (isActivated) activatedUsers.push({ email: name, activatedAt: ts, type: "admin" });
-							else pendingUsers.push({ email: name, type: "admin" });
-						} else if (type === "gift") {
-							gift++;
-							if (isActivated) activatedUsers.push({ email: name, activatedAt: ts, type: "gift" });
-							else pendingUsers.push({ email: name, type: "gift" });
-						} else {
-							if (isActivated) { paid++; activatedUsers.push({ email: name, activatedAt: ts, type: "paid" }); }
-							else { pending++; pendingUsers.push({ email: name, type: "paid" }); }
-						}
-					}
-				} while (cursor);
-
-				activatedUsers.sort((a, b) => b.activatedAt - a.activatedAt);
-				pendingUsers.sort((a, b) => a.email.localeCompare(b.email));
-
-				return json({
-					paid, pending, activated: paid, admin, gift, refunded,
-					accounts,
-					activatedUsers: activatedUsers.slice(0, 50),
-					pendingUsers: pendingUsers.slice(0, 50),
-					totalActivatedUsers: activatedUsers.length,
-					totalPendingUsers: pendingUsers.length,
-					authorized: pending, total: paid + pending + admin + gift,
-				});
-			} catch (e) {
-				return json({ error: "server_error" }, 500);
 			}
 		}
 

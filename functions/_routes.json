@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "include": ["/activate", "/verify", "/register", "/login", "/my-keys", "/purchase", "/stats"],
+  "include": ["/activate", "/verify", "/register", "/login", "/my-keys", "/purchase"],
   "exclude": []
 }
