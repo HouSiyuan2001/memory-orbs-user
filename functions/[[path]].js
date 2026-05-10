@@ -3,6 +3,8 @@
  *
  * KV 存储格式：
  *   user@example.com                     → "authorized" | "activated_1746123456"
+ *                                        | "admin" | "admin_1746123456"
+ *                                        | "gift" | "gift_1746123456"
  *   account:user@example.com             → {password_hash, created_at}
  *   session:xxx...                       → email (TTL: 24h, expiresAt metadata)
  *   purchase:user@example.com:{ts}       → {email, timestamp}（旧记录保留）
@@ -142,11 +144,12 @@ export async function onRequest({ request, env }) {
 					return json({ valid: false, reason: "invalid_code" });
 				}
 
-				if (record.startsWith("activated_")) {
+				if (record.includes("_")) {
 					return json({ valid: true, already_activated: true });
 				}
 
-				await env.MEMORY_ORBS_USERS.put(normalized, `activated_${Date.now()}`);
+				const prefix = (record === "admin" || record === "gift") ? record : "activated";
+				await env.MEMORY_ORBS_USERS.put(normalized, `${prefix}_${Date.now()}`);
 				return json({ valid: true });
 			} catch (e) {
 				return json({ valid: false, reason: "server_error" }, 500);
@@ -278,9 +281,10 @@ export async function onRequest({ request, env }) {
 				if (!record) return json({ keys: [] });
 
 				const code = await generateCode(email, env.SECRET);
-				const status = record.startsWith("activated_") ? "activated" : "authorized";
+				const status = record.includes("_") ? "activated" : "authorized";
+				const type = record.startsWith("admin") ? "admin" : record.startsWith("gift") ? "gift" : "paid";
 
-				return json({ keys: [{ code, status, email }] });
+				return json({ keys: [{ code, status, email, type }] });
 			} catch (e) {
 				return json({ keys: [] });
 			}
