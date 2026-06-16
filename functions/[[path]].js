@@ -7,6 +7,7 @@
  *                                        | "gift" | "gift_1746123456"
  *   account:user@example.com             → {password_hash, created_at}
  *   session:xxx...                       → email (TTL: 24h, expiresAt metadata)
+ *   order:alipay-order-id                → {email, amount, expectedAmount, status, paidAt, fulfilledAt}
  *   purchase:user@example.com:{ts}       → {email, timestamp}（旧记录保留）
  *
  * API:
@@ -301,10 +302,25 @@ export async function onRequest({ request, env }) {
 				}
 
 				const kv = env.MEMORY_ORBS_USERS;
+				const expectedPrice = 24.9;
 				let paid = 0, pending = 0, accounts = 0;
 				let admin = 0, gift = 0, refunded = 0;
 				const activatedUsers = [];
 				const pendingUsers = [];
+				const orders = [];
+				const paymentIssues = [];
+				const orderStats = {
+					expectedPrice,
+					total: 0,
+					paid: 0,
+					fulfilled: 0,
+					refunded: 0,
+					invalid: 0,
+					discounted: 0,
+					collectedAmount: 0,
+					fulfilledAmount: 0,
+					refundedAmount: 0,
+				};
 
 				function handleUserRecord(name, val) {
 					if (!val) return;
@@ -331,15 +347,61 @@ export async function onRequest({ request, env }) {
 					}
 				}
 
+				function handleOrderRecord(name, raw) {
+					if (!raw) return;
+					let order;
+					try { order = JSON.parse(raw); } catch {
+						orderStats.invalid++;
+						paymentIssues.push({ id: name.replace(/^order:/, ""), issue: "bad_json" });
+						return;
+					}
+
+					const id = String(order.id || name.replace(/^order:/, ""));
+					const email = normalizeEmail(order.email);
+					const amount = Number(order.amount);
+					const expectedAmount = Number(order.expectedAmount || expectedPrice);
+					const status = String(order.status || "paid");
+					const paidAt = Number(order.paidAt || order.createdAt || 0);
+					const fulfilledAt = Number(order.fulfilledAt || 0);
+					const issue = !email ? "missing_email"
+						: !Number.isFinite(amount) ? "bad_amount"
+						: "";
+					const priceNote = !issue && Number.isFinite(amount) && amount < expectedAmount ? "discount" : "";
+
+					orderStats.total++;
+					if (status === "refunded") {
+						orderStats.refunded++;
+						if (Number.isFinite(amount)) orderStats.refundedAmount += amount;
+					} else if (status === "fulfilled") {
+						orderStats.fulfilled++;
+						if (Number.isFinite(amount)) {
+							orderStats.collectedAmount += amount;
+							orderStats.fulfilledAmount += amount;
+						}
+					} else {
+						orderStats.paid++;
+						if (Number.isFinite(amount)) orderStats.collectedAmount += amount;
+					}
+
+					if (issue) {
+						orderStats.invalid++;
+						paymentIssues.push({ id, email, amount, expectedAmount, status, issue });
+					}
+					if (priceNote === "discount") orderStats.discounted++;
+					orders.push({ id, email, amount, expectedAmount, status, paidAt, fulfilledAt, issue, priceNote });
+				}
+
 				let cursor = undefined;
 				do {
 					const result = await kv.list({ cursor, limit: 1000 });
 					cursor = result.cursor;
 					const userKeys = [];
+					const orderKeys = [];
 					for (const key of result.keys) {
 						const name = key.name;
 						if (name.startsWith("session:")) continue;
 						if (name.startsWith("account:")) { accounts++; continue; }
+						if (name.startsWith("order:")) { orderKeys.push(name); continue; }
 						if (name.startsWith("purchase:")) continue;
 						if (name.startsWith("user_orders:")) continue;
 						if (name.startsWith("refunded:")) { refunded++; continue; }
@@ -353,16 +415,27 @@ export async function onRequest({ request, env }) {
 							handleUserRecord(chunk[j], values[j]);
 						}
 					}
+					for (let i = 0; i < orderKeys.length; i += 50) {
+						const chunk = orderKeys.slice(i, i + 50);
+						const values = await Promise.all(chunk.map((name) => kv.get(name)));
+						for (let j = 0; j < chunk.length; j++) {
+							handleOrderRecord(chunk[j], values[j]);
+						}
+					}
 				} while (cursor);
 
 				activatedUsers.sort((a, b) => b.activatedAt - a.activatedAt);
 				pendingUsers.sort((a, b) => a.email.localeCompare(b.email));
+				orders.sort((a, b) => (b.paidAt || 0) - (a.paidAt || 0));
 
 				return json({
 					paid, pending, activated: paid, admin, gift, refunded,
 					accounts,
 					activatedUsers: activatedUsers.slice(0, 50),
 					pendingUsers: pendingUsers.slice(0, 50),
+					orders: orders.slice(0, 50),
+					paymentIssues: paymentIssues.slice(0, 50),
+					orderStats,
 					totalActivatedUsers: activatedUsers.length,
 					totalPendingUsers: pendingUsers.length,
 					authorized: pending, total: paid + pending + admin + gift,

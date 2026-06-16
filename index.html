@@ -619,7 +619,7 @@ body{
     <div class="steps">
         <div class="step"><div class="step-num">1</div><div class="step-body"><h4>安装 BRAT 插件</h4><p>在 Obsidian 社区插件市场搜索 BRAT 并安装</p></div></div>
         <div class="step"><div class="step-num">2</div><div class="step-body"><h4>添加 Memory Orbs</h4><p>BRAT → Add Beta Plugin → 输入 <code>https://github.com/HouSiyuan2001/memory-orbs-user</code></p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><h4>人工开通激活码</h4><p>点击上方「购买」按钮，扫码支付 <strong style="color:var(--anx)">¥14.9（早鸟价）</strong>，付款后带账号邮箱私聊我。确认收款后，我会把你的账号开通为可领取激活码状态。不会装？加 <strong>¥9.9</strong> 远程安装服务，QQ 群 1092571911 联系。</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><h4>人工开通激活码</h4><p>点击上方「购买」按钮，扫码支付 <strong style="color:var(--anx)">¥24.9</strong>，付款后带账号邮箱私聊我。确认收款后，我会把你的账号开通为可领取激活码状态。不会装？加 <strong>¥9.9</strong> 远程安装服务，QQ 群 1092571911 联系。</p></div></div>
         <div class="step"><div class="step-num">4</div><div class="step-body"><h4>开始记录心情！</h4><p>在日记中使用 #情绪/开心 等标签，打开管道视图查看你的记忆球</p></div></div>
     </div>
 </section>
@@ -637,7 +637,7 @@ body{
     <div class="qr-wrap">
         <img src="./alipay-qr.png" alt="支付宝收款码">
         <p>支付宝扫码付款</p>
-        <p style="font-size:.82em;color:var(--anx);font-weight:600">早鸟价 ¥14.9（2026-06-02 截止，之后 ¥24.9）</p>
+        <p style="font-size:.82em;color:var(--anx);font-weight:600">标准价 ¥24.9</p>
         <p style="font-size:.72em">远程安装服务 +¥9.9，私聊写「爱物理的郭哥」</p>
     </div>
     <div class="manual-pay-grid">
@@ -1046,7 +1046,7 @@ function closeM(id){document.getElementById(id).classList.remove('ac')}
 function handleBuyClick(){const tk=localStorage.getItem('mo_tk');if(tk){openM('purchase-modal');updatePurchaseHint();return}buyAfterLogin=true;openM('login-modal')}
 function getPaymentMessage(){
     const em='xxxxxx@qq.com';
-    return `我已通过支付宝付款购买 Memory Orbs。账号邮箱：${em}。付款金额：14.90 元。支付宝付款订单编号：请填写。付款截图：已附。请帮我核对收款并开通激活码。`;
+    return `我已通过支付宝付款购买 Memory Orbs。账号邮箱：${em}。付款金额：24.90 元。支付宝付款订单编号：请填写。付款截图：已附。请帮我核对收款并开通激活码。`;
 }
 function updatePurchaseHint(){
     document.getElementById('pay-account').textContent='xxxxxx@qq.com';
